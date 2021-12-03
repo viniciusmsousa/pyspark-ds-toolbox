@@ -71,6 +71,7 @@ def df_spark_features_col(spark):
     })
     return spark.createDataFrame(d)
 
+# ml.eval
 @fixture
 def dfs_decile_analysis_input(spark):
     return spark.createDataFrame(pd.read_csv('tests/data/df_test_binary_classifier_decile_analysis.csv'))
@@ -80,3 +81,11 @@ def dfs_decile_analysis_output():
     df = pd.read_csv('tests/data/df_test_binary_classifier_decile_analysis_output.csv', sep=';', decimal='.')
     df['percentile'] = df['percentile'].to_numpy('int32')
     return df
+
+@fixture
+def dfs_binary_classificator_evaluator(spark):
+    df = pd.DataFrame({
+        'target': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        'predicted': [1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+    })
+    return spark.createDataFrame(df)
