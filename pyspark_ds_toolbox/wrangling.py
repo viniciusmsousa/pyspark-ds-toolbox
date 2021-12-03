@@ -1,4 +1,4 @@
-"""wrangling
+"""Data Wrangling toolbox.
 
 Module dedicated to provide data wrangling function.
 """

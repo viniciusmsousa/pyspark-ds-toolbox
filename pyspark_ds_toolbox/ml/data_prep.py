@@ -1,4 +1,4 @@
-"""ml.data_prep
+"""Machine Learning (with spark) Data Preparation toolbox.
 
 Module dedicated to functionalities related to data preparation for ML modeling.
 """

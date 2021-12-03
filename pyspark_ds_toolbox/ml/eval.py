@@ -1,4 +1,4 @@
-"""ml.data_prep
+"""Machine Learning (with Spark) Evaluation toolbox.
 
 Module dedicated to functionalities related to ML evaluation.
 """
