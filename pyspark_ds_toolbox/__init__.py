@@ -1,1 +1,8 @@
+__doc__  = """pyspark_ds_toobox
+
+A Pyspark companion for data science tasks.
+"""
+
 __version__ = '0.1.0'
+
+from pyspark_ds_toolbox import wrangling
