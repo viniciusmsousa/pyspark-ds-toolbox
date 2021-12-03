@@ -1,9 +1,5 @@
 import pandas as pd
-import numpy as np
-import pyspark
 from pyspark.sql.types import StructField, StructType, FloatType, LongType, DoubleType
-from pyspark.ml.feature import VectorAssembler
-from pyspark.ml import Pipeline
 
 import pyspark_ds_toolbox.causal_inference.ps_matching as ps
 

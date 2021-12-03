@@ -1,3 +1,7 @@
+"""Propensity Score Matching toolbox.
+
+For an introduction on the subject see: https://mixtape.scunning.com/matching-and-subclassification.html#propensity-score-methods
+"""
 from typeguard import typechecked
 
 import pandas as pd
