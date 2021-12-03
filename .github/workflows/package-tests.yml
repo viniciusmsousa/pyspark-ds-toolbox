@@ -23,7 +23,6 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest, python: 3.7}
           - {os: windows-latest, python: 3.7}
           - {os: ubuntu-latest, python: 3.7}
 
