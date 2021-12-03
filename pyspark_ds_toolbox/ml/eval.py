@@ -13,6 +13,8 @@ from pyspark.sql.types import FloatType
 from pyspark.sql.window import Window
 
 
+get_p1 = F.udf(lambda value: value[1].item(), FloatType())
+
 @typechecked
 def binary_classificator_evaluator(
     dfs_prediction: pyspark.sql.dataframe.DataFrame,
