@@ -89,3 +89,32 @@ def dfs_binary_classificator_evaluator(spark):
         'predicted': [1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
     })
     return spark.createDataFrame(df)
+
+# causal_inference.ps_matching
+@fixture
+def df_causal_inference(spark):
+    def read_data(file): 
+        return pd.read_stata("https://raw.github.com/scunning1975/mixtape/master/" + file)
+
+    df = read_data('nsw_mixtape.dta')
+    df = pd.concat((df, read_data('cps_mixtape.dta')))
+    df.reset_index(level=0, inplace=True)
+
+    df = spark.createDataFrame(df.drop(columns=['data_id']))\
+        .withColumn('age2', F.col('age')**2)\
+        .withColumn('age3', F.col('age')**3)\
+        .withColumn('educ2', F.col('educ')**2)\
+        .withColumn('educ_re74', F.col('educ')*F.col('re74'))\
+        .withColumn('u74', F.when(F.col('re74')==0, 1).otherwise(0))\
+        .withColumn('u75', F.when(F.col('re75')==0, 1).otherwise(0))
+
+    features=['age', 'age2', 'age3', 'educ', 'educ2', 'marr', 'nodegree', 'black', 'hisp', 're74', 're75', 'u74', 'u75', 'educ_re74']
+    assembler = FF.VectorAssembler(inputCols=features, outputCol='features')
+    pipeline = Pipeline(stages = [assembler])
+    df_assembled = pipeline.fit(df).transform(df)
+
+    return df_assembled
+
+@fixture
+def df_ps(spark):
+    return spark.createDataFrame(pd.read_csv('tests/data/df_ps.csv'))
