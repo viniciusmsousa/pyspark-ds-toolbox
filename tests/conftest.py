@@ -118,3 +118,10 @@ def df_causal_inference(spark):
 @fixture
 def df_ps(spark):
     return spark.createDataFrame(pd.read_csv('tests/data/df_ps.csv'))
+
+@fixture
+def df_did_raw(spark):
+    dat = pd.read_csv('tests/data/billboard_impact.csv')
+    dat.reset_index(level=0, inplace=True)
+    df = spark.createDataFrame(dat)
+    return df
