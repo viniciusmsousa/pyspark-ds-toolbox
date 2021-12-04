@@ -180,7 +180,6 @@ def estimate_individual_shapley_values(
         problem_type,
         row_of_interest: T.Row,
         feature_names: List[str],
-        column_to_examine: str,
         features_col: str = 'features',
         print_shap_values: bool = False
 ) -> pyspark.sql.dataframe.DataFrame:
@@ -317,6 +316,8 @@ def estimate_individual_shapley_values(
         if problem_type=='classification':
             x_df = x_df.withColumn('p1', get_p1(F.col('probability')))
             column_to_examine = 'p1'
+        else:
+            column_to_examine = 'prediction'
             
 
         # marginal contribution is calculated using a window and a lag of 1.
