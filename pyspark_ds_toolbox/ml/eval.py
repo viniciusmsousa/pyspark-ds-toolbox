@@ -4,6 +4,7 @@ Module dedicated to functionalities related to ML evaluation.
 """
 
 import sys
+from typing import List
 from typeguard import typechecked
 import pandas as pd
 
@@ -170,27 +171,56 @@ def binary_classifier_decile_analysis(
     )
     return decile_table
 
+@typechecked
 def estimate_individual_shapley_values(
-        spark,
-        df,
-        id_column,
+        spark: pyspark.sql.session.SparkSession,
+        df: pyspark.sql.dataframe.DataFrame,
+        id_col: str,
         model,
-        row_of_interest,
-        feature_names,
-        column_to_examine,
-        features_col='features',
-        print_shap_values=False
-):
+        problem_type,
+        row_of_interest: T.Row,
+        feature_names: List[str],
+        column_to_examine: str,
+        features_col: str = 'features',
+        print_shap_values: bool = False
+) -> pyspark.sql.dataframe.DataFrame:
+    """Function to estimate the shap values (explain prediction) for a row os interest.
+
+    This function is based on the algorithm described here:
+    https://christophm.github.io/interpretable-ml-book/shapley.html#estimating-the-shapley-value
+    and the implementation presented here:
+    https://medium.com/mlearning-ai/machine-learning-interpretability-shapley-values-with-pyspark-16ffd87227e3
+
+    Args:
+        spark (pyspark.sql.session.SparkSession): A Spark DF
+        df (pyspark.sql.dataframe.DataFrame): [description]
+        id_col (str): [description]
+        model ([type]): [description]
+        row_of_interest (T.Row): [description]
+        feature_names (List[str]): [description]
+        column_to_examine (str): [description]
+        features_col (str, optional): [description]. Defaults to 'features'.
+        print_shap_values (bool, optional): [description]. Defaults to False.
+
+    Raises:
+        ValueError: [description]
+        ValueError: [description]
+
+    Returns:
+        [pyspark.sql.dataframe.DataFrame]: [description]
     """
-    # Based on the algorithm described here:
-    # https://christophm.github.io/interpretable-ml-book/shapley.html#estimating-the-shapley-value
-    # And on Baskerville's implementation for IForest/ AnomalyModel here:
-    # https://github.com/equalitie/baskerville/blob/develop/src/baskerville/util/model_interpretation/helpers.py#L235
-    """
+
+    # Checking value erros
+    if df.schema[id_col].dataType not in (T.FloatType(), T.LongType(), T.IntegerType()):
+        raise ValueError('Paramater df.schema[id_col].dataType must be in (T.FloatType(), T.LongType(), T.IntegerType())')
+    
+    for f in feature_names:
+        if f not in df.columns:
+            raise ValueError(f'feature name {f} not in df.columns')
 
     # 1) Creating empty sdf to host the shap values.
     schema = T.StructType([
-        T.StructField(id_column, T.IntegerType(), True),
+        T.StructField(id_col, T.IntegerType(), True),
         T.StructField('feature', T.StringType(), True),
         T.StructField('shap', T.FloatType(), True)
     ])
@@ -225,13 +255,12 @@ def estimate_individual_shapley_values(
     def calculate_x(
             feature_j, z_features, curr_feature_perm
     ):
-        """
-        The instance  x+j is the instance of interest,
-        but all values in the order before feature j are
-        replaced by feature values from the sample z
-        The instance  x−j is the same as  x+j, but in addition
-        has feature j replaced by the value for feature j from the sample z
-        """
+        # The instance  x+j is the instance of interest,
+        # but all values in the order before feature j are
+        # replaced by feature values from the sample z
+        # The instance  x−j is the same as  x+j, but in addition
+        # has feature j replaced by the value for feature j from the sample z
+
         x_interest = ROW_OF_INTEREST_BROADCAST.value
         ordered_features = ORDERED_FEATURE_NAMES.value
         x_minus_j = list(z_features).copy()
@@ -256,7 +285,7 @@ def estimate_individual_shapley_values(
 
     udf_calculate_x = F.udf(calculate_x, T.ArrayType(VectorUDT()))
 
-    # persist before processing
+    # 6) Estimating the Shap Values
     features_df = features_df.persist()
 
     for f in feature_names:
@@ -280,22 +309,28 @@ def estimate_individual_shapley_values(
 
         # Calculating SHAP values for f
         x_df = x_df.selectExpr(
-            id_column, f'explode(x) as {features_col}'
+            id_col, f'explode(x) as {features_col}'
         ).cache()
-        x_df = model.transform(x_df).withColumn('probability', get_p1(F.col('probability')))
+        x_df = model.transform(x_df)
+        
+        
+        if problem_type=='classification':
+            x_df = x_df.withColumn('p1', get_p1(F.col('probability')))
+            column_to_examine = 'p1'
+            
 
         # marginal contribution is calculated using a window and a lag of 1.
         # the window is partitioned by id because x+j and x-j for the same row
         # will have the same id
         x_df = x_df.withColumn(
             'marginal_contribution',
-            F.col(column_to_examine) - F.lag(F.col(column_to_examine), 1).over(Window.partitionBy(id_column).orderBy(id_column))
+            F.col(column_to_examine) - F.lag(F.col(column_to_examine), 1).over(Window.partitionBy(id_col).orderBy(id_col))
         )
         # calculate the average
         x_df = x_df.filter(x_df.marginal_contribution.isNotNull())
         
         feat_shap_value = pd.DataFrame.from_dict({
-            id_column: [row_of_interest[id_column]],
+            id_col: [row_of_interest[id_col]],
             'feature': [f],
             'shap_value': [x_df.select(marginal_contribution_filter).first().shap_value]
         })
@@ -305,4 +340,4 @@ def estimate_individual_shapley_values(
         
         results = results.union(feat_shap_value)
         
-    return (results, x_df)
+    return results
