@@ -177,7 +177,7 @@ def estimate_individual_shapley_values(
         df: pyspark.sql.dataframe.DataFrame,
         id_col: str,
         model,
-        problem_type,
+        problem_type: str,
         row_of_interest: T.Row,
         feature_names: List[str],
         features_col: str = 'features',
@@ -189,6 +189,9 @@ def estimate_individual_shapley_values(
     https://christophm.github.io/interpretable-ml-book/shapley.html#estimating-the-shapley-value
     and the implementation presented here:
     https://medium.com/mlearning-ai/machine-learning-interpretability-shapley-values-with-pyspark-16ffd87227e3
+
+    [to-do]
+    check: https://github.com/manuel-calzolari/shapicant
 
     Args:
         spark (pyspark.sql.session.SparkSession): A Spark DF
@@ -202,20 +205,26 @@ def estimate_individual_shapley_values(
         print_shap_values (bool, optional): [description]. Defaults to False.
 
     Raises:
-        ValueError: [description]
-        ValueError: [description]
+        ValueError: if df.schema[id_col].dataType not in [T.FloatType(), T.LongType(), T.IntegerType()]==True
+        ValueError: if not set(feature_names).issubset(df.columns)==True
+        ValueError: problem_type not in ['classification', 'regression']
 
     Returns:
-        [pyspark.sql.dataframe.DataFrame]: [description]
+        [pyspark.sql.dataframe.DataFrame]: A sparkDF with the follwing columns
+            - id_col: The value from the column passed as id_col;
+            - feature: The name of each feature from features_names;
+            - shap: The shap value of the feature.
     """
 
     # Checking value erros
-    if df.schema[id_col].dataType not in (T.FloatType(), T.LongType(), T.IntegerType()):
+    if df.schema[id_col].dataType not in [T.FloatType(), T.LongType(), T.IntegerType()]:
         raise ValueError('Paramater df.schema[id_col].dataType must be in (T.FloatType(), T.LongType(), T.IntegerType())')
     
-    for f in feature_names:
-        if f not in df.columns:
-            raise ValueError(f'feature name {f} not in df.columns')
+    if not set(feature_names).issubset(df.columns):
+        raise ValueError(f'All elements in features_names list must be a column from df.')
+
+    if problem_type not in ['classification', 'regression']:
+        raise ValueError(f'problem_type is {problem_type}. It should be "regression" or "classification".')
 
     # 1) Creating empty sdf to host the shap values.
     schema = T.StructType([
