@@ -6,7 +6,6 @@
 Welcome to pyspark-ds-toolbox's documentation!
 ==============================================
 
-Can I write here?
 
 .. toctree::
    :maxdepth: 2
