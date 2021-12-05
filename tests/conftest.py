@@ -125,3 +125,11 @@ def df_did_raw(spark):
     dat.reset_index(level=0, inplace=True)
     df = spark.createDataFrame(dat)
     return df
+
+@fixture
+def input_estimate_individual_shapley_values(df_causal_inference):
+    train_size=0.8
+    train, test = df_causal_inference.randomSplit([train_size, (1-train_size)], seed=12345)
+    row_of_interest = df_causal_inference.filter(F.col('index')==3).first()
+
+    return (train, test, row_of_interest, df_causal_inference)

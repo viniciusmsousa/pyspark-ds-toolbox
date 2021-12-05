@@ -183,7 +183,7 @@ def estimate_individual_shapley_values(
         features_col: str = 'features',
         print_shap_values: bool = False
 ) -> pyspark.sql.dataframe.DataFrame:
-    """Function to estimate the shap values (explain prediction) for a row os interest.
+    """Function to estimate the shap values (explain prediction) for a row of interest.
 
     This function is based on the algorithm described here:
     https://christophm.github.io/interpretable-ml-book/shapley.html#estimating-the-shapley-value
