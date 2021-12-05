@@ -16,6 +16,7 @@ pyspark-ds-toolbox
 │  └─ ml_eval_estimate_shapley_values.ipynb
 ├─ poetry.lock
 ├─ pyproject.toml
+├─ docs/
 ├─ pyspark_ds_toolbox
 │  ├─ __init__.py
 │  ├─ causal_inference
