@@ -25,6 +25,7 @@ def did_estimator(
     """Difference in Difference Estimator.
 
     implementation based on https://matheusfacure.github.io/python-causality-handbook/14-Difference-in-Difference.html.
+    
     Args:
         df (pyspark.sql.dataframe.DataFrame): SparkDF from which the causal effect will be estimated.
         id_col (str): Column name of an unique unit identifier.
