@@ -8,6 +8,8 @@ import pyspark.sql.functions as F
 import pyspark.ml.feature as FF
 from pyspark.ml import Pipeline
 
+from pyspark_ds_toolbox.ml.data_prep import get_features_vector
+
 
 @fixture
 def spark():
@@ -109,9 +111,7 @@ def df_causal_inference(spark):
         .withColumn('u75', F.when(F.col('re75')==0, 1).otherwise(0))
 
     features=['age', 'age2', 'age3', 'educ', 'educ2', 'marr', 'nodegree', 'black', 'hisp', 're74', 're75', 'u74', 'u75', 'educ_re74']
-    assembler = FF.VectorAssembler(inputCols=features, outputCol='features')
-    pipeline = Pipeline(stages = [assembler])
-    df_assembled = pipeline.fit(df).transform(df)
+    df_assembled = get_features_vector(df=df, num_features=features)
 
     return df_assembled
 
