@@ -3,6 +3,12 @@ import pandas as pd
 import pyspark
 import pytest
 
+import pyspark.sql.functions as F
+import pyspark.sql.types as T
+from pyspark.ml import Pipeline
+from pyspark.ml.regression import GBTRegressor
+from pyspark.ml.classification import GBTClassifier
+
 from pyspark_ds_toolbox.ml import eval as ml_ev 
 
 
@@ -47,3 +53,73 @@ def test_binary_classifier_decile_analysis_error(spark):
             col_probability='probability'
         )
 
+def test_estimate_individual_shapley_values(spark, input_estimate_individual_shapley_values):
+    train =  input_estimate_individual_shapley_values[0]
+    row_of_interest = input_estimate_individual_shapley_values[2]
+    df_causal_inference = input_estimate_individual_shapley_values[3]
+    features=['age', 'age2', 'age3', 'educ', 'educ2', 'marr', 'nodegree', 'black', 'hisp', 're74', 're75', 'u74', 'u75', 'educ_re74']
+
+    # Regression
+    model_regressor = GBTRegressor(labelCol='re78')
+    p_regression = Pipeline(stages=[model_regressor]).fit(train)
+
+    sdf_shap_regression = ml_ev.estimate_individual_shapley_values(
+        spark=spark,
+        df = df_causal_inference,
+        id_col='index',
+        model = p_regression,
+        problem_type='regression',
+        row_of_interest = row_of_interest,
+        feature_names = features,
+        features_col='features',
+        print_shap_values=False
+    )
+    assert type(sdf_shap_regression) == pyspark.sql.dataframe.DataFrame
+    assert sdf_shap_regression.count() == len(features)
+    assert sdf_shap_regression.columns == ['index', 'feature', 'shap']
+
+    # Classification
+    model_classification = GBTClassifier(labelCol='treat')
+    p_classification = Pipeline(stages=[model_classification]).fit(train)
+
+    sdf_shap_classification = ml_ev.estimate_individual_shapley_values(
+        spark=spark,
+        df = df_causal_inference,
+        id_col='index',
+        model = p_classification,
+        problem_type='classification',
+        row_of_interest = row_of_interest,
+        feature_names = features,
+        features_col='features',
+        print_shap_values=False
+    )
+    assert type(sdf_shap_classification) == pyspark.sql.dataframe.DataFrame
+    assert sdf_shap_classification.count() == len(features)
+    assert sdf_shap_classification.columns == ['index', 'feature', 'shap']
+
+    # Errors
+    with pytest.raises(ValueError):
+        ml_ev.estimate_individual_shapley_values(
+            spark=spark,
+            df = df_causal_inference.withColumn('a', F.lit('A')),
+            id_col='a',
+            model = p_regression,
+            problem_type='regression',
+            row_of_interest = row_of_interest,
+            feature_names = features,
+            features_col='features',
+            print_shap_values=False
+        )
+    
+    with pytest.raises(ValueError):
+        ml_ev.estimate_individual_shapley_values(
+            spark=spark,
+            df = df_causal_inference,
+            id_col='index',
+            model = p_regression,
+            problem_type='regression',
+            row_of_interest = row_of_interest,
+            feature_names = features + ['a'],
+            features_col='features',
+            print_shap_values=False
+        )
