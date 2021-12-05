@@ -114,10 +114,15 @@
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.wrangling.count_percent_missing_rows_per_column">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.wrangling.</span></span><span class="sig-name descname"><span class="pre">count_percent_missing_rows_per_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sdf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.wrangling.count_percent_missing_rows_per_column" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the percentage of missing values for each column.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>dataframe_spark (pyspark.sql.dataframe.DataFrame): A Spark DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataframe_spark</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – A Spark DataFrame.</p>
 </dd>
-<dt>Returns:</dt><dd><p>pd.core.frame.DataFrame: A Pandas DF where each row representes the sdf columns and the values represents the percentage of null values.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Pandas DF where each row representes the sdf columns and the values represents the percentage of null values.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -127,15 +132,22 @@
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.wrangling.</span></span><span class="sig-name descname"><span class="pre">pivot_long</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_column_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_column_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_stack_expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.wrangling.pivot_long" title="Permalink to this definition"></a></dt>
 <dd><p>Function to pivot columns into rows (similar to pandas pivot). See the following link:
 <a class="reference external" href="https://sparkbyexamples.com/pyspark/pyspark-pivot-and-unpivot-dataframe/#:~:text=PySpark%20pivot()%20function%20is,individual%20columns%20with%20distinct%20data">https://sparkbyexamples.com/pyspark/pyspark-pivot-and-unpivot-dataframe/#:~:text=PySpark%20pivot()%20function%20is,individual%20columns%20with%20distinct%20data</a>.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>dfs (pyspark.sql.dataframe.DataFrame): A sparkDF.
-key_column_name (str): Name for the column that will receive the columns passed in value_columns as values.
-value_column_name (str): Name the column that will contain the values from the column passed in value_columns.
-key_columns (list): List of columns that will not be ‘pivoted’.
-value_columns (list): List os columns to be ‘pivoted’
-print_stack_expr (bool, optional): Print the spark sql expression that executes the pivot. Defaults to False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfs</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – A sparkDF.</p></li>
+<li><p><strong>key_column_name</strong> (<em>str</em>) – Name for the column that will receive the columns passed in value_columns as values.</p></li>
+<li><p><strong>value_column_name</strong> (<em>str</em>) – Name the column that will contain the values from the column passed in value_columns.</p></li>
+<li><p><strong>key_columns</strong> (<em>list</em>) – List of columns that will not be ‘pivoted’.</p></li>
+<li><p><strong>value_columns</strong> (<em>list</em>) – List os columns to be ‘pivoted’</p></li>
+<li><p><strong>print_stack_expr</strong> (<em>bool</em><em>, </em><em>optional</em>) – Print the spark sql expression that executes the pivot. Defaults to False.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>[pyspark.sql.dataframe.DataFrame]: The dfs argument with the value_columns ‘pivoted’.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The dfs argument with the value_columns ‘pivoted’.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[pyspark.sql.dataframe.DataFrame]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -144,17 +156,23 @@ print_stack_expr (bool, optional): Print the spark sql expression that executes 
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.wrangling.with_start_week">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.wrangling.</span></span><span class="sig-name descname"><span class="pre">with_start_week</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_day</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'sunday'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.wrangling.with_start_week" title="Permalink to this definition"></a></dt>
 <dd><p>Function that adds a date column with the week start.</p>
-<dl>
-<dt>Args:</dt><dd><p>df (pyspark.sql.dataframe.DataFrame): Spark DataFrame.
-date_col (str): Column name of the column from which the start week date will be computed from.</p>
-<blockquote>
-<div><p>Must be one of: pyspark.sql.types.TimestampType, pyspark.sql.types.DateType.</p>
-</div></blockquote>
-<p>start_day (str, optional): Which day should the week start?. Defaults to ‘sunday’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – Spark DataFrame.</p></li>
+<li><p><strong>date_col</strong> (<em>str</em>) – Column name of the column from which the start week date will be computed from.
+Must be one of: pyspark.sql.types.TimestampType, pyspark.sql.types.DateType.</p></li>
+<li><p><strong>start_day</strong> (<em>str</em><em>, </em><em>optional</em>) – Which day should the week start?. Defaults to ‘sunday’.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>ValueError: If date_col is not from type: pyspark.sql.types.TimestampType.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If date_col is not from type: pyspark.sql.types.TimestampType.</p>
 </dd>
-<dt>Returns:</dt><dd><p>[pyspark.sql.dataframe.DataFrame]: The df argument with a column date column called week.</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The df argument with a column date column called week.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[pyspark.sql.dataframe.DataFrame]</p>
 </dd>
 </dl>
 </dd></dl>

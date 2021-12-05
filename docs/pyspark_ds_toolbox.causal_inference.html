@@ -94,24 +94,27 @@
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.causal_inference.diff_in_diff.did_estimator">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.causal_inference.diff_in_diff.</span></span><span class="sig-name descname"><span class="pre">did_estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.causal_inference.diff_in_diff.did_estimator" title="Permalink to this definition"></a></dt>
 <dd><p>Difference in Difference Estimator.</p>
-<p>implementation based on <a class="reference external" href="https://matheusfacure.github.io/python-causality-handbook/14-Difference-in-Difference.html">https://matheusfacure.github.io/python-causality-handbook/14-Difference-in-Difference.html</a>.
-Args:</p>
-<blockquote>
-<div><p>df (pyspark.sql.dataframe.DataFrame): SparkDF from which the causal effect will be estimated.
-id_col (str): Column name of an unique unit identifier.
-y (str): Column name of the outcome of interest.
-flag_unit (str): Column name of a flag indicating wheter the unit was treated or not. MUST be 1 or 0.
-flag_time (str): Column name of a flag indicating whether the time is before or after the treatment. MUST BE 1 or 0.
-num_features ([type], optional): List of numerics features to be used. Defaults to Union[None, List[str]].
-cat_features ([type], optional): List of categorical features to be used. Defaults to None.</p>
-</div></blockquote>
-<dl>
-<dt>Raises:</dt><dd><p>ValueError: If id_col, y, flag_unit or flag_time is not in df.columns.</p>
+<p>implementation based on <a class="reference external" href="https://matheusfacure.github.io/python-causality-handbook/14-Difference-in-Difference.html">https://matheusfacure.github.io/python-causality-handbook/14-Difference-in-Difference.html</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – SparkDF from which the causal effect will be estimated.</p></li>
+<li><p><strong>id_col</strong> (<em>str</em>) – Column name of an unique unit identifier.</p></li>
+<li><p><strong>y</strong> (<em>str</em>) – Column name of the outcome of interest.</p></li>
+<li><p><strong>flag_unit</strong> (<em>str</em>) – Column name of a flag indicating wheter the unit was treated or not. MUST be 1 or 0.</p></li>
+<li><p><strong>flag_time</strong> (<em>str</em>) – Column name of a flag indicating whether the time is before or after the treatment. MUST BE 1 or 0.</p></li>
+<li><p><strong>num_features</strong> (<em>[</em><em>type</em><em>]</em><em>, </em><em>optional</em>) – List of numerics features to be used. Defaults to Union[None, List[str]].</p></li>
+<li><p><strong>cat_features</strong> (<em>[</em><em>type</em><em>]</em><em>, </em><em>optional</em>) – List of categorical features to be used. Defaults to None.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>The following dictionary
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If id_col, y, flag_unit or flag_time is not in df.columns.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>The following dictionary
 {</p>
 <blockquote>
-<div><p>‘impacto_medio’: list(linear_model.coefficients)[0],
+<div><p>’impacto_medio’: list(linear_model.coefficients)[0],
 ‘n_ids_impactados’: df_model.select(id_col).distinct().count(),
 ‘impacto’: list(linear_model.coefficients)[0]*df_model.select(id_col).distinct().count(),
 ‘pValueInteraction’: linear_model.summary.pValues[0],
@@ -121,6 +124,7 @@ cat_features ([type], optional): List of categorical features to be used. Defaul
 ‘linear_model’: linear_model</p>
 </div></blockquote>
 <p>}</p>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -134,18 +138,26 @@ cat_features ([type], optional): List of categorical features to be used. Defaul
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.causal_inference.ps_matching.compute_propensity_score">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.causal_inference.ps_matching.</span></span><span class="sig-name descname"><span class="pre">compute_propensity_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featuresCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'features'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.8</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.causal_inference.ps_matching.compute_propensity_score" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the propensity score for a given treatment based on the features from df.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>df (pyspark.sql.dataframe.DataFrame): Dataframe with features and treatment assignment.
-treat (str): Column name os the treatment indicating column. Must have value 0 or 1.
-y (str): Column name of the outcome of interest.
-id (str): Id of obervations.
-featuresCol (str, optional): Assembled column to be used in a pyspark pipelie. Defaults to ‘features’.
-train_size (float, optional): Proportion of the dataset to be used in training. Defaults to 0.8.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – Dataframe with features and treatment assignment.</p></li>
+<li><p><strong>treat</strong> (<em>str</em>) – Column name os the treatment indicating column. Must have value 0 or 1.</p></li>
+<li><p><strong>y</strong> (<em>str</em>) – Column name of the outcome of interest.</p></li>
+<li><p><strong>id</strong> (<em>str</em>) – Id of obervations.</p></li>
+<li><p><strong>featuresCol</strong> (<em>str</em><em>, </em><em>optional</em>) – Assembled column to be used in a pyspark pipelie. Defaults to ‘features’.</p></li>
+<li><p><strong>train_size</strong> (<em>float</em><em>, </em><em>optional</em>) – Proportion of the dataset to be used in training. Defaults to 0.8.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>tuple: 1 a sparkDF with the id, propensity score, treat and y columns;</dt><dd><p>2 a pandasDF with the evaluation of the models used to compute the propensity score.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>1 a sparkDF with the id, propensity score, treat and y columns;</dt><dd><p>2 a pandasDF with the evaluation of the models used to compute the propensity score.</p>
 </dd>
 </dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
@@ -157,13 +169,20 @@ train_size (float, optional): Proportion of the dataset to be used in training. 
 <p>The implementation is based on chapter 5 Matching and Subclassification
 section 5.3 Approximate Matching of the book Causal Inference: the Mixtape
 (<a class="reference external" href="https://mixtape.scunning.com/index.html">https://mixtape.scunning.com/index.html</a>).</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>df_ps (pyspark.sql.dataframe.DataFrame): SparkDF with outcome of interest, treatment and propensity scores.
-y (str): Column name of the outcome of interest.
-treat (str): Column name indicating receivement of treatment or not.
-ps (str): Column name with propensity score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_ps</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – SparkDF with outcome of interest, treatment and propensity scores.</p></li>
+<li><p><strong>y</strong> (<em>str</em>) – Column name of the outcome of interest.</p></li>
+<li><p><strong>treat</strong> (<em>str</em>) – Column name indicating receivement of treatment or not.</p></li>
+<li><p><strong>ps</strong> (<em>str</em>) – Column name with propensity score.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>float: The ATE.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The ATE.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -172,7 +191,7 @@ ps (str): Column name with propensity score.</p>
 <section id="module-pyspark_ds_toolbox.causal_inference">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyspark_ds_toolbox.causal_inference" title="Permalink to this headline"></a></h2>
 <p>Causal Inference Toolbox</p>
-<p>Sub-package dedicated to functionalities related to the field of causal inference. 
+<p>Sub-package dedicated to functionalities related to the field of causal inference.
 For a introduction on the subject see: <a class="reference external" href="https://mixtape.scunning.com/introduction.html#what-is-causal-inference">https://mixtape.scunning.com/introduction.html#what-is-causal-inference</a></p>
 </section>
 </section>

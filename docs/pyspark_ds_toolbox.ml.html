@@ -93,16 +93,22 @@
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.binary_classifier_weights">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.</span></span><span class="sig-name descname"><span class="pre">binary_classifier_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.binary_classifier_weights" title="Permalink to this definition"></a></dt>
 <dd><p>Adds a class weight columns to a binary classification response column.</p>
-<dl>
-<dt>Args:</dt><dd><p>dfs (pyspark.sql.dataframe.DataFrame): Training dataset with the col_target column.
-col_target (str): Column name of the column that contains the response variable for the model.</p>
-<blockquote>
-<div><p>It should contain only values of 0 and 1.</p>
-</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfs</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – Training dataset with the col_target column.</p></li>
+<li><p><strong>col_target</strong> (<em>str</em>) – Column name of the column that contains the response variable for the model.
+It should contain only values of 0 and 1.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>ValueError: If unique values from col_target column are not 0 and 1.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If unique values from col_target column are not 0 and 1.</p>
 </dd>
-<dt>Returns:</dt><dd><p>pyspark.sql.dataframe.DataFrame: The dfs object with a weight_{col_target} column.</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The dfs object with a weight_{col_target} column.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pyspark.sql.dataframe.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -111,14 +117,22 @@ col_target (str): Column name of the column that contains the response variable 
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.get_features_vector">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.</span></span><span class="sig-name descname"><span class="pre">get_features_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.get_features_vector" title="Permalink to this definition"></a></dt>
 <dd><p>Assembles a features vector to be used with ML algorithms.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>df (pyspark.dataframe.DataFrame): SparkDF with features to be assembled.
-num_features (List[str]): List of columns names of numeric features.
-cat_features (List[str]): List of column names of categorical features (StringIndexer).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pyspark.dataframe.DataFrame</em>) – SparkDF with features to be assembled.</p></li>
+<li><p><strong>num_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of columns names of numeric features.</p></li>
+<li><p><strong>cat_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of column names of categorical features (StringIndexer).</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>TypeError: If num_features AND cat_features are os type None.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If num_features AND cat_features are os type None.</p>
 </dd>
-<dt>Returns:</dt><dd><p>[pyspark.sql.dataframe.DataFrame]: The SparkDF passed as df with the features column.</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The SparkDF passed as df with the features column.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[pyspark.sql.dataframe.DataFrame]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -137,15 +151,20 @@ cat_features (List[str]): List of column names of categorical features (StringIn
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.eval.binary_classificator_evaluator">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.eval.</span></span><span class="sig-name descname"><span class="pre">binary_classificator_evaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs_prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.eval.binary_classificator_evaluator" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the Matrics of a Binary Classifier from a Prediction Output table from spark.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>dfs_prediction (pyspark.sql.dataframe.DataFrame): Output Prediction table from spark binarry classifier.
-col_target (str): Column name with the target (ground truth)
-print_metrics (bool, optional): Wether to print or not the metrics in the console. Defaults to False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfs_prediction</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – Output Prediction table from spark binarry classifier.</p></li>
+<li><p><strong>col_target</strong> (<em>str</em>) – Column name with the target (ground truth)</p></li>
+<li><p><strong>print_metrics</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wether to print or not the metrics in the console. Defaults to False.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>Exception: Any error that is encontered</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – Any error that is encontered</p>
 </dd>
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>Dict: Dictionery with the following metrics:</dt><dd><ul class="simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Dictionery with the following metrics:</dt><dd><ul class="simple">
 <li><p>confusion_matrix</p></li>
 <li><p>accuracy</p></li>
 <li><p>precision</p></li>
@@ -155,6 +174,10 @@ print_metrics (bool, optional): Wether to print or not the metrics in the consol
 </ul>
 </dd>
 </dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -164,22 +187,31 @@ print_metrics (bool, optional): Wether to print or not the metrics in the consol
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.eval.</span></span><span class="sig-name descname"><span class="pre">binary_classifier_decile_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_probability</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.eval.binary_classifier_decile_analysis" title="Permalink to this definition"></a></dt>
 <dd><p>Computes a Precision, Recall and KS decile analysis from a probability prediction model.
 col_target column MUST have values of only 0 and 1.</p>
-<dl>
-<dt>Args:</dt><dd><p>dfs (pyspark.sql.dataframe.DataFrame): SparkDF with probabilities predictions.
-col_id (str): Column name with id value, to count the values for each decile.
-col_target (str): Column name with the ground truth. Must be from a binary classifier with values 1 and 0.
-col_probability (str): Column name with the probability estimated from the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfs</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – SparkDF with probabilities predictions.</p></li>
+<li><p><strong>col_id</strong> (<em>str</em>) – Column name with id value, to count the values for each decile.</p></li>
+<li><p><strong>col_target</strong> (<em>str</em>) – Column name with the ground truth. Must be from a binary classifier with values 1 and 0.</p></li>
+<li><p><strong>col_probability</strong> (<em>str</em>) – Column name with the probability estimated from the model.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>ValueError: If unique values from col_target column are not 0 and 1.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If unique values from col_target column are not 0 and 1.</p>
 </dd>
-<dt>Returns:</dt><dd><dl>
-<dt>pyspark.sql.dataframe.DataFrame: SparkDF with the columns:</dt><dd><ul class="simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>SparkDF with the columns:</dt><dd><ul class="simple">
 <li><p>percentile, min_prob, max_prob, count_id, events, non_events, cum_events,</p></li>
 </ul>
 <p>cum_non_events, precision_at_percentile, recall_at_percentile, event_rate,
 nonevent_rate, cum_eventrate, cum_noneventrate, ks.</p>
 </dd>
 </dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pyspark.sql.dataframe.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -194,29 +226,40 @@ and the implementation presented here:
 <a class="reference external" href="https://medium.com/mlearning-ai/machine-learning-interpretability-shapley-values-with-pyspark-16ffd87227e3">https://medium.com/mlearning-ai/machine-learning-interpretability-shapley-values-with-pyspark-16ffd87227e3</a></p>
 <p>[to-do]
 check: <a class="reference external" href="https://github.com/manuel-calzolari/shapicant">https://github.com/manuel-calzolari/shapicant</a></p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>spark (pyspark.sql.session.SparkSession): A Spark DF
-df (pyspark.sql.dataframe.DataFrame): [description]
-id_col (str): [description]
-model ([type]): [description]
-row_of_interest (T.Row): [description]
-feature_names (List[str]): [description]
-column_to_examine (str): [description]
-features_col (str, optional): [description]. Defaults to ‘features’.
-print_shap_values (bool, optional): [description]. Defaults to False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark</strong> (<em>pyspark.sql.session.SparkSession</em>) – A Spark DF</p></li>
+<li><p><strong>df</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – [description]</p></li>
+<li><p><strong>id_col</strong> (<em>str</em>) – [description]</p></li>
+<li><p><strong>model</strong> (<em>[</em><em>type</em><em>]</em>) – [description]</p></li>
+<li><p><strong>row_of_interest</strong> (<em>T.Row</em>) – [description]</p></li>
+<li><p><strong>feature_names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – [description]</p></li>
+<li><p><strong>column_to_examine</strong> (<em>str</em>) – [description]</p></li>
+<li><p><strong>features_col</strong> (<em>str</em><em>, </em><em>optional</em>) – [description]. Defaults to ‘features’.</p></li>
+<li><p><strong>print_shap_values</strong> (<em>bool</em><em>, </em><em>optional</em>) – [description]. Defaults to False.</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>ValueError: if df.schema[id_col].dataType not in [T.FloatType(), T.LongType(), T.IntegerType()]==True
-ValueError: if not set(feature_names).issubset(df.columns)==True
-ValueError: problem_type not in [‘classification’, ‘regression’]</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – if df.schema[id_col].dataType not in [T.FloatType(), T.LongType(), T.IntegerType()]==True</p></li>
+<li><p><strong>ValueError</strong> – if not set(feature_names).issubset(df.columns)==True</p></li>
+<li><p><strong>ValueError</strong> – problem_type not in [‘classification’, ‘regression’]</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>[pyspark.sql.dataframe.DataFrame]: A sparkDF with the follwing columns</dt><dd><ul class="simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A sparkDF with the follwing columns</dt><dd><ul class="simple">
 <li><p>id_col: The value from the column passed as id_col;</p></li>
 <li><p>feature: The name of each feature from features_names;</p></li>
 <li><p>shap: The shap value of the feature.</p></li>
 </ul>
 </dd>
 </dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[pyspark.sql.dataframe.DataFrame]</p>
 </dd>
 </dl>
 </dd></dl>
