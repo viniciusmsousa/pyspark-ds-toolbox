@@ -9,6 +9,7 @@ from pyspark.ml import Pipeline
 from pyspark.ml.regression import GBTRegressor
 from pyspark.ml.classification import GBTClassifier
 
+from pyspark_ds_toolbox.ml.data_prep import get_p1
 from pyspark_ds_toolbox.ml import eval as ml_ev 
 
 
@@ -62,14 +63,16 @@ def test_estimate_individual_shapley_values(spark, input_estimate_individual_sha
     # Regression
     model_regressor = GBTRegressor(labelCol='re78')
     p_regression = Pipeline(stages=[model_regressor]).fit(train)
+    df_pred = p_regression.transform(df_causal_inference)
 
     sdf_shap_regression = ml_ev.estimate_individual_shapley_values(
         spark=spark,
-        df = df_causal_inference,
+        df = df_pred,
         id_col='index',
         model = p_regression,
+        column_of_interest='prediction',
         problem_type='regression',
-        row_of_interest = row_of_interest,
+        row_of_interest = df_pred.first(),
         feature_names = features,
         features_col='features',
         print_shap_values=False
@@ -81,14 +84,17 @@ def test_estimate_individual_shapley_values(spark, input_estimate_individual_sha
     # Classification
     model_classification = GBTClassifier(labelCol='treat')
     p_classification = Pipeline(stages=[model_classification]).fit(train)
+    df_pred = p_classification.transform(df_causal_inference)\
+        .withColumn('p1', get_p1(F.col('probability')))
 
     sdf_shap_classification = ml_ev.estimate_individual_shapley_values(
         spark=spark,
-        df = df_causal_inference,
+        df = df_pred,
         id_col='index',
         model = p_classification,
+        column_of_interest='p1',
         problem_type='classification',
-        row_of_interest = row_of_interest,
+        row_of_interest = df_pred.first(),
         feature_names = features,
         features_col='features',
         print_shap_values=False
@@ -104,6 +110,7 @@ def test_estimate_individual_shapley_values(spark, input_estimate_individual_sha
             df = df_causal_inference.withColumn('a', F.lit('A')),
             id_col='a',
             model = p_regression,
+            column_of_interest='prediction',
             problem_type='regression',
             row_of_interest = row_of_interest,
             feature_names = features,
@@ -117,6 +124,7 @@ def test_estimate_individual_shapley_values(spark, input_estimate_individual_sha
             df = df_causal_inference,
             id_col='index',
             model = p_regression,
+            column_of_interest='prediction',
             problem_type='regression',
             row_of_interest = row_of_interest,
             feature_names = features + ['a'],

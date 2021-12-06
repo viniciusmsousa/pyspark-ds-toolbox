@@ -177,6 +177,7 @@ def estimate_individual_shapley_values(
         df: pyspark.sql.dataframe.DataFrame,
         id_col: str,
         model,
+        column_of_interest: str,
         problem_type: str,
         row_of_interest: T.Row,
         feature_names: List[str],
@@ -195,14 +196,17 @@ def estimate_individual_shapley_values(
 
     Args:
         spark (pyspark.sql.session.SparkSession): A Spark DF
-        df (pyspark.sql.dataframe.DataFrame): [description]
-        id_col (str): [description]
-        model ([type]): [description]
-        row_of_interest (T.Row): [description]
-        feature_names (List[str]): [description]
-        column_to_examine (str): [description]
-        features_col (str, optional): [description]. Defaults to 'features'.
-        print_shap_values (bool, optional): [description]. Defaults to False.
+        df (pyspark.sql.dataframe.DataFrame): The result of applying a model.transform(df).
+            This df MUST have either a column with the prediction values (regression) or a column with the probabilities (classification). 
+        id_col (str): Column name of the id column.
+        model ([type]): A trained spark ml model. #to-do check compatible types.
+        column_of_interest (str): Column name with the prediction values (regression) or the probability.
+            This is the column that the shap values refer to. 
+        problem_type (str): Must be one one 'classification' or 'regression'. See Raises section.
+        row_of_interest (pyspark.sql.types.Row): A row from the dataframe passed as df.
+        feature_names (List[str]): List with the features names.
+        features_col (str, optional): Column name of the features vector. Defaults to 'features'.
+        print_shap_values (bool, optional): If True will print the values as they are computed. Defaults to False.
 
     Raises:
         ValueError: if df.schema[id_col].dataType not in [T.FloatType(), T.LongType(), T.IntegerType()]==True
@@ -323,8 +327,8 @@ def estimate_individual_shapley_values(
         
         
         if problem_type=='classification':
-            x_df = x_df.withColumn('p1', get_p1(F.col('probability')))
-            column_to_examine = 'p1'
+            x_df = x_df.withColumn('p1_internal', get_p1(F.col('probability')))
+            column_to_examine = 'p1_internal'
         else:
             column_to_examine = 'prediction'
             
@@ -349,5 +353,16 @@ def estimate_individual_shapley_values(
             print(f'Marginal Contribution for feature: {f} = {x_df.select(marginal_contribution_filter).first().shap_value}')
         
         results = results.union(feat_shap_value)
+    
+    # 7) Adjust Shap value (forcing them to be equal to the probability or prediction)
+    avg_y = df.select(F.avg(column_of_interest)).collect()[0][0]
+    sum_shap = results.select(F.sum('shap')).collect()[0][0]
+    y_hat = avg_y + sum_shap
+    y_real = row_of_interest[column_of_interest]
+
+    target_shap_sum = sum_shap + (y_real - y_hat)
+    ratio = (target_shap_sum - sum_shap)/sum_shap
+
+    results = results.withColumn('shap', F.col('shap')+(F.col('shap')*ratio))    
         
     return results
