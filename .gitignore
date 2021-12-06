@@ -152,4 +152,3 @@ logs/
 !tests/data/df_ps.csv
 !tests/data/billboard_impact.csv
 .DS_Store
-sphinx
