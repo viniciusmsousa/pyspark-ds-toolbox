@@ -177,6 +177,7 @@ def estimate_individual_shapley_values(
         df: pyspark.sql.dataframe.DataFrame,
         id_col: str,
         model,
+        column_of_interest: str,
         problem_type: str,
         row_of_interest: T.Row,
         feature_names: List[str],
@@ -198,6 +199,7 @@ def estimate_individual_shapley_values(
         df (pyspark.sql.dataframe.DataFrame): [description]
         id_col (str): [description]
         model ([type]): [description]
+        column_of_interest (str): [description]
         row_of_interest (T.Row): [description]
         feature_names (List[str]): [description]
         column_to_examine (str): [description]
@@ -349,5 +351,16 @@ def estimate_individual_shapley_values(
             print(f'Marginal Contribution for feature: {f} = {x_df.select(marginal_contribution_filter).first().shap_value}')
         
         results = results.union(feat_shap_value)
+    
+    # 7) Adjust Shap value (forcing them to be equal to the probability or prediction)
+    avg_y = df.select(F.avg(column_of_interest)).collect()[0][0]
+    sum_shap = results.select(F.sum('shap')).collect()[0][0]
+    y_hat = avg_y + sum_shap
+    y_real = row_of_interest[column_of_interest]
+
+    target_shap_sum = sum_shap + (y_real - y_hat)
+    ratio = (target_shap_sum - sum_shap)/sum_shap
+
+    results = results.withColumn('shap', F.col('shap')+(F.col('shap')*ratio))    
         
     return results
