@@ -323,8 +323,8 @@ def estimate_individual_shapley_values(
         
         
         if problem_type=='classification':
-            x_df = x_df.withColumn('p1', get_p1(F.col('probability')))
-            column_to_examine = 'p1'
+            x_df = x_df.withColumn('p1_internal', get_p1(F.col('probability')))
+            column_to_examine = 'p1_internal'
         else:
             column_to_examine = 'prediction'
             
