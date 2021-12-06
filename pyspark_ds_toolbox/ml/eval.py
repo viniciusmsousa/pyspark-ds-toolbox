@@ -196,15 +196,17 @@ def estimate_individual_shapley_values(
 
     Args:
         spark (pyspark.sql.session.SparkSession): A Spark DF
-        df (pyspark.sql.dataframe.DataFrame): [description]
-        id_col (str): [description]
-        model ([type]): [description]
-        column_of_interest (str): [description]
-        row_of_interest (T.Row): [description]
-        feature_names (List[str]): [description]
-        column_to_examine (str): [description]
-        features_col (str, optional): [description]. Defaults to 'features'.
-        print_shap_values (bool, optional): [description]. Defaults to False.
+        df (pyspark.sql.dataframe.DataFrame): The result of applying a model.transform(df).
+            This df MUST have either a column with the prediction values (regression) or a column with the probabilities (classification). 
+        id_col (str): Column name of the id column.
+        model ([type]): A trained spark ml model. #to-do check compatible types.
+        column_of_interest (str): Column name with the prediction values (regression) or the probability.
+            This is the column that the shap values refer to. 
+        problem_type (str): Must be one one 'classification' or 'regression'. See Raises section.
+        row_of_interest (pyspark.sql.types.Row): A row from the dataframe passed as df.
+        feature_names (List[str]): List with the features names.
+        features_col (str, optional): Column name of the features vector. Defaults to 'features'.
+        print_shap_values (bool, optional): If True will print the values as they are computed. Defaults to False.
 
     Raises:
         ValueError: if df.schema[id_col].dataType not in [T.FloatType(), T.LongType(), T.IntegerType()]==True
