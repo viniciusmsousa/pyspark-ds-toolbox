@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyspark-ds-toolbox"
-version = "0.0.2"
+version = "0.0.3-alpha.0"
 description = "A Pyspark companion for data science tasks."
 authors = ["vinicius.sousa <vinisousa04@gmail.com>"]
 license = "GPL-3.0-only"
@@ -20,8 +20,10 @@ numpy = "1.21.0"
 pytest = "^5.2"
 notebook = "^6.4.6"
 jupyter = "^1.0.0"
-Sphinx = "^4.3.1"
+Sphinx = "4.2"
 sphinx-rtd-theme = "^1.0.0"
+myst-parser = "^0.15.2"
+sphinx-toolbox = "^2.15.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

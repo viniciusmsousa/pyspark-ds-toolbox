@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pyspark DS Toolbox &mdash; pyspark-ds-toolbox 0.0.3-alpha.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pyspark_ds_toolbox" href="modules.html" />
+    <link rel="prev" title="Welcome to pyspark-ds-toolbox’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyspark-ds-toolbox
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Readme</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#organization">Organization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">pyspark_ds_toolbox</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyspark-ds-toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Pyspark DS Toolbox</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="tex2jax_ignore mathjax_ignore section" id="pyspark-ds-toolbox">
+<h1>Pyspark DS Toolbox<a class="headerlink" href="#pyspark-ds-toolbox" title="Permalink to this headline"></a></h1>
+<!-- badges: start -->
+<p><a class="reference external" href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img alt="Lifecycle:experimental" src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" /></a>
+<a class="reference external" href="https://pypi.org/project/pyspark-ds-toolbox/"><img alt="PyPI Latest Release" src="https://img.shields.io/pypi/v/pyspark-ds-toolbox.svg" /></a>
+<a class="reference external" href="https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions"><img alt="Package Tests" src="https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions/workflows/package-tests.yml/badge.svg" /></a></p>
+<!-- badges: end -->
+<p>The objective of the package is to provide a set of tools that helps the daily work of data science with spark. The documentation can be found <a class="reference external" href="https://viniciusmsousa.github.io/pyspark-ds-toolbox/index.html">here</a>.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<p>Directly from PyPi:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyspark</span><span class="o">-</span><span class="n">ds</span><span class="o">-</span><span class="n">toolbox</span>
+</pre></div>
+</div>
+<p>or from github:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">viniciusmsousa</span><span class="o">/</span><span class="n">pyspark</span><span class="o">-</span><span class="n">ds</span><span class="o">-</span><span class="n">toolbox</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="organization">
+<h2>Organization<a class="headerlink" href="#organization" title="Permalink to this headline"></a></h2>
+<p>The package is currently organized in a structure based on the nature of the task, such as data wrangling, model/prediction evaluation, and so on.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pyspark_ds_toolbox     # Main Package
+├─ causal_inference    # Sub-package dedicated to Causal Inferece
+│  ├─ diff_in_diff.py   # Module Diff in Diff
+│  └─ ps_matching.py    # Module Propensity Score Matching
+├─ ml                  # Sub-package dedicated to ML
+│  ├─ data_prep.py      # Module for Data Preparation
+│  └─ eval.py           # Module for model/prediction evaluation
+└─ wrangling.py        # Module for general Data Wrangling
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to pyspark-ds-toolbox’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="pyspark_ds_toolbox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Vinicius M de Sousa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -23,7 +23,6 @@ def binary_classificator_evaluator(
     col_prediction: str,
     print_metrics: bool = False
 ) -> dict:
-
     """Computes the Matrics of a Binary Classifier from a Prediction Output table from spark.
 
     Args:
@@ -32,10 +31,10 @@ def binary_classificator_evaluator(
         print_metrics (bool, optional): Wether to print or not the metrics in the console. Defaults to False.
 
     Raises:
-        Exception: Any error that is encontered
+        Exception: Any error that is encontered.
 
     Returns:
-        Dict: Dictionery with the following metrics:
+        [Dict]: Dict with the following metrics
             - confusion_matrix
             - accuracy
             - precision

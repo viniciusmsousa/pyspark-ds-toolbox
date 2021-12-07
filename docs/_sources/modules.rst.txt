@@ -1,4 +1,4 @@
-pyspark-ds-toolbox
+pyspark_ds_toolbox
 ==================
 
 .. toctree::

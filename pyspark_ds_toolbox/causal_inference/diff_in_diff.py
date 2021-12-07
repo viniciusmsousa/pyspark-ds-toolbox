@@ -39,17 +39,15 @@ def did_estimator(
         ValueError: If id_col, y, flag_unit or flag_time is not in df.columns.
 
     Returns:
-        The following dictionary
-        {
-            'impacto_medio': list(linear_model.coefficients)[0],
-            'n_ids_impactados': df_model.select(id_col).distinct().count(),
-            'impacto': list(linear_model.coefficients)[0]*df_model.select(id_col).distinct().count(),
-            'pValueInteraction': linear_model.summary.pValues[0],
-            'r2': linear_model.summary.r2,
-            'r2adj': linear_model.summary.r2adj,
-            'df_with_features': df_model,
-            'linear_model': linear_model
-        }
+        [dict]: A dictionary with the following keys and values
+            - 'impacto_medio': list(linear_model.coefficients)[0],
+            - 'n_ids_impactados': df_model.select(id_col).distinct().count(),
+            - 'impacto': list(linear_model.coefficients)[0]*df_model.select(id_col).distinct().count(),
+            - 'pValueInteraction': linear_model.summary.pValues[0],
+            - 'r2': linear_model.summary.r2,
+            - 'r2adj': linear_model.summary.r2adj,
+            - 'df_with_features': df_model,
+            - 'linear_model': linear_model
     """
 
     for n in [id_col, y, flag_unit, flag_time]:

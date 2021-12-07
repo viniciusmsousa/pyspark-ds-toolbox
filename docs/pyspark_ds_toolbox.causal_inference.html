@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyspark_ds_toolbox.causal_inference package &mdash; pyspark-ds-toolbox 0.0.2-alpha.0 documentation</title>
+  <title>pyspark_ds_toolbox.causal_inference package &mdash; pyspark-ds-toolbox 0.0.3-alpha.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -39,7 +38,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyspark-ds-toolbox</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Readme</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyspark_ds_toolbox</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="pyspark_ds_toolbox.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">pyspark_ds_toolbox.causal_inference package</a></li>
@@ -69,7 +69,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">pyspark-ds-toolbox</a> &raquo;</li>
+          <li><a href="modules.html">pyspark_ds_toolbox</a> &raquo;</li>
           <li><a href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a> &raquo;</li>
       <li>pyspark_ds_toolbox.causal_inference package</li>
       <li class="wy-breadcrumbs-aside">
@@ -81,18 +81,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pyspark-ds-toolbox-causal-inference-package">
+  <div class="section" id="pyspark-ds-toolbox-causal-inference-package">
 <h1>pyspark_ds_toolbox.causal_inference package<a class="headerlink" href="#pyspark-ds-toolbox-causal-inference-package" title="Permalink to this headline"></a></h1>
-<section id="submodules">
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-pyspark_ds_toolbox.causal_inference.diff_in_diff">
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.causal_inference.diff_in_diff">
 <span id="pyspark-ds-toolbox-causal-inference-diff-in-diff-module"></span><h2>pyspark_ds_toolbox.causal_inference.diff_in_diff module<a class="headerlink" href="#module-pyspark_ds_toolbox.causal_inference.diff_in_diff" title="Permalink to this headline"></a></h2>
 <p>Difference in Difference toolbox.</p>
 <p>For an introduction on the subject see: <a class="reference external" href="https://mixtape.scunning.com/difference-in-differences.html">https://mixtape.scunning.com/difference-in-differences.html</a></p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.causal_inference.diff_in_diff.did_estimator">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.causal_inference.diff_in_diff.</span></span><span class="sig-name descname"><span class="pre">did_estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.causal_inference.diff_in_diff.did_estimator" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.causal_inference.diff_in_diff.</span></span><span class="sig-name descname"><span class="pre">did_estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_unit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_time</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.causal_inference.diff_in_diff.did_estimator" title="Permalink to this definition"></a></dt>
 <dd><p>Difference in Difference Estimator.</p>
 <p>implementation based on <a class="reference external" href="https://matheusfacure.github.io/python-causality-handbook/14-Difference-in-Difference.html">https://matheusfacure.github.io/python-causality-handbook/14-Difference-in-Difference.html</a>.</p>
 <dl class="field-list simple">
@@ -111,32 +111,35 @@
 <dd class="field-even"><p><strong>ValueError</strong> – If id_col, y, flag_unit or flag_time is not in df.columns.</p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><p>The following dictionary
-{</p>
-<blockquote>
-<div><p>’impacto_medio’: list(linear_model.coefficients)[0],
-‘n_ids_impactados’: df_model.select(id_col).distinct().count(),
-‘impacto’: list(linear_model.coefficients)[0]*df_model.select(id_col).distinct().count(),
-‘pValueInteraction’: linear_model.summary.pValues[0],
-‘r2’: linear_model.summary.r2,
-‘r2adj’: linear_model.summary.r2adj,
-‘df_with_features’: df_model,
-‘linear_model’: linear_model</p>
-</div></blockquote>
-<p>}</p>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A dictionary with the following keys and values</dt><dd><ul class="simple">
+<li><p>’impacto_medio’: list(linear_model.coefficients)[0],</p></li>
+<li><p>’n_ids_impactados’: df_model.select(id_col).distinct().count(),</p></li>
+<li><p>’impacto’: list(linear_model.coefficients)[0]*df_model.select(id_col).distinct().count(),</p></li>
+<li><p>’pValueInteraction’: linear_model.summary.pValues[0],</p></li>
+<li><p>’r2’: linear_model.summary.r2,</p></li>
+<li><p>’r2adj’: linear_model.summary.r2adj,</p></li>
+<li><p>’df_with_features’: df_model,</p></li>
+<li><p>’linear_model’: linear_model</p></li>
+</ul>
+</dd>
+</dl>
 </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[dict]</p>
 </dd>
 </dl>
 </dd></dl>
 
-</section>
-<section id="module-pyspark_ds_toolbox.causal_inference.ps_matching">
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.causal_inference.ps_matching">
 <span id="pyspark-ds-toolbox-causal-inference-ps-matching-module"></span><h2>pyspark_ds_toolbox.causal_inference.ps_matching module<a class="headerlink" href="#module-pyspark_ds_toolbox.causal_inference.ps_matching" title="Permalink to this headline"></a></h2>
 <p>Propensity Score Matching toolbox.</p>
 <p>For an introduction on the subject see: <a class="reference external" href="https://mixtape.scunning.com/matching-and-subclassification.html#propensity-score-methods">https://mixtape.scunning.com/matching-and-subclassification.html#propensity-score-methods</a></p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.causal_inference.ps_matching.compute_propensity_score">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.causal_inference.ps_matching.</span></span><span class="sig-name descname"><span class="pre">compute_propensity_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featuresCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'features'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.8</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.causal_inference.ps_matching.compute_propensity_score" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.causal_inference.ps_matching.</span></span><span class="sig-name descname"><span class="pre">compute_propensity_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featuresCol</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'features'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.8</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.causal_inference.ps_matching.compute_propensity_score" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the propensity score for a given treatment based on the features from df.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -164,7 +167,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.causal_inference.ps_matching.estimate_causal_effect">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.causal_inference.ps_matching.</span></span><span class="sig-name descname"><span class="pre">estimate_causal_effect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_ps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.causal_inference.ps_matching.estimate_causal_effect" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.causal_inference.ps_matching.</span></span><span class="sig-name descname"><span class="pre">estimate_causal_effect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_ps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.causal_inference.ps_matching.estimate_causal_effect" title="Permalink to this definition"></a></dt>
 <dd><p>Function that estimates the ATE based on propensity scores.</p>
 <p>The implementation is based on chapter 5 Matching and Subclassification
 section 5.3 Approximate Matching of the book Causal Inference: the Mixtape
@@ -187,14 +190,14 @@ section 5.3 Approximate Matching of the book Causal Inference: the Mixtape
 </dl>
 </dd></dl>
 
-</section>
-<section id="module-pyspark_ds_toolbox.causal_inference">
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.causal_inference">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyspark_ds_toolbox.causal_inference" title="Permalink to this headline"></a></h2>
 <p>Causal Inference Toolbox</p>
 <p>Sub-package dedicated to functionalities related to the field of causal inference.
 For a introduction on the subject see: <a class="reference external" href="https://mixtape.scunning.com/introduction.html#what-is-causal-inference">https://mixtape.scunning.com/introduction.html#what-is-causal-inference</a></p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
