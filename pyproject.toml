@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyspark-ds-toolbox"
-version = "0.0.3-alpha.0"
+version = "0.0.3-alpha.1"
 description = "A Pyspark companion for data science tasks."
 authors = ["vinicius.sousa <vinisousa04@gmail.com>"]
 license = "GPL-3.0-only"
