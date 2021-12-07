@@ -22,6 +22,7 @@ notebook = "^6.4.6"
 jupyter = "^1.0.0"
 Sphinx = "^4.3.1"
 sphinx-rtd-theme = "^1.0.0"
+myst-parser = "^0.15.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

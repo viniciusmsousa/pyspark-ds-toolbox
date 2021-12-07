@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyspark_ds_toolbox.causal_inference package &mdash; pyspark-ds-toolbox 0.0.2-alpha.0 documentation</title>
+  <title>pyspark_ds_toolbox.causal_inference package &mdash; pyspark-ds-toolbox 0.0.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -39,7 +39,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyspark-ds-toolbox</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Readme</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyspark_ds_toolbox</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="pyspark_ds_toolbox.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">pyspark_ds_toolbox.causal_inference package</a></li>
@@ -69,7 +70,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">pyspark-ds-toolbox</a> &raquo;</li>
+          <li><a href="modules.html">pyspark_ds_toolbox</a> &raquo;</li>
           <li><a href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a> &raquo;</li>
       <li>pyspark_ds_toolbox.causal_inference package</li>
       <li class="wy-breadcrumbs-aside">
@@ -111,20 +112,23 @@
 <dd class="field-even"><p><strong>ValueError</strong> – If id_col, y, flag_unit or flag_time is not in df.columns.</p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><p>The following dictionary
-{</p>
-<blockquote>
-<div><p>’impacto_medio’: list(linear_model.coefficients)[0],
-‘n_ids_impactados’: df_model.select(id_col).distinct().count(),
-‘impacto’: list(linear_model.coefficients)[0]*df_model.select(id_col).distinct().count(),
-‘pValueInteraction’: linear_model.summary.pValues[0],
-‘r2’: linear_model.summary.r2,
-‘r2adj’: linear_model.summary.r2adj,
-‘df_with_features’: df_model,
-‘linear_model’: linear_model</p>
-</div></blockquote>
-<p>}</p>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A dictionary with the following keys and values</dt><dd><ul class="simple">
+<li><p>’impacto_medio’: list(linear_model.coefficients)[0],</p></li>
+<li><p>’n_ids_impactados’: df_model.select(id_col).distinct().count(),</p></li>
+<li><p>’impacto’: list(linear_model.coefficients)[0]*df_model.select(id_col).distinct().count(),</p></li>
+<li><p>’pValueInteraction’: linear_model.summary.pValues[0],</p></li>
+<li><p>’r2’: linear_model.summary.r2,</p></li>
+<li><p>’r2adj’: linear_model.summary.r2adj,</p></li>
+<li><p>’df_with_features’: df_model,</p></li>
+<li><p>’linear_model’: linear_model</p></li>
+</ul>
+</dd>
+</dl>
 </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[dict]</p>
 </dd>
 </dl>
 </dd></dl>
