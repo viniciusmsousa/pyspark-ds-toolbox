@@ -1,44 +1,39 @@
 # Pyspark DS Toolbox
 
-The objective of the package is to provide tools that helps the daily work of data science with spark.
+<!-- badges: start -->
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![PyPI Latest Release](https://img.shields.io/pypi/v/pyspark-ds-toolbox.svg)](https://pypi.org/project/pyspark-ds-toolbox/)
+[![Package Tests](https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions/workflows/package-tests.yml/badge.svg)](https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions)
+<!-- badges: end -->
 
-## Package Structure
+The objective of the package is to provide a set of tools that helps the daily work of data science with spark. The documentation can be found [here](https://viniciusmsousa.github.io/pyspark-ds-toolbox/index.html).
+
+
+## Installation
+
+Directly from PyPi:
 ```
-pyspark-ds-toolbox
-├─ .git/
-├─ .github
-│  └─ workflows
-│     └─ package-tests.yml
-├─ .gitignore
-├─ LICENSE.md
-├─ README.md
-├─ examples
-│  └─ ml_eval_estimate_shapley_values.ipynb
-├─ poetry.lock
-├─ pyproject.toml
-├─ docs/
-├─ pyspark_ds_toolbox
-│  ├─ __init__.py
-│  ├─ causal_inference
-│  │  ├─ __init__.py
-│  │  ├─ diff_in_diff.py
-│  │  └─ ps_matching.py
-│  ├─ ml
-│  │  ├─ __init__.py
-│  │  ├─ data_prep.py
-│  │  └─ eval.py
-│  └─ wrangling.py
-├─ requirements.txt
-└─ tests
-   ├─ __init__.py
-   ├─ conftest.py
-   ├─ data
-   ├─ test_causal_inference
-   │  ├─ test_diff_in_diff.py
-   │  └─ test_ps_matching.py
-   ├─ test_ml
-   │  ├─ test_data_prep.py
-   │  └─ test_ml_eval.py
-   ├─ test_pyspark_ds_toolbox.py
-   └─ test_wrangling.py
+pip install pyspark-ds-toolbox
 ```
+
+or from github:
+```
+pip install git+https://github.com/viniciusmsousa/pyspark-ds-toolbox.git
+```
+
+## Organization
+
+The package is currently organized in a structure based on the nature of the task, such as data wrangling, model/prediction evaluation, and so on.
+
+```
+pyspark_ds_toolbox     # Main Package
+├─ causal_inference    # Sub-package dedicated to Causal Inferece
+│  ├─ diff_in_diff.py   # Module Diff in Diff
+│  └─ ps_matching.py    # Module Propensity Score Matching
+├─ ml                  # Sub-package dedicated to ML
+│  ├─ data_prep.py      # Module for Data Preparation
+│  └─ eval.py           # Module for model/prediction evaluation
+└─ wrangling.py        # Module for general Data Wrangling
+```
+
