@@ -27,7 +27,6 @@ jobs:
           - {os: windows-latest, python: 3.7}
           - {os: ubuntu-latest, python: 3.7}
 
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -39,6 +38,10 @@ jobs:
         python3 -m pip install --upgrade pip
         python3 -m pip install pytest
         pip install -r requirements.txt
-    - name: Test with pytest
+    - name: Generate Report
       run: |
-        python3 -m pytest
+        python3 -m pip install coverage
+        coverage run -m pytest
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
