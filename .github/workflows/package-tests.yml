@@ -16,6 +16,9 @@ on:
       - '**/docs/'
       - '**/sphinx/'
 
+ignore:
+  - "*/tests/*"
+
 jobs:
   build:
     runs-on: ${{ matrix.config.os }}
