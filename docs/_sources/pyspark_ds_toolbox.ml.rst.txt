@@ -20,6 +20,14 @@ pyspark\_ds\_toolbox.ml.eval module
    :undoc-members:
    :show-inheritance:
 
+pyspark\_ds\_toolbox.ml.shap\_values module
+-------------------------------------------
+
+.. automodule:: pyspark_ds_toolbox.ml.shap_values
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
