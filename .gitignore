@@ -151,5 +151,7 @@ logs/
 !tests/data/df_test_binary_classifier_decile_analysis_output.csv
 !tests/data/df_ps.csv
 !tests/data/billboard_impact.csv
+!tests/data/df_causal_inference.csv
+!tests/data/df_iris.csv
 .DS_Store
 sphinx/

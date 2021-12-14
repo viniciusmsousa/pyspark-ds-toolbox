@@ -96,11 +96,14 @@ def dfs_binary_classificator_evaluator(spark):
 # causal_inference.ps_matching
 @fixture
 def df_causal_inference(spark):
-    def read_data(file): 
-        return pd.read_stata("https://raw.github.com/scunning1975/mixtape/master/" + file)
 
-    df = read_data('nsw_mixtape.dta')
-    df = pd.concat((df, read_data('cps_mixtape.dta')))
+    # def read_data(file): 
+    #     return pd.read_stata("https://raw.github.com/scunning1975/mixtape/master/" + file)
+    # df = read_data('nsw_mixtape.dta')
+    # df = pd.concat((df, read_data('cps_mixtape.dta')))
+    # df.to_csv('../tests/data/df_causal_inference.csv', index=False)
+
+    df = pd.read_csv('tests/data/df_causal_inference.csv')
     df.reset_index(level=0, inplace=True)
 
     df = spark.createDataFrame(df.drop(columns=['data_id']))\
@@ -138,10 +141,11 @@ def input_estimate_individual_shapley_values(df_causal_inference):
 #STATS
 @fixture
 def ks_iris(spark):
-    iris = load_iris()
+    # iris = load_iris()
 
-    iris_df = pd.DataFrame(data=iris['data'], columns=iris['feature_names'])
-    iris_df['target'] = iris['target']
+    # iris_df = pd.DataFrame(data=iris['data'], columns=iris['feature_names'])
+    # iris_df['target'] = iris['target']
+    iris_df = pd.read_csv('tests/data/df_iris.csv')
     iris_sdf = spark.createDataFrame(iris_df)
     iris_ks = iris_sdf.to_koalas()
 

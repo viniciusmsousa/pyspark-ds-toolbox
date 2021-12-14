@@ -16,7 +16,9 @@
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pyspark_ds_toolbox.stats package" href="pyspark_ds_toolbox.stats.html" />
+    <link rel="prev" title="pyspark_ds_toolbox.causal_inference package" href="pyspark_ds_toolbox.causal_inference.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -34,17 +36,26 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">pyspark_ds_toolbox.ml package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-pyspark_ds_toolbox.ml.data_prep">pyspark_ds_toolbox.ml.data_prep module</a></li>
-<li><a class="reference internal" href="#module-pyspark_ds_toolbox.ml.eval">pyspark_ds_toolbox.ml.eval module</a></li>
-<li><a class="reference internal" href="#module-pyspark_ds_toolbox.ml">Module contents</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Readme</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyspark_ds_toolbox</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyspark_ds_toolbox.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.causal_inference.html">pyspark_ds_toolbox.causal_inference package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pyspark_ds_toolbox.ml package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.stats.html">pyspark_ds_toolbox.stats package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#module-pyspark_ds_toolbox.wrangling">pyspark_ds_toolbox.wrangling module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#module-pyspark_ds_toolbox">Module contents</a></li>
 </ul>
 </li>
 </ul>
-</div>
+</li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -59,6 +70,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">pyspark_ds_toolbox</a> &raquo;</li>
+          <li><a href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a> &raquo;</li>
       <li>pyspark_ds_toolbox.ml package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/pyspark_ds_toolbox.ml.rst.txt" rel="nofollow"> View page source</a>
@@ -206,45 +219,84 @@ nonevent_rate, cum_eventrate, cum_noneventrate, ks.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.eval.estimate_individual_shapley_values">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.eval.</span></span><span class="sig-name descname"><span class="pre">estimate_individual_shapley_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.session.SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_of_interest</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_of_interest</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.types.Row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'features'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_shap_values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.eval.estimate_individual_shapley_values" title="Permalink to this definition"></a></dt>
-<dd><p>Function to estimate the shap values (explain prediction) for a row of interest.</p>
-<p>This function is based on the algorithm described here:
-<a class="reference external" href="https://christophm.github.io/interpretable-ml-book/shapley.html#estimating-the-shapley-value">https://christophm.github.io/interpretable-ml-book/shapley.html#estimating-the-shapley-value</a>
-and the implementation presented here:
-<a class="reference external" href="https://medium.com/mlearning-ai/machine-learning-interpretability-shapley-values-with-pyspark-16ffd87227e3">https://medium.com/mlearning-ai/machine-learning-interpretability-shapley-values-with-pyspark-16ffd87227e3</a></p>
-<p>[to-do]
-check: <a class="reference external" href="https://github.com/manuel-calzolari/shapicant">https://github.com/manuel-calzolari/shapicant</a></p>
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.eval.get_p1">
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.eval.</span></span><span class="sig-name descname"><span class="pre">get_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.eval.get_p1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.ml.shap_values">
+<span id="pyspark-ds-toolbox-ml-shap-values-module"></span><h2>pyspark_ds_toolbox.ml.shap_values module<a class="headerlink" href="#module-pyspark_ds_toolbox.ml.shap_values" title="Permalink to this headline"></a></h2>
+<p>This modules implements a way to estimate shap values from SparkDfs.</p>
+<p>We are not able to implement a generic function/class for pure spark model, that took in account numerical and categorical features.
+So this implementation as a workaround to get the job done. The main function is estimate_shap_values() and you can check directly
+the documentation on this function.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.shap_values.</span></span><span class="sig-name descname"><span class="pre">ShapValuesPDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_metric</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_mem_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'3G'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_models</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_runtime_secs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfolds</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">90</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>H2O AutoML Wrapper</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.as_h2o_df">
+<span class="sig-name descname"><span class="pre">as_h2o_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.as_h2o_df" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.extract_shap_values">
+<span class="sig-name descname"><span class="pre">extract_shap_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.extract_shap_values" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.fit_automl">
+<span class="sig-name descname"><span class="pre">fit_automl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.fit_automl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.get_feature_cols">
+<span class="sig-name descname"><span class="pre">get_feature_cols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.get_feature_cols" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.start_h2o">
+<span class="sig-name descname"><span class="pre">start_h2o</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.start_h2o" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.estimate_shap_values">
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.shap_values.</span></span><span class="sig-name descname"><span class="pre">estimate_shap_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sdf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_metric</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_mem_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'2G'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_models</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_runtime_secs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfolds</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">90</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.estimate_shap_values" title="Permalink to this definition"></a></dt>
+<dd><p>Computes for each row the shap values of each feature.</p>
+<p>This function will split the sdf into int(sdf.count()/subset_size) pandas dataframes and then use the
+Class ShapValuesPDF, which is a wrapper of the H2O automl, on each the subseted dataset using the
+applyInPandas() method of grouped SparkDF.</p>
+<p>Check the following link for an intuition of how this works:
+<a class="reference external" href="https://www.youtube.com/watch?v=x6dSsbXhyPo">https://www.youtube.com/watch?v=x6dSsbXhyPo</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>spark</strong> (<em>pyspark.sql.session.SparkSession</em>) – A Spark DF</p></li>
-<li><p><strong>df</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – The result of applying a model.transform(df).
-This df MUST have either a column with the prediction values (regression) or a column with the probabilities (classification).</p></li>
-<li><p><strong>id_col</strong> (<em>str</em>) – Column name of the id column.</p></li>
-<li><p><strong>model</strong> (<em>[</em><em>type</em><em>]</em>) – A trained spark ml model. #to-do check compatible types.</p></li>
-<li><p><strong>column_of_interest</strong> (<em>str</em>) – Column name with the prediction values (regression) or the probability.
-This is the column that the shap values refer to.</p></li>
-<li><p><strong>problem_type</strong> (<em>str</em>) – Must be one one ‘classification’ or ‘regression’. See Raises section.</p></li>
-<li><p><strong>row_of_interest</strong> (<em>pyspark.sql.types.Row</em>) – A row from the dataframe passed as df.</p></li>
-<li><p><strong>feature_names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List with the features names.</p></li>
-<li><p><strong>features_col</strong> (<em>str</em><em>, </em><em>optional</em>) – Column name of the features vector. Defaults to ‘features’.</p></li>
-<li><p><strong>print_shap_values</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True will print the values as they are computed. Defaults to False.</p></li>
+<li><p><strong>sdf</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – A SparkDF. Note that all column, except the id_col must be features.</p></li>
+<li><p><strong>id_col</strong> (<em>str</em>) – Column name of the identifier.</p></li>
+<li><p><strong>target_col</strong> (<em>str</em>) – Column name of the target value.</p></li>
+<li><p><strong>cat_features</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>None</em><em>]</em>) – List of column names of the categorical variables, if any.</p></li>
+<li><p><strong>sort_metric</strong> (<em>str</em>) – A metric to sort the candidates (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/sort_metric.html">https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/sort_metric.html</a>).</p></li>
+<li><p><strong>problem_type</strong> (<em>str</em>) – ‘regression’ or ‘classification’. If classification then target_col must be of binary values.</p></li>
+<li><p><strong>subset_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of rows for each sub dataset. Defaults to 2000.</p></li>
+<li><p><strong>max_mem_size</strong> (<em>str</em><em>, </em><em>optional</em>) – Max memory size to be allocated to h2o local cluster. Defaults to ‘2G’. (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/h2o.html#h2o.init">https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/h2o.html#h2o.init</a>)</p></li>
+<li><p><strong>max_models</strong> (<em>int</em><em>, </em><em>optional</em>) – Max number of model to be fitted. These models are ranked according to sort_metric. Defaults to 8. (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml">https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml</a>)</p></li>
+<li><p><strong>max_runtime_secs</strong> (<em>int</em><em>, </em><em>optional</em>) – Max number of seconds to spend fitting the models. Defaults to 30. (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml">https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml</a>)</p></li>
+<li><p><strong>nfolds</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of folds to be used for cross validation while fitting. Defaults to 5. (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml">https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml</a>)</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Seed. Defaults to 90.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>ValueError</strong> – if df.schema[id_col].dataType not in [T.FloatType(), T.LongType(), T.IntegerType()]==True</p></li>
-<li><p><strong>ValueError</strong> – if not set(feature_names).issubset(df.columns)==True</p></li>
-<li><p><strong>ValueError</strong> – problem_type not in [‘classification’, ‘regression’]</p></li>
-</ul>
+<dd class="field-even"><p><strong>ValueError</strong> – if int(sdf.count()/subset_size) &lt; 2 is True</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><dl class="simple">
 <dt>A sparkDF with the follwing columns</dt><dd><ul class="simple">
-<li><p>id_col: The value from the column passed as id_col;</p></li>
+<li><p>id_col: The values from the column passed as id_col;</p></li>
 <li><p>feature: The name of each feature from features_names;</p></li>
-<li><p>shap: The shap value of the feature.</p></li>
+<li><p>shap_value: The shap value of the feature.</p></li>
 </ul>
 </dd>
 </dl>
@@ -255,11 +307,6 @@ This is the column that the shap values refer to.</p></li>
 </dd>
 </dl>
 </dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.eval.get_p1">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.eval.</span></span><span class="sig-name descname"><span class="pre">get_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.eval.get_p1" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
 </div>
 <div class="section" id="module-pyspark_ds_toolbox.ml">
@@ -272,7 +319,10 @@ This is the column that the shap values refer to.</p></li>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyspark_ds_toolbox.causal_inference.html" class="btn btn-neutral float-left" title="pyspark_ds_toolbox.causal_inference package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyspark_ds_toolbox.stats.html" class="btn btn-neutral float-right" title="pyspark_ds_toolbox.stats package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
