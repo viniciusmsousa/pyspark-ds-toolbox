@@ -17,3 +17,8 @@ def test_association(ks_iris):
 
     assert type(df) == pd.core.frame.DataFrame
     assert df.shape == (5, 5)
+
+def test_assiciation_c(ks_iris):
+    c = Association().C(df=ks_iris,columns=['target', 'target'])
+
+    assert 0.816496580927726 == c
