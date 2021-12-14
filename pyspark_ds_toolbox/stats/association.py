@@ -1,3 +1,11 @@
+"""Module Dedicated to Association Metrics
+
+The class implemented in this module is based on the book:
+Morettin, P.A. and Bussab, W.O., 2017. Estatística básica. Saraiva Educação SA.
+
+The current implementation is built on top of Koalas, but in the future this will be change to pure pyspark.
+"""
+
 import seaborn as sns
 import numpy as np
 import pandas as pd
@@ -9,16 +17,23 @@ import databricks
 from typing import List, Union
 
 class Association():
+    """This association class implements different types of association metrics, for both categorical and numerical variables.
+    
+    The main one being the method association_matrix.
+    """
     @typechecked
     def C(self, 
           df:databricks.koalas.frame.DataFrame, 
           columns:List[str], 
           dense:bool=True) -> float:
         """Computes the Contingency Coefficient.
+        A non-normalized association metric between two categorical variables.
 
         Args:
             df (pyspark.koalas.frame.DataFrame): Koalas Dataframe contaning the data in dense form or in grouped form.
-            columns (List[str]): List of Strings containing the name of the columns which will be used in the coefficient computation.
+            columns (List[str]): List of Strings containing the name of the categorical columns which will be used in the coefficient computation.
+            dense (bool, optional): If false it is expected that you have executed this df.groupby(columns).size().unstack(level=0).fillna(0) in the df.
+                Defaults to True.
 
         Returns:
             float: The Contingency Coefficient value.
@@ -43,8 +58,19 @@ class Association():
     @typechecked
     def T(self, 
           df:databricks.koalas.frame.DataFrame, 
-          columns:List[str]=[], 
+          columns:List[str], 
           dense:bool=True) -> float:
+        """Computes the T Metrics.
+        A normalized metric of assiciation between two categorical variables.
+
+        Args:
+            df (databricks.koalas.frame.DataFrame): Koalas Dataframe contaning the data in dense form or in grouped form.
+            columns (List[str]): List of Strings containing the name of the categorical columns which will be used in the coefficient computation.
+            dense (bool, optional): If false it is expected that you have executed this df.groupby(columns).size().unstack(level=0).fillna(0) in the df.
+
+        Returns:
+            float: The T Metric.
+        """
         if (dense):
             num_ocorrencias = df.groupby(columns).size().unstack(level=0).fillna(0)
         else:
@@ -68,6 +94,17 @@ class Association():
     def corr(self, 
              df:databricks.koalas.frame.DataFrame, 
              columns:List[str]) -> float:
+        """Computes the Correlation Coefficient.
+
+        Standard Correlation Coefficient.
+
+        Args:
+            df (databricks.koalas.frame.DataFrame): A KoalasDF with column to be computed the correlation.
+            columns (List[str]): List of numeric column names from which the correlation will computed.
+
+        Returns:
+            float: Correlation Coefficient.
+        """
         X = df[columns[0]]
         Y = df[columns[1]]
       
@@ -84,7 +121,19 @@ class Association():
            df:databricks.koalas.frame.DataFrame, 
            categorical:str, 
            numerical:str) -> float:
-        X = df[categorical]
+        """Computes the R2 Metric for one numeric column and one categorical column.
+
+        Metric of association between a numeric and a categorical variables.
+
+        Args:
+            df (databricks.koalas.frame.DataFrame): A KoalasDF.
+            categorical (str): Column name of the categorical column.
+            numerical (str): column name of the numerical column.
+
+        Returns:
+            float: The R2 Metric.
+        """
+        # X = df[categorical]
         Y = df[numerical]
 
         data = df.loc[:, [categorical, numerical]]
@@ -101,6 +150,19 @@ class Association():
                            categorical_features:List[str], 
                            numerical_features:List[str],
                            return_matrix:bool = False) -> Union[None, pd.core.frame.DataFrame]:
+        """Computes from a df, a list of categorical and a list of numerical variables a normalized association matrix.
+
+        Args:
+            df (databricks.koalas.frame.DataFrame): A KoalasDF with 
+            categorical_features (List[str]): List of column names of the categorical features.
+            numerical_features (List[str]): List of Column names of the numerical features.
+            plot_matrix (bool, optional): If set False it will not plot the matrix. Defaults to True.
+            return_matrix (bool, optional): If set to True it will return the correlation matrix as a pandasDF. Defaults to False.
+
+        Returns:
+            Union[None, pd.core.frame.DataFrame]: Either None, if return_matrix is False, or a PandasDF with the correlation coefficients.
+        """
+        
         features = categorical_features + numerical_features
         
         aMatrix = ks.DataFrame(columns=features, index=features, dtype=np.float64)
