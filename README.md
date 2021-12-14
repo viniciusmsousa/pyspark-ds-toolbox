@@ -37,6 +37,8 @@ pyspark_ds_toolbox     # Main Package
 ├─ ml                  # Sub-package dedicated to ML
 │  ├─ data_prep.py      # Module for Data Preparation
 │  └─ eval.py           # Module for model/prediction evaluation
-└─ wrangling.py        # Module for general Data Wrangling
+├─ wrangling.py        # Module for general Data Wrangling
+└─ stats               # Sub-package dedicated to basic statistic functionalities
+   └─ association.py    # Association metrics module
 ```
 

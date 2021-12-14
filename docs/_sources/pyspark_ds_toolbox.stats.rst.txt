@@ -1,0 +1,21 @@
+pyspark\_ds\_toolbox.stats package
+==================================
+
+Submodules
+----------
+
+pyspark\_ds\_toolbox.stats.association module
+---------------------------------------------
+
+.. automodule:: pyspark_ds_toolbox.stats.association
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pyspark_ds_toolbox.stats
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -9,6 +9,7 @@ Subpackages
 
    pyspark_ds_toolbox.causal_inference
    pyspark_ds_toolbox.ml
+   pyspark_ds_toolbox.stats
 
 Submodules
 ----------

@@ -7,6 +7,7 @@ from pyspark.ml.linalg import VectorUDT
 import pyspark.sql.functions as F
 import pyspark.ml.feature as FF
 from pyspark.ml import Pipeline
+from sklearn.datasets import load_iris
 
 from pyspark_ds_toolbox.ml.data_prep import get_features_vector
 
@@ -133,3 +134,15 @@ def input_estimate_individual_shapley_values(df_causal_inference):
     row_of_interest = df_causal_inference.filter(F.col('index')==3).first()
 
     return (train, test, row_of_interest, df_causal_inference)
+
+#STATS
+@fixture
+def ks_iris(spark):
+    iris = load_iris()
+
+    iris_df = pd.DataFrame(data=iris['data'], columns=iris['feature_names'])
+    iris_df['target'] = iris['target']
+    iris_sdf = spark.createDataFrame(iris_df)
+    iris_ks = iris_sdf.to_koalas()
+
+    return iris_ks
