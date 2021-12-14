@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyspark_ds_toolbox.stats package &mdash; pyspark-ds-toolbox 0.1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyspark-ds-toolbox
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">pyspark_ds_toolbox.stats package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pyspark_ds_toolbox.stats.association">pyspark_ds_toolbox.stats.association module</a></li>
+<li><a class="reference internal" href="#module-pyspark_ds_toolbox.stats">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyspark-ds-toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>pyspark_ds_toolbox.stats package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyspark_ds_toolbox.stats.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="pyspark-ds-toolbox-stats-package">
+<h1>pyspark_ds_toolbox.stats package<a class="headerlink" href="#pyspark-ds-toolbox-stats-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.stats.association">
+<span id="pyspark-ds-toolbox-stats-association-module"></span><h2>pyspark_ds_toolbox.stats.association module<a class="headerlink" href="#module-pyspark_ds_toolbox.stats.association" title="Permalink to this headline"></a></h2>
+<p>Module Dedicated to Association Metrics</p>
+<p>The class implemented in this module is based on the book:
+Morettin, P.A. and Bussab, W.O., 2017. Estatística básica. Saraiva Educação SA.</p>
+<p>The current implementation is built on top of Koalas, but in the future this will be change to pure pyspark.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.stats.association.Association">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.stats.association.</span></span><span class="sig-name descname"><span class="pre">Association</span></span><a class="headerlink" href="#pyspark_ds_toolbox.stats.association.Association" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This association class implements different types of association metrics, for both categorical and numerical variables.</p>
+<p>The class implemented in this module is based on the book:
+Morettin, P.A. and Bussab, W.O., 2017. Estatística básica. Saraiva Educação SA.</p>
+<p>The current implementation is built on top of Koalas, but in the future this will be change to pure pyspark.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.stats.association.Association.C">
+<span class="sig-name descname"><span class="pre">C</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">databricks.koalas.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dense</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.stats.association.Association.C" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the Contingency Coefficient.
+A non-normalized association metric between two categorical variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pyspark.koalas.frame.DataFrame</em>) – Koalas Dataframe contaning the data in dense form or in grouped form.</p></li>
+<li><p><strong>columns</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of Strings containing the name of the categorical columns which will be used in the coefficient computation.</p></li>
+<li><p><strong>dense</strong> (<em>bool</em><em>, </em><em>optional</em>) – If false it is expected that you have executed this df.groupby(columns).size().unstack(level=0).fillna(0) in the df.
+Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Contingency Coefficient value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.stats.association.Association.R2">
+<span class="sig-name descname"><span class="pre">R2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">databricks.koalas.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.stats.association.Association.R2" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the R2 Metric for one numeric column and one categorical column.</p>
+<p>Metric of association between a numeric and a categorical variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>databricks.koalas.frame.DataFrame</em>) – A KoalasDF.</p></li>
+<li><p><strong>categorical</strong> (<em>str</em>) – Column name of the categorical column.</p></li>
+<li><p><strong>numerical</strong> (<em>str</em>) – column name of the numerical column.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The R2 Metric.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.stats.association.Association.T">
+<span class="sig-name descname"><span class="pre">T</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">databricks.koalas.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dense</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.stats.association.Association.T" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the T Metrics.
+A normalized metric of assiciation between two categorical variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>databricks.koalas.frame.DataFrame</em>) – Koalas Dataframe contaning the data in dense form or in grouped form.</p></li>
+<li><p><strong>columns</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of Strings containing the name of the categorical columns which will be used in the coefficient computation.</p></li>
+<li><p><strong>dense</strong> (<em>bool</em><em>, </em><em>optional</em>) – If false it is expected that you have executed this df.groupby(columns).size().unstack(level=0).fillna(0) in the df.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The T Metric.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.stats.association.Association.association_matrix">
+<span class="sig-name descname"><span class="pre">association_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">databricks.koalas.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numerical_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_matrix</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_matrix</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.stats.association.Association.association_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Computes from a df, a list of categorical and a list of numerical variables a normalized association matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>databricks.koalas.frame.DataFrame</em>) – A KoalasDF with</p></li>
+<li><p><strong>categorical_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of column names of the categorical features.</p></li>
+<li><p><strong>numerical_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of Column names of the numerical features.</p></li>
+<li><p><strong>plot_matrix</strong> (<em>bool</em><em>, </em><em>optional</em>) – If set False it will not plot the matrix. Defaults to True.</p></li>
+<li><p><strong>return_matrix</strong> (<em>bool</em><em>, </em><em>optional</em>) – If set to True it will return the correlation matrix as a pandasDF. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if (categorical_features is None) and (numerical_features is None) is True</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Either None, if return_matrix is False, or a PandasDF with the correlation coefficients.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Union[None, pd.core.frame.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.stats.association.Association.corr">
+<span class="sig-name descname"><span class="pre">corr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">databricks.koalas.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.stats.association.Association.corr" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the Correlation Coefficient.</p>
+<p>Standard Correlation Coefficient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>databricks.koalas.frame.DataFrame</em>) – A KoalasDF with column to be computed the correlation.</p></li>
+<li><p><strong>columns</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of numeric column names from which the correlation will computed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Correlation Coefficient.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.stats">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyspark_ds_toolbox.stats" title="Permalink to this headline"></a></h2>
+<p>Statistics toolbox.</p>
+<p>Subpackage dedicated to statistics helpers.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Vinicius M de Sousa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
