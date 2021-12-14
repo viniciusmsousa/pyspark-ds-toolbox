@@ -19,13 +19,18 @@ from typing import List, Union
 class Association():
     """This association class implements different types of association metrics, for both categorical and numerical variables.
     
-    The main one being the method association_matrix.
+    The class implemented in this module is based on the book:
+    Morettin, P.A. and Bussab, W.O., 2017. Estatística básica. Saraiva Educação SA.
+
+    The current implementation is built on top of Koalas, but in the future this will be change to pure pyspark.
     """
     @typechecked
-    def C(self, 
-          df:databricks.koalas.frame.DataFrame, 
-          columns:List[str], 
-          dense:bool=True) -> float:
+    def C(
+        self, 
+        df: databricks.koalas.frame.DataFrame, 
+        columns: List[str], 
+        dense: bool=True
+    ) -> float:
         """Computes the Contingency Coefficient.
         A non-normalized association metric between two categorical variables.
 
@@ -56,10 +61,12 @@ class Association():
         return C
     
     @typechecked
-    def T(self, 
-          df:databricks.koalas.frame.DataFrame, 
-          columns:List[str], 
-          dense:bool=True) -> float:
+    def T(
+        self, 
+        df: databricks.koalas.frame.DataFrame, 
+        columns: List[str], 
+        dense: bool=True
+    ) -> float:
         """Computes the T Metrics.
         A normalized metric of assiciation between two categorical variables.
 
@@ -91,9 +98,11 @@ class Association():
         return T
     
     @typechecked
-    def corr(self, 
-             df:databricks.koalas.frame.DataFrame, 
-             columns:List[str]) -> float:
+    def corr(
+        self, 
+        df: databricks.koalas.frame.DataFrame, 
+        columns: List[str]
+    ) -> float:
         """Computes the Correlation Coefficient.
 
         Standard Correlation Coefficient.
@@ -117,10 +126,12 @@ class Association():
         return num/den
     
     @typechecked
-    def R2(self, 
-           df:databricks.koalas.frame.DataFrame, 
-           categorical:str, 
-           numerical:str) -> float:
+    def R2(
+        self, 
+        df: databricks.koalas.frame.DataFrame, 
+        categorical: str, 
+        numerical: str
+    ) -> float:
         """Computes the R2 Metric for one numeric column and one categorical column.
 
         Metric of association between a numeric and a categorical variables.
@@ -145,11 +156,14 @@ class Association():
         return R2  
     
     @typechecked
-    def association_matrix(self, 
-                           df:databricks.koalas.frame.DataFrame, 
-                           categorical_features:List[str], 
-                           numerical_features:List[str],
-                           return_matrix:bool = False) -> Union[None, pd.core.frame.DataFrame]:
+    def association_matrix(
+        self, 
+        df: databricks.koalas.frame.DataFrame, 
+        categorical_features: Union[List[str], None], 
+        numerical_features: Union[List[str], None],
+        plot_matrix: bool = True,
+        return_matrix: bool = False
+    ) -> Union[None, pd.core.frame.DataFrame]:
         """Computes from a df, a list of categorical and a list of numerical variables a normalized association matrix.
 
         Args:
@@ -159,9 +173,15 @@ class Association():
             plot_matrix (bool, optional): If set False it will not plot the matrix. Defaults to True.
             return_matrix (bool, optional): If set to True it will return the correlation matrix as a pandasDF. Defaults to False.
 
+        raises:
+            ValueError: if (categorical_features is None) and (numerical_features is None) is True
+
         Returns:
             Union[None, pd.core.frame.DataFrame]: Either None, if return_matrix is False, or a PandasDF with the correlation coefficients.
         """
+
+        if (categorical_features is None) and (numerical_features is None):
+            raise ValueError('Both categorical_features and numerical_features are of type None. At least one must be List[str].')
         
         features = categorical_features + numerical_features
         
@@ -178,10 +198,10 @@ class Association():
                 elif((i[0] in numerical_features) and j[0] in (categorical_features)):
                     aMatrix.loc[i[0], j[0]] = self.R2(df, j[0], i[0])
         
-        
-        fig, ax = plt.subplots(figsize=(15, 7))
-        sns.heatmap(aMatrix.to_pandas().round(2), xticklabels=aMatrix.columns, yticklabels=aMatrix.columns, ax=ax, annot=True)
-        fig.show()
+        if plot_matrix:
+            fig, ax = plt.subplots(figsize=(15, 7))
+            sns.heatmap(aMatrix.to_pandas().round(2), xticklabels=aMatrix.columns, yticklabels=aMatrix.columns, ax=ax, annot=True)
+            fig.show()
 
         if (return_matrix):
             return aMatrix.to_pandas()
