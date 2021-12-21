@@ -147,6 +147,6 @@ def ks_iris(spark):
     # iris_df['target'] = iris['target']
     iris_df = pd.read_csv('tests/data/df_iris.csv')
     iris_sdf = spark.createDataFrame(iris_df)
-    iris_ks = iris_sdf.to_koalas()
+    iris_ks = iris_sdf.to_pandas_on_spark()
 
     return iris_ks

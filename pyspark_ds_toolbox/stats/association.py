@@ -2,8 +2,6 @@
 
 The class implemented in this module is based on the book:
 Morettin, P.A. and Bussab, W.O., 2017. Estatística básica. Saraiva Educação SA.
-
-The current implementation is built on top of Koalas, but in the future this will be change to pure pyspark.
 """
 
 import seaborn as sns
@@ -11,9 +9,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-import databricks.koalas as ks
+import pyspark
+import pyspark.pandas as ps
 from typeguard import typechecked
-import databricks
 from typing import List, Union
 
 class Association():
@@ -27,7 +25,7 @@ class Association():
     @typechecked
     def C(
         self, 
-        df: databricks.koalas.frame.DataFrame, 
+        df: pyspark.pandas.frame.DataFrame, 
         columns: List[str], 
         dense: bool=True
     ) -> float:
@@ -35,7 +33,7 @@ class Association():
         A non-normalized association metric between two categorical variables.
 
         Args:
-            df (pyspark.koalas.frame.DataFrame): Koalas Dataframe contaning the data in dense form or in grouped form.
+            df (pyspark.pandas.frame.DataFrame): A PandasOnSParkDF (sparkDF.to_pandas_on_spark()) contaning the data in dense form or in grouped form.
             columns (List[str]): List of Strings containing the name of the categorical columns which will be used in the coefficient computation.
             dense (bool, optional): If false it is expected that you have executed this df.groupby(columns).size().unstack(level=0).fillna(0) in the df.
                 Defaults to True.
@@ -52,8 +50,8 @@ class Association():
         prob_marginal = num_ocorrencias.sum(axis=0)/num_ocorrencias.sum().sum()
         total_marginal = num_ocorrencias.sum(axis=1)
         valores_esperados = num_ocorrencias.copy()
-        for i in ks.DataFrame(total_marginal).iterrows():
-            for j in ks.DataFrame(prob_marginal).iterrows():
+        for i in ps.DataFrame(total_marginal).iterrows():
+            for j in ps.DataFrame(prob_marginal).iterrows():
                 valores_esperados.loc[i[0], j[0]] = total_marginal[i[0]]*prob_marginal[j[0]]
 
         qui_quadrado = ((num_ocorrencias - valores_esperados).pow(2)/valores_esperados).sum().sum()
@@ -63,7 +61,7 @@ class Association():
     @typechecked
     def T(
         self, 
-        df: databricks.koalas.frame.DataFrame, 
+        df: pyspark.pandas.frame.DataFrame, 
         columns: List[str], 
         dense: bool=True
     ) -> float:
@@ -71,7 +69,7 @@ class Association():
         A normalized metric of assiciation between two categorical variables.
 
         Args:
-            df (databricks.koalas.frame.DataFrame): Koalas Dataframe contaning the data in dense form or in grouped form.
+            df (pyspark.pandas.frame.DataFrame): A PandasOnSParkDF (sparkDF.to_pandas_on_spark()) contaning the data in dense form or in grouped form.
             columns (List[str]): List of Strings containing the name of the categorical columns which will be used in the coefficient computation.
             dense (bool, optional): If false it is expected that you have executed this df.groupby(columns).size().unstack(level=0).fillna(0) in the df.
 
@@ -89,8 +87,8 @@ class Association():
         total_marginal = num_ocorrencias.sum(axis=1)
         valores_esperados = num_ocorrencias.copy()
         
-        for i in ks.DataFrame(total_marginal).iterrows():
-            for j in ks.DataFrame(prob_marginal).iterrows():
+        for i in ps.DataFrame(total_marginal).iterrows():
+            for j in ps.DataFrame(prob_marginal).iterrows():
                 valores_esperados.loc[i[0], j[0]] = total_marginal[i[0]]*prob_marginal[j[0]]
 
         qui_quadrado = ((num_ocorrencias - valores_esperados).pow(2)/valores_esperados).sum().sum()
@@ -100,7 +98,7 @@ class Association():
     @typechecked
     def corr(
         self, 
-        df: databricks.koalas.frame.DataFrame, 
+        df: pyspark.pandas.frame.DataFrame, 
         columns: List[str]
     ) -> float:
         """Computes the Correlation Coefficient.
@@ -108,7 +106,7 @@ class Association():
         Standard Correlation Coefficient.
 
         Args:
-            df (databricks.koalas.frame.DataFrame): A KoalasDF with column to be computed the correlation.
+            df (databricks.koalas.frame.DataFrame): A PandasOnSParkDF (sparkDF.to_pandas_on_spark()).
             columns (List[str]): List of numeric column names from which the correlation will computed.
 
         Returns:
@@ -128,7 +126,7 @@ class Association():
     @typechecked
     def R2(
         self, 
-        df: databricks.koalas.frame.DataFrame, 
+        df: pyspark.pandas.frame.DataFrame, 
         categorical: str, 
         numerical: str
     ) -> float:
@@ -137,7 +135,7 @@ class Association():
         Metric of association between a numeric and a categorical variables.
 
         Args:
-            df (databricks.koalas.frame.DataFrame): A KoalasDF.
+            df (pyspark.pandas.frame.DataFrame): A PandasOnSParkDF (sparkDF.to_pandas_on_spark()).
             categorical (str): Column name of the categorical column.
             numerical (str): column name of the numerical column.
 
@@ -158,7 +156,7 @@ class Association():
     @typechecked
     def association_matrix(
         self, 
-        df: databricks.koalas.frame.DataFrame, 
+        df: pyspark.pandas.frame.DataFrame, 
         categorical_features: Union[List[str], None], 
         numerical_features: Union[List[str], None],
         plot_matrix: bool = True,
@@ -167,7 +165,7 @@ class Association():
         """Computes from a df, a list of categorical and a list of numerical variables a normalized association matrix.
 
         Args:
-            df (databricks.koalas.frame.DataFrame): A KoalasDF with 
+            df (pyspark.pandas.frame.DataFrame): A PandasOnSParkDF (sparkDF.to_pandas_on_spark()). 
             categorical_features (List[str]): List of column names of the categorical features.
             numerical_features (List[str]): List of Column names of the numerical features.
             plot_matrix (bool, optional): If set False it will not plot the matrix. Defaults to True.
@@ -185,7 +183,7 @@ class Association():
         
         features = categorical_features + numerical_features
         
-        aMatrix = ks.DataFrame(columns=features, index=features, dtype=np.float64)
+        aMatrix = ps.DataFrame(columns=features, index=features, dtype=np.float64)
         
         for i in aMatrix.iterrows():
             for j in aMatrix.iteritems():
