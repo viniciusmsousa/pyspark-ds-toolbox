@@ -17,7 +17,6 @@ typeguard = "^2.13.2"
 numpy = "1.21.0"
 h2o = "^3.34.0"
 pyarrow = "^6.0.1"
-koalas = "^1.8.2"
 matplotlib = "^3.5.1"
 seaborn = "^0.11.2"
 

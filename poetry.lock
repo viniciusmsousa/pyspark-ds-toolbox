@@ -719,25 +719,6 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
-name = "koalas"
-version = "1.8.2"
-description = "Koalas: pandas API on Apache Spark"
-category = "main"
-optional = false
-python-versions = ">=3.5,<3.10"
-
-[package.dependencies]
-numpy = ">=1.14"
-pandas = ">=0.23.2"
-pyarrow = ">=0.10"
-
-[package.extras]
-matplotlib = ["matplotlib (>=3.0.0,<3.3.0)"]
-mlflow = ["mlflow (>=1.0)"]
-plotly = ["plotly (>=4.8)"]
-spark = ["pyspark (>=2.4.0)"]
-
-[[package]]
 name = "lockfile"
 version = "0.12.2"
 description = "Platform-independent file locking module"
@@ -1816,7 +1797,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7.1,<3.10"
-content-hash = "4578f2505775e4b52fcd2a6730bd5cc9b36c59fac8587dd0db636ff7e19aaaf1"
+content-hash = "2a2a5f451798a9a367835185075539f70a68e4e91bf62f364f5c26fb0c713afd"
 
 [metadata.files]
 alabaster = [
@@ -2212,10 +2193,6 @@ kiwisolver = [
     {file = "kiwisolver-1.3.2-pp37-pypy37_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:25405f88a37c5f5bcba01c6e350086d65e7465fd1caaf986333d2a045045a223"},
     {file = "kiwisolver-1.3.2-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:bcadb05c3d4794eb9eee1dddf1c24215c92fb7b55a80beae7a60530a91060560"},
     {file = "kiwisolver-1.3.2.tar.gz", hash = "sha256:fc4453705b81d03568d5b808ad8f09c77c47534f6ac2e72e733f9ca4714aa75c"},
-]
-koalas = [
-    {file = "koalas-1.8.2-py3-none-any.whl", hash = "sha256:ebf00963ac604ee8763ab53ebb028bea3c7732a20cb10f4e52c9ae6a008a749f"},
-    {file = "koalas-1.8.2.tar.gz", hash = "sha256:cd072f1a9ae97e87e85e53a1c8a3097777c76f45504e79782d0acff5282fe586"},
 ]
 lockfile = [
     {file = "lockfile-0.12.2-py2.py3-none-any.whl", hash = "sha256:6c3cb24f344923d30b2785d5ad75182c8ea7ac1b6171b08657258ec7429d50fa"},
