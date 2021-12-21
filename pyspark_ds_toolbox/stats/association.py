@@ -2,8 +2,6 @@
 
 The class implemented in this module is based on the book:
 Morettin, P.A. and Bussab, W.O., 2017. Estatística básica. Saraiva Educação SA.
-
-The current implementation is built on top of Koalas, but in the future this will be change to pure pyspark.
 """
 
 import seaborn as sns
