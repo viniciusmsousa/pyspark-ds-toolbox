@@ -7,10 +7,11 @@ Welcome to pyspark-ds-toolbox's documentation!
 ==============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    Readme <README.md>
+   Changelog <CHANGELOG.md>
 
    modules
 
