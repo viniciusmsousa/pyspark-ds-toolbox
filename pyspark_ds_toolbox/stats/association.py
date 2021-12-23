@@ -157,8 +157,8 @@ class Association():
     def association_matrix(
         self, 
         df: pyspark.pandas.frame.DataFrame, 
-        categorical_features: Union[List[str], None], 
-        numerical_features: Union[List[str], None],
+        categorical_features: Union[List[str], None] = None, 
+        numerical_features: Union[List[str], None] = None,
         plot_matrix: bool = True,
         return_matrix: bool = False
     ) -> Union[None, pd.core.frame.DataFrame]:
@@ -181,7 +181,12 @@ class Association():
         if (categorical_features is None) and (numerical_features is None):
             raise ValueError('Both categorical_features and numerical_features are of type None. At least one must be List[str].')
         
-        features = categorical_features + numerical_features
+        if categorical_features is None:
+            features = numerical_features
+        elif numerical_features is None:
+            features = categorical_features
+        else:
+            features = categorical_features + numerical_features
         
         aMatrix = ps.DataFrame(columns=features, index=features, dtype=np.float64)
         
