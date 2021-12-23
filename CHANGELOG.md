@@ -1,11 +1,17 @@
 # Change Log
 
+## 0.1.4
+
+### Changed
+
+* [fix] Class pyspark_ds_toolbox.stats.association.Association now can properly receive only numerical or only categorical features.
+
+
 ## 0.1.3
 
 ### Added
 
 * CHANGELOG.md file
-
 
 ### Changed
 
