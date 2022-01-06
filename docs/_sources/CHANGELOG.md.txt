@@ -1,5 +1,15 @@
 # Change Log
 
+## 0.2.0
+
+### Added
+
+* Module pyspark_ds_toolbox.ml.classification
+
+### changed
+
+* Module pyspark_ds_toolbox.ml.eval became pyspark_ds_toolbox.ml.classification.eval
+
 ## 0.1.4
 
 ### Changed

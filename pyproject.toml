@@ -19,6 +19,8 @@ h2o = "^3.34.0"
 pyarrow = "^6.0.1"
 matplotlib = "^3.5.1"
 seaborn = "^0.11.2"
+mlflow = "^1.22.0"
+tqdm = "^4.62.3"
 
 
 [tool.poetry.dev-dependencies]

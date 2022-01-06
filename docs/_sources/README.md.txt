@@ -36,7 +36,9 @@ pyspark_ds_toolbox     # Main Package
 │  └─ ps_matching.py    # Module Propensity Score Matching
 ├─ ml                  # Sub-package dedicated to ML
 │  ├─ data_prep.py      # Module for Data Preparation
-│  ├─ eval.py           # Module for model/prediction evaluation
+│  ├─ classification   # Sub-package decidated to classification tasks
+│  │  ├─ eval.py
+│  │  └─ baseline_classifiers.py 
 │  └─ shap_values.py    # Module for estimate shap values
 ├─ wrangling.py        # Module for general Data Wrangling
 └─ stats               # Sub-package dedicated to basic statistic functionalities

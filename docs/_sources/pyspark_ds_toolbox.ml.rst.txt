@@ -1,6 +1,14 @@
 pyspark\_ds\_toolbox.ml package
 ===============================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pyspark_ds_toolbox.ml.classification
+
 Submodules
 ----------
 
@@ -8,14 +16,6 @@ pyspark\_ds\_toolbox.ml.data\_prep module
 -----------------------------------------
 
 .. automodule:: pyspark_ds_toolbox.ml.data_prep
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pyspark\_ds\_toolbox.ml.eval module
------------------------------------
-
-.. automodule:: pyspark_ds_toolbox.ml.eval
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,6 +1,6 @@
-"""Machine Learning (with Spark) Evaluation toolbox.
+"""Evaluation toolbox.
 
-Module dedicated to functionalities related to ML evaluation.
+Module dedicated to functionalities related to classification evaluation.
 """
 
 import sys
