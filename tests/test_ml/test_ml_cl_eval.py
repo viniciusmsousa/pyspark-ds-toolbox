@@ -10,11 +10,11 @@ from pyspark.ml.regression import GBTRegressor
 from pyspark.ml.classification import GBTClassifier
 
 from pyspark_ds_toolbox.ml.data_prep import get_p1
-from pyspark_ds_toolbox.ml import eval as ml_ev 
+from pyspark_ds_toolbox.ml.classification import eval as cl_ev 
 
 
 def test_binary_classificator_evaluator(dfs_binary_classificator_evaluator):
-    out = ml_ev.binary_classificator_evaluator(
+    out = cl_ev.binary_classificator_evaluator(
         dfs_prediction=dfs_binary_classificator_evaluator,
         col_target='target',
         col_prediction='predicted'
@@ -32,7 +32,7 @@ def test_binary_classificator_evaluator(dfs_binary_classificator_evaluator):
     assert type(out['aucpr']) in [float, np.nan]
 
 def test_binary_classifier_decile_analysis(dfs_decile_analysis_input, dfs_decile_analysis_output):
-    decile_table = ml_ev.binary_classifier_decile_analysis(
+    decile_table = cl_ev.binary_classifier_decile_analysis(
         dfs=dfs_decile_analysis_input,
         col_id='id_conta',
         col_target='target_value',
@@ -47,7 +47,7 @@ def test_binary_classifier_decile_analysis_error(spark):
         'probability': [0.1, 0.2, 0.3]
     }))
     with pytest.raises(ValueError):
-        ml_ev.binary_classifier_decile_analysis(
+        cl_ev.binary_classifier_decile_analysis(
             dfs=dfs,
             col_id='index',
             col_target='target',
