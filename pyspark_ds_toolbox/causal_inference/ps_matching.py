@@ -11,7 +11,7 @@ from pyspark.ml import Pipeline
 from pyspark.ml.classification import DecisionTreeClassifier, RandomForestClassifier, \
     LogisticRegression, GBTClassifier 
 
-from pyspark_ds_toolbox.ml.eval import get_p1, binary_classifier_decile_analysis
+from pyspark_ds_toolbox.ml.classification.eval import get_p1, binary_classifier_decile_analysis
 
 
 @typechecked

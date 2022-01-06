@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyspark-ds-toolbox"
-version = "0.1.4"
+version = "0.2.0"
 description = "A Pyspark companion for data science tasks."
 authors = ["vinicius.sousa <vinisousa04@gmail.com>"]
 license = "GPL-3.0-only"
@@ -19,6 +19,8 @@ h2o = "^3.34.0"
 pyarrow = "^6.0.1"
 matplotlib = "^3.5.1"
 seaborn = "^0.11.2"
+mlflow = "^1.22.0"
+tqdm = "^4.62.3"
 
 
 [tool.poetry.dev-dependencies]

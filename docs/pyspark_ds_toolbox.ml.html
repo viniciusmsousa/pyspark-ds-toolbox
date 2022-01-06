@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyspark_ds_toolbox.ml package &mdash; pyspark-ds-toolbox 0.1.4 documentation</title>
+  <title>pyspark_ds_toolbox.ml package &mdash; pyspark-ds-toolbox 0.2.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,7 +17,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pyspark_ds_toolbox.stats package" href="pyspark_ds_toolbox.stats.html" />
+    <link rel="next" title="pyspark_ds_toolbox.ml.classification package" href="pyspark_ds_toolbox.ml.classification.html" />
     <link rel="prev" title="pyspark_ds_toolbox.causal_inference package" href="pyspark_ds_toolbox.causal_inference.html" /> 
 </head>
 
@@ -85,6 +85,20 @@
              
   <div class="section" id="pyspark-ds-toolbox-ml-package">
 <h1>pyspark_ds_toolbox.ml package<a class="headerlink" href="#pyspark-ds-toolbox-ml-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pyspark_ds_toolbox.ml.classification.html">pyspark_ds_toolbox.ml.classification package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.classification.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.classification.html#module-pyspark_ds_toolbox.ml.classification.baseline_classifiers">pyspark_ds_toolbox.ml.classification.baseline_classifiers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.classification.html#module-pyspark_ds_toolbox.ml.classification.eval">pyspark_ds_toolbox.ml.classification.eval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.classification.html#module-pyspark_ds_toolbox.ml.classification">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
 </div>
@@ -143,85 +157,6 @@ It should contain only values of 0 and 1.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.get_p1">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.</span></span><span class="sig-name descname"><span class="pre">get_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.get_p1" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="section" id="module-pyspark_ds_toolbox.ml.eval">
-<span id="pyspark-ds-toolbox-ml-eval-module"></span><h2>pyspark_ds_toolbox.ml.eval module<a class="headerlink" href="#module-pyspark_ds_toolbox.ml.eval" title="Permalink to this headline"></a></h2>
-<p>Machine Learning (with Spark) Evaluation toolbox.</p>
-<p>Module dedicated to functionalities related to ML evaluation.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.eval.binary_classificator_evaluator">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.eval.</span></span><span class="sig-name descname"><span class="pre">binary_classificator_evaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs_prediction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_prediction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_metrics</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.eval.binary_classificator_evaluator" title="Permalink to this definition"></a></dt>
-<dd><p>Computes the Matrics of a Binary Classifier from a Prediction Output table from spark.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dfs_prediction</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – Output Prediction table from spark binarry classifier.</p></li>
-<li><p><strong>col_target</strong> (<em>str</em>) – Column name with the target (ground truth)</p></li>
-<li><p><strong>print_metrics</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wether to print or not the metrics in the console. Defaults to False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>Exception</strong> – Any error that is encontered.</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><dl class="simple">
-<dt>Dict with the following metrics</dt><dd><ul class="simple">
-<li><p>confusion_matrix</p></li>
-<li><p>accuracy</p></li>
-<li><p>precision</p></li>
-<li><p>recall</p></li>
-<li><p>f1 score</p></li>
-<li><p>aucaoc</p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>[Dict]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.eval.binary_classifier_decile_analysis">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.eval.</span></span><span class="sig-name descname"><span class="pre">binary_classifier_decile_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_probability</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.eval.binary_classifier_decile_analysis" title="Permalink to this definition"></a></dt>
-<dd><p>Computes a Precision, Recall and KS decile analysis from a probability prediction model.
-col_target column MUST have values of only 0 and 1.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dfs</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – SparkDF with probabilities predictions.</p></li>
-<li><p><strong>col_id</strong> (<em>str</em>) – Column name with id value, to count the values for each decile.</p></li>
-<li><p><strong>col_target</strong> (<em>str</em>) – Column name with the ground truth. Must be from a binary classifier with values 1 and 0.</p></li>
-<li><p><strong>col_probability</strong> (<em>str</em>) – Column name with the probability estimated from the model.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If unique values from col_target column are not 0 and 1.</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><dl>
-<dt>SparkDF with the columns:</dt><dd><ul class="simple">
-<li><p>percentile, min_prob, max_prob, count_id, events, non_events, cum_events,</p></li>
-</ul>
-<p>cum_non_events, precision_at_percentile, recall_at_percentile, event_rate,
-nonevent_rate, cum_eventrate, cum_noneventrate, ks.</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>pyspark.sql.dataframe.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.eval.get_p1">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.eval.</span></span><span class="sig-name descname"><span class="pre">get_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.eval.get_p1" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </div>
@@ -322,7 +257,7 @@ applyInPandas() method of grouped SparkDF.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="pyspark_ds_toolbox.causal_inference.html" class="btn btn-neutral float-left" title="pyspark_ds_toolbox.causal_inference package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="pyspark_ds_toolbox.stats.html" class="btn btn-neutral float-right" title="pyspark_ds_toolbox.stats package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pyspark_ds_toolbox.ml.classification.html" class="btn btn-neutral float-right" title="pyspark_ds_toolbox.ml.classification package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
