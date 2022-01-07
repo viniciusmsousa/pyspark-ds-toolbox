@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyspark_ds_toolbox.ml package &mdash; pyspark-ds-toolbox 0.2.0 documentation</title>
+  <title>pyspark_ds_toolbox.ml package &mdash; pyspark-ds-toolbox 0.3.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -96,6 +96,13 @@
 <li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.classification.html#module-pyspark_ds_toolbox.ml.classification">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="pyspark_ds_toolbox.ml.feature_importance.html">pyspark_ds_toolbox.ml.feature_importance package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.feature_importance.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.feature_importance.html#module-pyspark_ds_toolbox.ml.feature_importance.native_spark">pyspark_ds_toolbox.ml.feature_importance.native_spark module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.feature_importance.html#module-pyspark_ds_toolbox.ml.feature_importance.shap_values">pyspark_ds_toolbox.ml.feature_importance.shap_values module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.feature_importance.html#module-pyspark_ds_toolbox.ml.feature_importance">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -158,91 +165,6 @@ It should contain only values of 0 and 1.</p></li>
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.get_p1">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.</span></span><span class="sig-name descname"><span class="pre">get_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.get_p1" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
-
-</div>
-<div class="section" id="module-pyspark_ds_toolbox.ml.shap_values">
-<span id="pyspark-ds-toolbox-ml-shap-values-module"></span><h2>pyspark_ds_toolbox.ml.shap_values module<a class="headerlink" href="#module-pyspark_ds_toolbox.ml.shap_values" title="Permalink to this headline"></a></h2>
-<p>This modules implements a way to estimate shap values from SparkDfs.</p>
-<p>We are not able to implement a generic function/class for pure spark model, that took in account numerical and categorical features.
-So this implementation as a workaround to get the job done. The main function is estimate_shap_values() and you can check directly
-the documentation on this function.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.shap_values.</span></span><span class="sig-name descname"><span class="pre">ShapValuesPDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_metric</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_mem_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'3G'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_models</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_runtime_secs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfolds</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">90</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>H2O AutoML Wrapper</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.as_h2o_df">
-<span class="sig-name descname"><span class="pre">as_h2o_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.as_h2o_df" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.extract_shap_values">
-<span class="sig-name descname"><span class="pre">extract_shap_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.extract_shap_values" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.fit_automl">
-<span class="sig-name descname"><span class="pre">fit_automl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.fit_automl" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.get_feature_cols">
-<span class="sig-name descname"><span class="pre">get_feature_cols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.get_feature_cols" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.start_h2o">
-<span class="sig-name descname"><span class="pre">start_h2o</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.ShapValuesPDF.start_h2o" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.shap_values.estimate_shap_values">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.shap_values.</span></span><span class="sig-name descname"><span class="pre">estimate_shap_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sdf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_metric</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_mem_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'2G'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_models</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_runtime_secs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfolds</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">90</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.shap_values.estimate_shap_values" title="Permalink to this definition"></a></dt>
-<dd><p>Computes for each row the shap values of each feature.</p>
-<p>This function will split the sdf into int(sdf.count()/subset_size) pandas dataframes and then use the
-Class ShapValuesPDF, which is a wrapper of the H2O automl, on each the subseted dataset using the
-applyInPandas() method of grouped SparkDF.</p>
-<p>Check the following link for an intuition of how this works:
-<a class="reference external" href="https://www.youtube.com/watch?v=x6dSsbXhyPo">https://www.youtube.com/watch?v=x6dSsbXhyPo</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sdf</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – A SparkDF. Note that all column, except the id_col must be features.</p></li>
-<li><p><strong>id_col</strong> (<em>str</em>) – Column name of the identifier.</p></li>
-<li><p><strong>target_col</strong> (<em>str</em>) – Column name of the target value.</p></li>
-<li><p><strong>cat_features</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>None</em><em>]</em>) – List of column names of the categorical variables, if any.</p></li>
-<li><p><strong>sort_metric</strong> (<em>str</em>) – A metric to sort the candidates (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/sort_metric.html">https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/algo-params/sort_metric.html</a>).</p></li>
-<li><p><strong>problem_type</strong> (<em>str</em>) – ‘regression’ or ‘classification’. If classification then target_col must be of binary values.</p></li>
-<li><p><strong>subset_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of rows for each sub dataset. Defaults to 2000.</p></li>
-<li><p><strong>max_mem_size</strong> (<em>str</em><em>, </em><em>optional</em>) – Max memory size to be allocated to h2o local cluster. Defaults to ‘2G’. (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/h2o.html#h2o.init">https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/h2o.html#h2o.init</a>)</p></li>
-<li><p><strong>max_models</strong> (<em>int</em><em>, </em><em>optional</em>) – Max number of model to be fitted. These models are ranked according to sort_metric. Defaults to 8. (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml">https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml</a>)</p></li>
-<li><p><strong>max_runtime_secs</strong> (<em>int</em><em>, </em><em>optional</em>) – Max number of seconds to spend fitting the models. Defaults to 30. (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml">https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml</a>)</p></li>
-<li><p><strong>nfolds</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of folds to be used for cross validation while fitting. Defaults to 5. (see <a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml">https://docs.h2o.ai/h2o/latest-stable/h2o-py/docs/modeling.html?highlight=automl#h2oautoml</a>)</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Seed. Defaults to 90.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if int(sdf.count()/subset_size) &lt; 2 is True</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><dl class="simple">
-<dt>A sparkDF with the follwing columns</dt><dd><ul class="simple">
-<li><p>id_col: The values from the column passed as id_col;</p></li>
-<li><p>feature: The name of each feature from features_names;</p></li>
-<li><p>shap_value: The shap value of the feature.</p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>[pyspark.sql.dataframe.DataFrame]</p>
-</dd>
-</dl>
-</dd></dl>
 
 </div>
 <div class="section" id="module-pyspark_ds_toolbox.ml">

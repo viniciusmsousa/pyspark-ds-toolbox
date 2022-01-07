@@ -1,0 +1,29 @@
+pyspark\_ds\_toolbox.ml.feature\_importance package
+===================================================
+
+Submodules
+----------
+
+pyspark\_ds\_toolbox.ml.feature\_importance.native\_spark module
+----------------------------------------------------------------
+
+.. automodule:: pyspark_ds_toolbox.ml.feature_importance.native_spark
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyspark\_ds\_toolbox.ml.feature\_importance.shap\_values module
+---------------------------------------------------------------
+
+.. automodule:: pyspark_ds_toolbox.ml.feature_importance.shap_values
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pyspark_ds_toolbox.ml.feature_importance
+   :members:
+   :undoc-members:
+   :show-inheritance:
