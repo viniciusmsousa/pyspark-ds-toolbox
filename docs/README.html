@@ -95,19 +95,21 @@
 <div class="section" id="organization">
 <h2>Organization<a class="headerlink" href="#organization" title="Permalink to this headline"></a></h2>
 <p>The package is currently organized in a structure based on the nature of the task, such as data wrangling, model/prediction evaluation, and so on.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pyspark_ds_toolbox     # Main Package
-├─ causal_inference    # Sub-package dedicated to Causal Inferece
-│  ├─ diff_in_diff.py   # Module Diff in Diff
-│  └─ ps_matching.py    # Module Propensity Score Matching
-├─ ml                  # Sub-package dedicated to ML
-│  ├─ data_prep.py      # Module for Data Preparation
-│  ├─ classification   # Sub-package decidated to classification tasks
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pyspark_ds_toolbox         # Main Package
+├─ causal_inference           # Sub-package dedicated to Causal Inferece
+│  ├─ diff_in_diff.py   
+│  └─ ps_matching.py    
+├─ ml                         # Sub-package dedicated to ML
+│  ├─ data_prep.py      
+│  ├─ classification          # Sub-package decidated to classification tasks
 │  │  ├─ eval.py
 │  │  └─ baseline_classifiers.py 
-│  └─ shap_values.py    # Module for estimate shap values
-├─ wrangling.py        # Module for general Data Wrangling
-└─ stats               # Sub-package dedicated to basic statistic functionalities
-   └─ association.py    # Association metrics module
+│  └─ feature_importance 
+│     ├─ native_spark.py
+│     └─ shap_values.py    
+├─ wrangling.py        
+└─ stats                      # Sub-package dedicated to basic statistic functionalities
+   └─ association.py    
 </pre></div>
 </div>
 </div>

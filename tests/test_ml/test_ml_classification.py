@@ -73,7 +73,7 @@ def test_baseline_classifiers(df_causal_inference):
     assert list(t.keys()) == main_keys
 
     for k in main_keys:
-        t[k] == ['model', 'metrics', 'decile_metrics']
+        t[k] == ['model', 'features_score', 'metrics', 'decile_metrics']
 
     t = baseline_binary_classfiers(
         dfs=dfs_train,
@@ -91,4 +91,4 @@ def test_baseline_classifiers(df_causal_inference):
     assert list(t.keys()) == main_keys
 
     for k in main_keys:
-        t[k] == ['model', 'metrics', 'decile_metrics']
+        t[k] == ['model', 'features_score', 'metrics', 'decile_metrics']
