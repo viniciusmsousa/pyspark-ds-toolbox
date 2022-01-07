@@ -96,13 +96,6 @@ def dfs_binary_classificator_evaluator(spark):
 # causal_inference.ps_matching
 @fixture
 def df_causal_inference(spark):
-
-    # def read_data(file): 
-    #     return pd.read_stata("https://raw.github.com/scunning1975/mixtape/master/" + file)
-    # df = read_data('nsw_mixtape.dta')
-    # df = pd.concat((df, read_data('cps_mixtape.dta')))
-    # df.to_csv('../tests/data/df_causal_inference.csv', index=False)
-
     df = pd.read_csv('tests/data/df_causal_inference.csv')
     df.reset_index(level=0, inplace=True)
 
