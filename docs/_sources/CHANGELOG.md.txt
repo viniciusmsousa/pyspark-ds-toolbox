@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.1
+
+### Changed
+
+* Module `pyspark_ds_toolbox.ml.classification.baseline_binary_classfiers` now algo return features scores.
+
 ## 0.3.0
 
 ### Added 
