@@ -7,6 +7,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![CodeFactor](https://www.codefactor.io/repository/github/viniciusmsousa/pyspark-ds-toolbox/badge)](https://www.codefactor.io/repository/github/viniciusmsousa/pyspark-ds-toolbox)
 [![Codecov test coverage](https://codecov.io/gh/viniciusmsousa/pyspark-ds-toolbox/branch/main/graph/badge.svg)](https://codecov.io/gh/viniciusmsousa/pyspark-ds-toolbox?branch=main)
 [![Package Tests](https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions/workflows/package-tests.yml/badge.svg)](https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions)
+[![downloads](https://img.shields.io/pypi/dm/pyspark-ds-toolbox.svg)](https://pypistats.org/packages/pyspark-ds-toolbox)
 <!-- badges: end -->
 
 
@@ -39,7 +40,7 @@ pyspark_ds_toolbox         # Main Package
 │  ├─ classification          # Sub-package decidated to classification tasks
 │  │  ├─ eval.py
 │  │  └─ baseline_classifiers.py 
-│  └─ feature_importance 
+│  └─ feature_importance      # Sub-package with feature importance tools
 │     ├─ native_spark.py
 │     └─ shap_values.py    
 ├─ wrangling.py        
