@@ -13,7 +13,7 @@ import mlflow
 
 from pyspark_ds_toolbox.ml.data_prep import get_features_vector, get_p1, binary_classifier_weights
 import pyspark_ds_toolbox.ml.classification.eval as cl_eval
-
+from pyspark_ds_toolbox.ml.feature_importance.native_spark import extract_features_score
 
 @typechecked
 def baseline_binary_classfiers(
@@ -32,8 +32,9 @@ def baseline_binary_classfiers(
     This function will:
      1) Add a features vecto to dfs and dfs_test (see pyspark_ds_toolbox.ml.classification.data_prep.get_features_vector());
      2) Fit the following models LogisticRegression, DecisionTreeClassifier, RandomForestClassifier and GBTClassifier, without any tunning;
-     3) Use the fitted models to predict on the dfs_test;
-     4) Compute evaluation metrics on the test data (see pyspark_ds_toolbox.ml.classification.eval module)
+     3) Extracts from the trained models the features score (see pyspark_ds_toolbox.ml.feature_importance.native_spark.extract_features_score);
+     4) Use the fitted models to predict on the dfs_test;
+     5) Compute evaluation metrics on the test data (see pyspark_ds_toolbox.ml.classification.eval module)
 
     Args:
         dfs (pyspark.sql.dataframe.DataFrame): A training DataFrameSpark.
@@ -52,7 +53,8 @@ def baseline_binary_classfiers(
      
     Returns:
         [dict]: A dict for each algorithm (keys are LogisticRegression, DecisionTreeClassifier, RandomForestClassifier and GBTClassifier). Each element is a dictionary with the keys
-            - model: the spark trained model;
+            - model: The spark trained model;
+            - feature_score: The feature importance of the model (see pyspark.ml.feature_importance.spark_native.extract_features_score); 
             - metrics: dict with confusion_matrix and f1, auc, accuracy, precision, recall and max_ks;
             - decile_table: Table with a decile analysis on the predicted probabilities.
     """
@@ -104,6 +106,9 @@ def baseline_binary_classfiers(
     ]
     models = [lr, dt, rf, gbt]
     for name, model in tqdm(zip(names, models), total=len(names)):
+
+        df_fi = extract_features_score(model=model, dfs=dfs)
+
         prediction = model.transform(dfs_test)
         metrics = cl_eval.binary_classificator_evaluator(
             dfs_prediction=prediction,
@@ -123,6 +128,7 @@ def baseline_binary_classfiers(
 
         out_dict[name] = {
             'model': model,
+            'feature_score': df_fi,
             'metrics': metrics,
             'decile_metrics': decile_metrics
         }
@@ -150,6 +156,11 @@ def baseline_binary_classfiers(
 
                     decile_metrics.to_csv(f'{artifact_stage_path}decile_metrics.csv', index=False, sep='|')
                     mlflow.log_artifact(f'{artifact_stage_path}decile_metrics.csv')
+
+                    df_fi.to_csv(f'{artifact_stage_path}feature_score.csv', index=False, sep='|')
+                    mlflow.log_artifact(f'{artifact_stage_path}feature_score.csv')
+
+
 
                 mlflow.spark.log_model(model, "model")
 

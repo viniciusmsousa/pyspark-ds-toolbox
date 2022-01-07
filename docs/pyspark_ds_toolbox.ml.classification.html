@@ -100,6 +100,7 @@
 <dt>This function will:</dt><dd><ol class="arabic simple">
 <li><p>Add a features vecto to dfs and dfs_test (see pyspark_ds_toolbox.ml.classification.data_prep.get_features_vector());</p></li>
 <li><p>Fit the following models LogisticRegression, DecisionTreeClassifier, RandomForestClassifier and GBTClassifier, without any tunning;</p></li>
+<li><p>Extracts from the trained models the features score (see pyspark_ds_toolbox.ml.feature_importance.native_spark.extract_features_score);</p></li>
 <li><p>Use the fitted models to predict on the dfs_test;</p></li>
 <li><p>Compute evaluation metrics on the test data (see pyspark_ds_toolbox.ml.classification.eval module)</p></li>
 </ol>
@@ -128,7 +129,8 @@
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><dl class="simple">
 <dt>A dict for each algorithm (keys are LogisticRegression, DecisionTreeClassifier, RandomForestClassifier and GBTClassifier). Each element is a dictionary with the keys</dt><dd><ul class="simple">
-<li><p>model: the spark trained model;</p></li>
+<li><p>model: The spark trained model;</p></li>
+<li><p>feature_score: The feature importance of the model (see pyspark.ml.feature_importance.spark_native.extract_features_score);</p></li>
 <li><p>metrics: dict with confusion_matrix and f1, auc, accuracy, precision, recall and max_ks;</p></li>
 <li><p>decile_table: Table with a decile analysis on the predicted probabilities.</p></li>
 </ul>
