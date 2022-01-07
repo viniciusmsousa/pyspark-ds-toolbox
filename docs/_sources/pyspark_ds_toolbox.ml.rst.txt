@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    pyspark_ds_toolbox.ml.classification
+   pyspark_ds_toolbox.ml.feature_importance
 
 Submodules
 ----------
@@ -16,14 +17,6 @@ pyspark\_ds\_toolbox.ml.data\_prep module
 -----------------------------------------
 
 .. automodule:: pyspark_ds_toolbox.ml.data_prep
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pyspark\_ds\_toolbox.ml.shap\_values module
--------------------------------------------
-
-.. automodule:: pyspark_ds_toolbox.ml.shap_values
    :members:
    :undoc-members:
    :show-inheritance:

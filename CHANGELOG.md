@@ -1,5 +1,17 @@
 # Change Log
 
+## 0.3.0
+
+### Added 
+
+* Module `pyspark_ds_toolbox.ml.feature_importance` with the functions:
+    * `extract_features_score()`
+
+### Changed
+
+* Module `pyspark_ds_toolbox.ml.shap_values` became `pyspark_ds_toolbox.ml.feature_importance.shap_values`
+
+
 ## 0.2.0
 
 ### Added
