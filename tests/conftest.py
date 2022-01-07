@@ -131,7 +131,7 @@ def input_estimate_individual_shapley_values(df_causal_inference):
 
     return (train, test, row_of_interest, df_causal_inference)
 
-#STATS
+# Stats
 @fixture
 def ks_iris(spark):
     # iris = load_iris()
