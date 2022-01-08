@@ -22,7 +22,7 @@ Directly from PyPi:
 pip install pyspark-ds-toolbox
 ```
 
-or from github:
+or from github, note that installing from github will install the latest development version:
 ```
 pip install git+https://github.com/viniciusmsousa/pyspark-ds-toolbox.git
 ```
