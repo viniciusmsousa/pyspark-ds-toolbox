@@ -5,9 +5,7 @@ from pyspark.sql.types import StructField, StructType, LongType, \
     DoubleType, StringType
 from pyspark.ml.linalg import VectorUDT
 import pyspark.sql.functions as F
-import pyspark.ml.feature as FF
-from pyspark.ml import Pipeline
-from sklearn.datasets import load_iris
+
 
 from pyspark_ds_toolbox.ml.data_prep import get_features_vector
 
