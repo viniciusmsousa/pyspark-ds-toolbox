@@ -132,10 +132,6 @@ def input_estimate_individual_shapley_values(df_causal_inference):
 # Stats
 @fixture
 def ks_iris(spark):
-    # iris = load_iris()
-
-    # iris_df = pd.DataFrame(data=iris['data'], columns=iris['feature_names'])
-    # iris_df['target'] = iris['target']
     iris_df = pd.read_csv('tests/data/df_iris.csv')
     iris_sdf = spark.createDataFrame(iris_df)
     iris_ks = iris_sdf.to_pandas_on_spark()
