@@ -23,7 +23,7 @@ def extract_features_score(
     dfs: pyspark.sql.dataframe.DataFrame,
     features_col: str = 'features'
 ) -> pd.core.frame.DataFrame:
-    """Function that extracts from spark models feature importance or coefficients.
+    """Function that extracts feature importance or coefficients from spark models.
 
     There are 3 possible situations created inside this function:
         1) If model is a DecisionTree, RandomForest or GBT (classification or regression) the features score will be gini scores.
