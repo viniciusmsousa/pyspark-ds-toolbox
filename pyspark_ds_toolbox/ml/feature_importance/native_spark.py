@@ -25,7 +25,7 @@ def extract_features_score(
 ) -> pd.core.frame.DataFrame:
     """Function that extracts from spark models feature importance or coefficients.
 
-    There are 3 possible sitations created inside this function:
+    There are 3 possible situations created inside this function:
         1) If model is a DecisionTree, RandomForest or GBT (classification or regression) the features score will be gini scores.
         See https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.classification.DecisionTreeClassificationModel.html?highlight=featureimportances#pyspark.ml.classification.DecisionTreeClassificationModel.featureImportances
         for a description on the feature importance;
