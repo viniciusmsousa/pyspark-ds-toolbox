@@ -44,7 +44,9 @@ pyspark_ds_toolbox         # Main Package
 │  └─ feature_importance      # Sub-package with feature importance tools
 │     ├─ native_spark.py
 │     └─ shap_values.py    
-├─ wrangling.py        
+├─ wrangling                  # Sub-package decidated to data wrangling tasks
+│  ├─ reshape.py               
+│  └─ data_quality.py         
 └─ stats                      # Sub-package dedicated to basic statistic functionalities
    └─ association.py    
 ```

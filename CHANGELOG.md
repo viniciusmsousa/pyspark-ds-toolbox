@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.2
+
+## Changed
+
+* Fuctionalities from module `pyspark_ds_toolbox.wrangling` was refactored to `pyspark_ds_toolbox.wrangling.reshape` and `pyspark_ds_toolbox.wrangling.data_quality`.
+
 ## 0.3.1
 
 ### Changed
