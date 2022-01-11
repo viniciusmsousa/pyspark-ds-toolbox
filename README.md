@@ -8,7 +8,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Maintainability](https://api.codeclimate.com/v1/badges/9a85a662305167c5aba1/maintainability)](https://codeclimate.com/github/viniciusmsousa/pyspark-ds-toolbox/maintainability)
 [![Codecov test coverage](https://codecov.io/gh/viniciusmsousa/pyspark-ds-toolbox/branch/main/graph/badge.svg)](https://codecov.io/gh/viniciusmsousa/pyspark-ds-toolbox?branch=main)
 [![Package Tests](https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions/workflows/package-tests.yml/badge.svg)](https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions)
-[![downloads](https://img.shields.io/pypi/dm/pyspark-ds-toolbox.svg)](https://pypistats.org/packages/pyspark-ds-toolbox)
+[![Downloads](https://pepy.tech/badge/pyspark-ds-toolbox)](https://pepy.tech/project/pyspark-ds-toolbox)
 <!-- badges: end -->
 
 
