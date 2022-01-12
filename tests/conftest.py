@@ -7,7 +7,7 @@ from pyspark.ml.linalg import VectorUDT
 import pyspark.sql.functions as F
 
 
-from pyspark_ds_toolbox.ml.data_prep import get_features_vector
+from pyspark_ds_toolbox.ml.data_prep.features_vector import get_features_vector
 
 
 @fixture

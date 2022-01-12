@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pyspark_ds_toolbox.stats package" href="pyspark_ds_toolbox.stats.html" />
-    <link rel="prev" title="pyspark_ds_toolbox.ml.classification package" href="pyspark_ds_toolbox.ml.classification.html" /> 
+    <link rel="prev" title="pyspark_ds_toolbox.ml.data_prep package" href="pyspark_ds_toolbox.ml.data_prep.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,10 +46,9 @@
 <li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.causal_inference.html">pyspark_ds_toolbox.causal_inference package</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="pyspark_ds_toolbox.ml.html">pyspark_ds_toolbox.ml package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.stats.html">pyspark_ds_toolbox.stats package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.wrangling.html">pyspark_ds_toolbox.wrangling package</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#module-pyspark_ds_toolbox.wrangling">pyspark_ds_toolbox.wrangling module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#module-pyspark_ds_toolbox">Module contents</a></li>
 </ul>
 </li>
@@ -95,9 +94,9 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_importance.native_spark.extract_features_score">
 <span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.feature_importance.native_spark.</span></span><span class="sig-name descname"><span class="pre">extract_features_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.ml.classification.LogisticRegressionModel</span><span class="p"><span class="pre">,</span> </span><span class="pre">pyspark.ml.classification.DecisionTreeClassificationModel</span><span class="p"><span class="pre">,</span> </span><span class="pre">pyspark.ml.classification.RandomForestClassificationModel</span><span class="p"><span class="pre">,</span> </span><span class="pre">pyspark.ml.classification.GBTClassificationModel</span><span class="p"><span class="pre">,</span> </span><span class="pre">pyspark.ml.regression.LinearRegressionModel</span><span class="p"><span class="pre">,</span> </span><span class="pre">pyspark.ml.regression.DecisionTreeRegressionModel</span><span class="p"><span class="pre">,</span> </span><span class="pre">pyspark.ml.regression.RandomForestRegressionModel</span><span class="p"><span class="pre">,</span> </span><span class="pre">pyspark.ml.regression.GBTRegressionModel</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'features'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_importance.native_spark.extract_features_score" title="Permalink to this definition"></a></dt>
-<dd><p>Function that extracts from spark models feature importance or coefficients.</p>
+<dd><p>Function that extracts feature importance or coefficients from spark models.</p>
 <dl class="simple">
-<dt>There are 3 possible sitations created inside this function:</dt><dd><p>1) If model is a DecisionTree, RandomForest or GBT (classification or regression) the features score will be gini scores.
+<dt>There are 3 possible situations created inside this function:</dt><dd><p>1) If model is a DecisionTree, RandomForest or GBT (classification or regression) the features score will be gini scores.
 See <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.classification.DecisionTreeClassificationModel.html?highlight=featureimportances#pyspark.ml.classification.DecisionTreeClassificationModel.featureImportances">https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.classification.DecisionTreeClassificationModel.html?highlight=featureimportances#pyspark.ml.classification.DecisionTreeClassificationModel.featureImportances</a>
 for a description on the feature importance;</p>
 <ol class="arabic simple" start="2">
@@ -231,7 +230,7 @@ applyInPandas() method of grouped SparkDF.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="pyspark_ds_toolbox.ml.classification.html" class="btn btn-neutral float-left" title="pyspark_ds_toolbox.ml.classification package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyspark_ds_toolbox.ml.data_prep.html" class="btn btn-neutral float-left" title="pyspark_ds_toolbox.ml.data_prep package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="pyspark_ds_toolbox.stats.html" class="btn btn-neutral float-right" title="pyspark_ds_toolbox.stats package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

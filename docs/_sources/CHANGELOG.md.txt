@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.3.2
+
+## Changed
+
+* Fuctionalities from module `pyspark_ds_toolbox.wrangling` was refactored into `pyspark_ds_toolbox.wrangling.reshape.py` and `pyspark_ds_toolbox.wrangling.data_quality.py`;
+* Fuctionalities from module `pyspark_ds_toolbox.ml.data_prep` was refactored into `pyspark_ds_toolbox.ml.data_prep.class_weights.py` and `pyspark_ds_toolbox.ml.data_prep.features_vector.py`.
+
 ## 0.3.1
 
 ### Changed

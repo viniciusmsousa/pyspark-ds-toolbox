@@ -46,10 +46,9 @@
 <li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.causal_inference.html">pyspark_ds_toolbox.causal_inference package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">pyspark_ds_toolbox.ml package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.stats.html">pyspark_ds_toolbox.stats package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.wrangling.html">pyspark_ds_toolbox.wrangling package</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#module-pyspark_ds_toolbox.wrangling">pyspark_ds_toolbox.wrangling module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#module-pyspark_ds_toolbox">Module contents</a></li>
 </ul>
 </li>
@@ -96,6 +95,13 @@
 <li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.classification.html#module-pyspark_ds_toolbox.ml.classification">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="pyspark_ds_toolbox.ml.data_prep.html">pyspark_ds_toolbox.ml.data_prep package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.data_prep.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.data_prep.html#module-pyspark_ds_toolbox.ml.data_prep.class_weights">pyspark_ds_toolbox.ml.data_prep.class_weights module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.data_prep.html#module-pyspark_ds_toolbox.ml.data_prep.features_vector">pyspark_ds_toolbox.ml.data_prep.features_vector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.data_prep.html#module-pyspark_ds_toolbox.ml.data_prep">Module contents</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pyspark_ds_toolbox.ml.feature_importance.html">pyspark_ds_toolbox.ml.feature_importance package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.feature_importance.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyspark_ds_toolbox.ml.feature_importance.html#module-pyspark_ds_toolbox.ml.feature_importance.native_spark">pyspark_ds_toolbox.ml.feature_importance.native_spark module</a></li>
@@ -105,67 +111,6 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</div>
-<div class="section" id="module-pyspark_ds_toolbox.ml.data_prep">
-<span id="pyspark-ds-toolbox-ml-data-prep-module"></span><h2>pyspark_ds_toolbox.ml.data_prep module<a class="headerlink" href="#module-pyspark_ds_toolbox.ml.data_prep" title="Permalink to this headline"></a></h2>
-<p>Machine Learning (with spark) Data Preparation toolbox.</p>
-<p>Module dedicated to functionalities related to data preparation for ML modeling.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.binary_classifier_weights">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.</span></span><span class="sig-name descname"><span class="pre">binary_classifier_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.binary_classifier_weights" title="Permalink to this definition"></a></dt>
-<dd><p>Adds a class weight columns to a binary classification response column.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dfs</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – Training dataset with the col_target column.</p></li>
-<li><p><strong>col_target</strong> (<em>str</em>) – Column name of the column that contains the response variable for the model.
-It should contain only values of 0 and 1.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If unique values from col_target column are not 0 and 1.</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The dfs object with a weight_{col_target} column.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>pyspark.sql.dataframe.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.get_features_vector">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.</span></span><span class="sig-name descname"><span class="pre">get_features_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.get_features_vector" title="Permalink to this definition"></a></dt>
-<dd><p>Assembles a features vector to be used with ML algorithms.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pyspark.dataframe.DataFrame</em>) – SparkDF with features to be assembled.</p></li>
-<li><p><strong>num_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of columns names of numeric features.</p></li>
-<li><p><strong>cat_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of column names of categorical features (StringIndexer).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>TypeError</strong> – If num_features AND cat_features are os type None.</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The SparkDF passed as df with the features column.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>[pyspark.sql.dataframe.DataFrame]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.get_p1">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.</span></span><span class="sig-name descname"><span class="pre">get_p1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.get_p1" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-pyspark_ds_toolbox.ml">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyspark_ds_toolbox.ml" title="Permalink to this headline"></a></h2>

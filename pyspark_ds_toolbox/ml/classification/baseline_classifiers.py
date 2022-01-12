@@ -11,8 +11,9 @@ from pyspark.sql import functions as F
 import pyspark.ml.classification as spark_cl
 import mlflow
 
-from pyspark_ds_toolbox.ml.data_prep import get_features_vector, get_p1, binary_classifier_weights
 import pyspark_ds_toolbox.ml.classification.eval as cl_eval
+from pyspark_ds_toolbox.ml.data_prep.features_vector import get_features_vector 
+from pyspark_ds_toolbox.ml.data_prep.class_weights import binary_classifier_weights
 from pyspark_ds_toolbox.ml.feature_importance.native_spark import extract_features_score
 
 @typechecked
@@ -118,7 +119,7 @@ def baseline_binary_classfiers(
         )
 
         decile_metrics = cl_eval.binary_classifier_decile_analysis(
-            dfs=prediction.withColumn('p1', get_p1(F.col('probability'))),
+            dfs=prediction.withColumn('p1', cl_eval.get_p1(F.col('probability'))),
             col_id=id_col,
             col_target=target_col,
             col_probability='p1'

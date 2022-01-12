@@ -37,14 +37,18 @@ pyspark_ds_toolbox         # Main Package
 │  ├─ diff_in_diff.py   
 │  └─ ps_matching.py    
 ├─ ml                         # Sub-package dedicated to ML
-│  ├─ data_prep.py      
-│  ├─ classification          # Sub-package decidated to classification tasks
+│  ├─ data_prep                  # Sub-package to ML data preparation tools
+│  │  ├─ class_weights.py     
+│  │  └─ features_vector.py 
+│  ├─ classification             # Sub-package decidated to classification tasks
 │  │  ├─ eval.py
 │  │  └─ baseline_classifiers.py 
-│  └─ feature_importance      # Sub-package with feature importance tools
+│  └─ feature_importance         # Sub-package with feature importance tools
 │     ├─ native_spark.py
 │     └─ shap_values.py    
-├─ wrangling.py        
+├─ wrangling                  # Sub-package decidated to data wrangling tasks
+│  ├─ reshape.py               
+│  └─ data_quality.py         
 └─ stats                      # Sub-package dedicated to basic statistic functionalities
    └─ association.py    
 ```
