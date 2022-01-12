@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyspark_ds_toolbox.ml.data_prep package &mdash; pyspark-ds-toolbox 0.3.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pyspark_ds_toolbox.ml.feature_importance package" href="pyspark_ds_toolbox.ml.feature_importance.html" />
+    <link rel="prev" title="pyspark_ds_toolbox.ml.classification package" href="pyspark_ds_toolbox.ml.classification.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyspark-ds-toolbox
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyspark_ds_toolbox</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyspark_ds_toolbox.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.causal_inference.html">pyspark_ds_toolbox.causal_inference package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="pyspark_ds_toolbox.ml.html">pyspark_ds_toolbox.ml package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.stats.html">pyspark_ds_toolbox.stats package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.wrangling.html">pyspark_ds_toolbox.wrangling package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#module-pyspark_ds_toolbox">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyspark-ds-toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">pyspark_ds_toolbox</a> &raquo;</li>
+          <li><a href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a> &raquo;</li>
+          <li><a href="pyspark_ds_toolbox.ml.html">pyspark_ds_toolbox.ml package</a> &raquo;</li>
+      <li>pyspark_ds_toolbox.ml.data_prep package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyspark_ds_toolbox.ml.data_prep.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="pyspark-ds-toolbox-ml-data-prep-package">
+<h1>pyspark_ds_toolbox.ml.data_prep package<a class="headerlink" href="#pyspark-ds-toolbox-ml-data-prep-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.ml.data_prep.class_weights">
+<span id="pyspark-ds-toolbox-ml-data-prep-class-weights-module"></span><h2>pyspark_ds_toolbox.ml.data_prep.class_weights module<a class="headerlink" href="#module-pyspark_ds_toolbox.ml.data_prep.class_weights" title="Permalink to this headline"></a></h2>
+<p>Module dedicated to functionalities related to class weighting tools.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.class_weights.binary_classifier_weights">
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.class_weights.</span></span><span class="sig-name descname"><span class="pre">binary_classifier_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.class_weights.binary_classifier_weights" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a class weight columns to a binary classification response column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfs</strong> (<em>pyspark.sql.dataframe.DataFrame</em>) – Training dataset with the col_target column.</p></li>
+<li><p><strong>col_target</strong> (<em>str</em>) – Column name of the column that contains the response variable for the model.
+It should contain only values of 0 and 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If unique values from col_target column are not 0 and 1.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The dfs object with a weight_{col_target} column.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pyspark.sql.dataframe.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.ml.data_prep.features_vector">
+<span id="pyspark-ds-toolbox-ml-data-prep-features-vector-module"></span><h2>pyspark_ds_toolbox.ml.data_prep.features_vector module<a class="headerlink" href="#module-pyspark_ds_toolbox.ml.data_prep.features_vector" title="Permalink to this headline"></a></h2>
+<p>Module dedicated to features spark vector tools.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.features_vector.get_features_vector">
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.features_vector.</span></span><span class="sig-name descname"><span class="pre">get_features_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.features_vector.get_features_vector" title="Permalink to this definition"></a></dt>
+<dd><p>Assembles a features vector to be used with ML algorithms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pyspark.dataframe.DataFrame</em>) – SparkDF with features to be assembled.</p></li>
+<li><p><strong>num_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of columns names of numeric features.</p></li>
+<li><p><strong>cat_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of column names of categorical features (StringIndexer).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If num_features AND cat_features are os type None.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The SparkDF passed as df with the features column.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[pyspark.sql.dataframe.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.ml.data_prep">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyspark_ds_toolbox.ml.data_prep" title="Permalink to this headline"></a></h2>
+<p>Sub-package Dedicated to Data Preparation for Machine Learning tools.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyspark_ds_toolbox.ml.classification.html" class="btn btn-neutral float-left" title="pyspark_ds_toolbox.ml.classification package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyspark_ds_toolbox.ml.feature_importance.html" class="btn btn-neutral float-right" title="pyspark_ds_toolbox.ml.feature_importance package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Vinicius M de Sousa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

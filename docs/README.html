@@ -77,17 +77,19 @@
 <p><a class="reference external" href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img alt="Lifecycle:experimental" src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" /></a>
 <a class="reference external" href="https://pypi.org/project/pyspark-ds-toolbox/"><img alt="PyPI Latest Release" src="https://img.shields.io/pypi/v/pyspark-ds-toolbox.svg" /></a>
 <a class="reference external" href="https://www.codefactor.io/repository/github/viniciusmsousa/pyspark-ds-toolbox"><img alt="CodeFactor" src="https://www.codefactor.io/repository/github/viniciusmsousa/pyspark-ds-toolbox/badge" /></a>
+<a class="reference external" href="https://codeclimate.com/github/viniciusmsousa/pyspark-ds-toolbox/maintainability"><img alt="Maintainability" src="https://api.codeclimate.com/v1/badges/9a85a662305167c5aba1/maintainability" /></a>
 <a class="reference external" href="https://codecov.io/gh/viniciusmsousa/pyspark-ds-toolbox?branch=main"><img alt="Codecov test coverage" src="https://codecov.io/gh/viniciusmsousa/pyspark-ds-toolbox/branch/main/graph/badge.svg" /></a>
-<a class="reference external" href="https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions"><img alt="Package Tests" src="https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions/workflows/package-tests.yml/badge.svg" /></a></p>
+<a class="reference external" href="https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions"><img alt="Package Tests" src="https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions/workflows/package-tests.yml/badge.svg" /></a>
+<a class="reference external" href="https://pepy.tech/project/pyspark-ds-toolbox"><img alt="Downloads" src="https://pepy.tech/badge/pyspark-ds-toolbox" /></a></p>
 <!-- badges: end -->
-<p>The objective of the package is to provide a set of tools that helps the daily work of data science with spark. The documentation can be found <a class="reference external" href="https://viniciusmsousa.github.io/pyspark-ds-toolbox/index.html">here</a>.</p>
+<p>The objective of the package is to provide a set of tools that helps the daily work of data science with spark. The documentation can be found <a class="reference external" href="https://viniciusmsousa.github.io/pyspark-ds-toolbox/index.html">here</a>. Feel free to contribute :)</p>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
 <p>Directly from PyPi:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyspark</span><span class="o">-</span><span class="n">ds</span><span class="o">-</span><span class="n">toolbox</span>
 </pre></div>
 </div>
-<p>or from github:</p>
+<p>or from github, note that installing from github will install the latest development version:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">viniciusmsousa</span><span class="o">/</span><span class="n">pyspark</span><span class="o">-</span><span class="n">ds</span><span class="o">-</span><span class="n">toolbox</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
@@ -100,14 +102,18 @@
 │  ├─ diff_in_diff.py   
 │  └─ ps_matching.py    
 ├─ ml                         # Sub-package dedicated to ML
-│  ├─ data_prep.py      
-│  ├─ classification          # Sub-package decidated to classification tasks
+│  ├─ data_prep                  # Sub-package to ML data preparation tools
+│  │  ├─ class_weights.py     
+│  │  └─ features_vector.py 
+│  ├─ classification             # Sub-package decidated to classification tasks
 │  │  ├─ eval.py
 │  │  └─ baseline_classifiers.py 
-│  └─ feature_importance 
+│  └─ feature_importance         # Sub-package with feature importance tools
 │     ├─ native_spark.py
 │     └─ shap_values.py    
-├─ wrangling.py        
+├─ wrangling                  # Sub-package decidated to data wrangling tasks
+│  ├─ reshape.py               
+│  └─ data_quality.py         
 └─ stats                      # Sub-package dedicated to basic statistic functionalities
    └─ association.py    
 </pre></div>
