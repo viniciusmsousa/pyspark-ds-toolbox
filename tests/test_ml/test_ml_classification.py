@@ -84,6 +84,7 @@ def test_baseline_classifiers(df_causal_inference):
         dfs_test=dfs_test,
         weight_on_target=False,
         log_mlflow_run=False,
+        mlflow_experiment_name=None,
         artifact_stage_path = None
     )
     assert type(t) == dict

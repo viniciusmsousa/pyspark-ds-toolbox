@@ -26,6 +26,7 @@ def baseline_binary_classfiers(
     cat_features: Union[List[str], None] = None,
     weight_on_target: bool = False,
     log_mlflow_run: bool = False,
+    mlflow_experiment_name: Union[None, str] = None,
     artifact_stage_path: Union[None, str] = None
 ) -> dict:
     """Function that fit models that could be used as baseline model.
@@ -46,6 +47,7 @@ def baseline_binary_classfiers(
         cat_features (Union[List[str], None], optional): List of the columns names of the categorical features. Defaults to None.
         weight_on_target (bool, optional): If True will add a class weight based on target_col (see pyspark_ds_toolbox.ml.data_prep.binary_classifier_weights). Defaults to False.
         log_mlflow_run (bool, optional): If True will log params, metrics, confusion matrix, decile table and model in a MLFlow run for each fit. Defaults to False.
+        mlflow_experiment_name (Union[None, str], optional): Name of the experimento where the runs should be looged. Defaults to None.
         artifact_stage_path (Union[None, str], optional): Path to write confusion matrix and decile table before logging into mlflow. Defaults to None.
 
     Raises:
@@ -67,6 +69,13 @@ def baseline_binary_classfiers(
          
     if (log_mlflow_run is True) and (artifact_stage_path is None):
         warnings.warn('log_mlflow_run is True and artifact_stage_path is None. This means that artifacts (confusion matrix and decile table) will not be logged to mlflow.')
+
+    if (mlflow_experiment_name is not None) and (log_mlflow_run is False):
+        warnings.warn('mlflow_experiment_name is not None and log_mlflow_run is False. This means that runs will not be logged into the experiment.')
+
+    if (log_mlflow_run is True) and (mlflow_experiment_name is not None):
+        mlflow.set_experiment(experiment_name=mlflow_experiment_name)
+
 
     print('Computing Features Vector')
     dfs = get_features_vector(

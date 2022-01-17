@@ -1,5 +1,11 @@
 # Change Log
 
+## Unreleased
+
+### Changed
+
+* `pyspark_ds_toolbox.ml.classification.baseline_binary_classfiers` has a `mlflow_experiment_name` argument.
+
 ## 0.3.2
 
 ## Changed
