@@ -64,7 +64,10 @@ def extract_features_score(
     df_fi = pd.DataFrame(list_extract)
     df_fi['score'] = df_fi['idx'].apply(lambda x: featureImp[x])
     df_fi = df_fi.sort_values('score', ascending = False)
-    df_fi.drop(columns=['vals'], inplace=True)
+    try:
+        df_fi.drop(columns=['vals'], inplace=True)
+    except:
+        pass
 
     if type(model) == pyspark.ml.classification.LogisticRegressionModel:
         df_fi.columns = ['feat_index', 'feature', 'odds_ratio']
