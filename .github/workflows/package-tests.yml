@@ -16,6 +16,7 @@ on:
       - '**/README.md'
       - '**/docs/'
       - '**/sphinx/'
+      - '**/examples/'
 
 jobs:
   build:
