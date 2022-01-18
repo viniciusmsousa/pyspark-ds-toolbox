@@ -47,7 +47,7 @@ def baseline_binary_classfiers(
         cat_features (Union[List[str], None], optional): List of the columns names of the categorical features. Defaults to None.
         weight_on_target (bool, optional): If True will add a class weight based on target_col (see pyspark_ds_toolbox.ml.data_prep.binary_classifier_weights). Defaults to False.
         log_mlflow_run (bool, optional): If True will log params, metrics, confusion matrix, decile table and model in a MLFlow run for each fit. Defaults to False.
-        mlflow_experiment_name (Union[None, str], optional): Name of the experimento where the runs should be looged. Defaults to None.
+        mlflow_experiment_name (Union[None, str], optional): Name of the experiment where the runs should be looged. Defaults to None.
         artifact_stage_path (Union[None, str], optional): Path to write confusion matrix and decile table before logging into mlflow. Defaults to None.
 
     Raises:
