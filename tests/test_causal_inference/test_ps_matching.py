@@ -28,8 +28,8 @@ def test_compute_propensity_score(df_causal_inference):
     ])
     assert df_ps.schema == schema
 
-    type(df_eval) == pd.core.frame.DataFrame
-    df_eval.shape == (4,5)
+    assert type(df_eval) == pd.core.frame.DataFrame
+    assert df_eval.shape == (4,5)
 
 def test_estimate_causal_effect(df_ps):
     ate = ps.estimate_causal_effect(
