@@ -3,6 +3,7 @@ import pyspark
 from pyspark.sql import types as T, functions as F
 import pyspark.ml.classification as spark_cl
 from pyspark.ml.regression import LinearRegression
+from pyspark.ml import Pipeline
 import pytest
 from pyspark_ds_toolbox.ml.data_prep import get_features_vector
 
@@ -44,31 +45,28 @@ def test_native_spark_extract_features_score(df_causal_inference):
   
   num_features = ['age', 'educ', 'nodegree', 're74', 're75', 're78', 'age2', 'age3', 'educ2', 'educ_re74', 'u74', 'u75']
   cat_features = ['etnia']
-
-  df_causal_inference = get_features_vector(
-    df=df_causal_inference,
-      num_features=num_features,
-      cat_features=cat_features
-    )
-
+  stages = get_features_vector(
+                                num_features=num_features,
+                                cat_features=cat_features
+      )
    
   # Testing Gini Score
-  dt = spark_cl.DecisionTreeClassifier(labelCol='treat', featuresCol='features').fit(df_causal_inference)
-  df_fi = sparktb_fi.extract_features_score(model=dt, dfs=df_causal_inference, features_col='features')
+  dt = Pipeline(stages = stages+[spark_cl.DecisionTreeClassifier(labelCol='treat', featuresCol='features')]).fit(df_causal_inference)
+  df_fi = sparktb_fi.extract_features_score(model=dt.stages[-1], dfs=dt.transform(df_causal_inference), features_col='features')
   assert type(df_fi) == pd.core.frame.DataFrame
   assert df_fi.shape == (13, 3)
   assert list(df_fi.columns) == ['feat_index', 'feature', 'delta_gini']
 
   # Testing Odds Ratio
-  lr = spark_cl.LogisticRegression(labelCol='treat', featuresCol='features').fit(df_causal_inference)
-  df_fi = sparktb_fi.extract_features_score(model=lr, dfs=df_causal_inference, features_col='features')
+  lr = Pipeline(stages = stages+[spark_cl.LogisticRegression(labelCol='treat', featuresCol='features')]).fit(df_causal_inference)
+  df_fi = sparktb_fi.extract_features_score(model=lr.stages[-1], dfs=df_causal_inference, features_col='features')
   assert type(df_fi) == pd.core.frame.DataFrame
   assert df_fi.shape == (13, 3)
   assert list(df_fi.columns) == ['feat_index', 'feature', 'odds_ratio']
 
   # Testing Coefficients
-  linearr = LinearRegression(labelCol='re78', featuresCol='features').fit(df_causal_inference)
-  df_fi = sparktb_fi.extract_features_score(model=linearr, dfs=df_causal_inference, features_col='features')
+  linearr = Pipeline(stages = stages+[LinearRegression(labelCol='re78', featuresCol='features')]).fit(df_causal_inference)
+  df_fi = sparktb_fi.extract_features_score(model=linearr.stages[-1], dfs=df_causal_inference, features_col='features')
   assert type(df_fi) == pd.core.frame.DataFrame
   assert df_fi.shape == (13, 3)
   assert list(df_fi.columns) == ['feat_index', 'feature', 'coefficients']

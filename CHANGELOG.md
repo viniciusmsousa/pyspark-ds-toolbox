@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.3.4
+
+### Changed
+
+* `pyspark_ds_toolbox.ml.data_prep.features_vector.get_features_vector` return a list of pyspark indexers, encoders and assemblers.
+* `pyspark_ds_toolbox.ml.classification.baseline_classifiers.py` return pyspark models like a pipeline.
+
 ## 0.3.3
 
 ### Changed

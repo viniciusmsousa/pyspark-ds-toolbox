@@ -5,6 +5,7 @@ from pyspark.sql.types import StructField, StructType, LongType, \
     DoubleType, StringType
 from pyspark.ml.linalg import VectorUDT
 import pyspark.sql.functions as F
+from pyspark.ml import Pipeline
 
 
 from pyspark_ds_toolbox.ml.data_prep.features_vector import get_features_vector
@@ -106,8 +107,8 @@ def df_causal_inference(spark):
         .withColumn('u75', F.when(F.col('re75')==0, 1).otherwise(0))
 
     features=['age', 'age2', 'age3', 'educ', 'educ2', 'marr', 'nodegree', 'black', 'hisp', 're74', 're75', 'u74', 'u75', 'educ_re74']
-    df_assembled = get_features_vector(df=df, num_features=features)
-
+    pipeline = Pipeline(stages = get_features_vector(num_features=features))
+    df_assembled = pipeline.fit(df).transform(df)
     return df_assembled
 
 @fixture
