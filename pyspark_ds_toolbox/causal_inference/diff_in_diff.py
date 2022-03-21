@@ -9,6 +9,7 @@ from typeguard import typechecked
 import pyspark
 import pyspark.sql.functions as F
 from pyspark.ml.regression import LinearRegression
+from pyspark.ml import Pipeline
 
 from pyspark_ds_toolbox.ml.data_prep import get_features_vector
 
@@ -67,16 +68,21 @@ def did_estimator(
     else:
         pass
 
-    df_model = get_features_vector(
-        df=df_model,
+    stages = get_features_vector(
         num_features=num_features,
         cat_features=cat_features
     )
 
-    lin_reg = LinearRegression(featuresCol = 'features', labelCol='deposits', fitIntercept=True)
-    linear_model = lin_reg.fit(df_model)
-
-
+    pipeline = Pipeline(stages=stages+[LinearRegression(
+                                                        featuresCol = 'features', 
+                                                        labelCol='deposits', 
+                                                        fitIntercept=True
+                                                        )
+                                        ]
+                        )
+    fitted_pipeline = pipeline.fit(df_model)
+    linear_model = fitted_pipeline.stages[-1]
+    
     out_dict = {
         'impacto_medio': list(linear_model.coefficients)[0],
         'n_ids_impactados': df_model.select(id_col).distinct().count(),
