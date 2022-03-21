@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyspark_ds_toolbox.ml.data_prep package &mdash; pyspark-ds-toolbox 0.3.1 documentation</title>
+  <title>pyspark_ds_toolbox.ml.data_prep package &mdash; pyspark-ds-toolbox 0.3.4 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -121,24 +121,24 @@ It should contain only values of 0 and 1.</p></li>
 <p>Module dedicated to features spark vector tools.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.data_prep.features_vector.get_features_vector">
-<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.features_vector.</span></span><span class="sig-name descname"><span class="pre">get_features_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.features_vector.get_features_vector" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.data_prep.features_vector.</span></span><span class="sig-name descname"><span class="pre">get_features_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'features'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.data_prep.features_vector.get_features_vector" title="Permalink to this definition"></a></dt>
 <dd><p>Assembles a features vector to be used with ML algorithms.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pyspark.dataframe.DataFrame</em>) – SparkDF with features to be assembled.</p></li>
-<li><p><strong>num_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of columns names of numeric features.</p></li>
-<li><p><strong>cat_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of column names of categorical features (StringIndexer).</p></li>
+<li><p><strong>num_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of columns names of numeric features;</p></li>
+<li><p><strong>cat_features</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of column names of categorical features (StringIndexer);</p></li>
+<li><p><strong>output_col</strong> (<em>str</em>) – name of the output column;</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><strong>TypeError</strong> – If num_features AND cat_features are os type None.</p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The SparkDF passed as df with the features column.</p>
+<dd class="field-odd"><p>pyspark indexers, encoders and assemblers like a list;</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>[pyspark.sql.dataframe.DataFrame]</p>
+<dd class="field-even"><p>[List]</p>
 </dd>
 </dl>
 </dd></dl>
