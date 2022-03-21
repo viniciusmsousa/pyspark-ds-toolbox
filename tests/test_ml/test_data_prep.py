@@ -1,16 +1,18 @@
 import pytest
 import pandas as pd
 import pyspark
+from pyspark.ml import Pipeline
 
 from pyspark_ds_toolbox.ml import data_prep as ml_dp
 
 def test_get_features_vector(df_spark_features_col, schema_get_features_vector):
 
-    d = ml_dp.features_vector.get_features_vector(
-        df=df_spark_features_col,
+    stages = ml_dp.features_vector.get_features_vector(
         num_features=['num1', 'num2'],
         cat_features=['cat1', 'cat2']
     )
+    d = Pipeline(stages=stages).fit(df_spark_features_col).transform(df_spark_features_col)
+    
     for i in [0, 1, 2, 3, 4]:
         assert list(d.schema)[i] == list(schema_get_features_vector)[i]
 

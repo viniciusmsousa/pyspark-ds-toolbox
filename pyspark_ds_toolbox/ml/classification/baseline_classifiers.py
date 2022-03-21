@@ -7,6 +7,7 @@ from typing import Union, List
 from typeguard import typechecked
 from tqdm import tqdm
 import pyspark
+from pyspark.ml import Pipeline
 from pyspark.sql import functions as F
 import pyspark.ml.classification as spark_cl
 import mlflow
@@ -78,13 +79,8 @@ def baseline_binary_classfiers(
 
 
     print('Computing Features Vector')
-    dfs = get_features_vector(
-        df=dfs,
-        num_features=num_features,
-        cat_features=cat_features
-    )
-    dfs_test = get_features_vector(
-        df=dfs_test,
+
+    stages = get_features_vector(
         num_features=num_features,
         cat_features=cat_features
     )
@@ -96,16 +92,17 @@ def baseline_binary_classfiers(
         weigth_col = f'weight_{target_col}'
 
         print('Instanciating Classifiers')
-        lr = spark_cl.LogisticRegression(labelCol=target_col, featuresCol='features', weightCol=weigth_col).fit(dfs)
-        dt = spark_cl.DecisionTreeClassifier(labelCol=target_col, featuresCol='features', weightCol=weigth_col).fit(dfs)
-        rf = spark_cl.RandomForestClassifier(labelCol=target_col, featuresCol='features', weightCol=weigth_col).fit(dfs)
-        gbt = spark_cl.GBTClassifier(labelCol=target_col, featuresCol='features', weightCol=weigth_col).fit(dfs)
+        lr = Pipeline(stages=stages+[spark_cl.LogisticRegression(labelCol=target_col, featuresCol='features', weightCol=weigth_col)])
+        dt = Pipeline(stages=stages+[spark_cl.DecisionTreeClassifier(labelCol=target_col, featuresCol='features', weightCol=weigth_col)])
+        rf = Pipeline(stages=stages+[spark_cl.RandomForestClassifier(labelCol=target_col, featuresCol='features', weightCol=weigth_col)])
+        gbt = Pipeline(stages=stages+[spark_cl.GBTClassifier(labelCol=target_col, featuresCol='features', weightCol=weigth_col)])
+        
     else:
         print('Instanciating Classifiers')
-        lr = spark_cl.LogisticRegression(labelCol=target_col, featuresCol='features').fit(dfs)
-        dt = spark_cl.DecisionTreeClassifier(labelCol=target_col, featuresCol='features').fit(dfs)
-        rf = spark_cl.RandomForestClassifier(labelCol=target_col, featuresCol='features').fit(dfs)
-        gbt = spark_cl.GBTClassifier(labelCol=target_col, featuresCol='features').fit(dfs)    
+        lr = Pipeline(stages=stages+[spark_cl.LogisticRegression(labelCol=target_col, featuresCol='features')])
+        dt = Pipeline(stages=stages+[spark_cl.DecisionTreeClassifier(labelCol=target_col, featuresCol='features')])
+        rf = Pipeline(stages=stages+[spark_cl.RandomForestClassifier(labelCol=target_col, featuresCol='features')])
+        gbt = Pipeline(stages=stages+[spark_cl.GBTClassifier(labelCol=target_col, featuresCol='features')])
 
 
     print('Predicting on Test Data and Evaluating')
@@ -117,9 +114,10 @@ def baseline_binary_classfiers(
     models = [lr, dt, rf, gbt]
     for name, model in tqdm(zip(names, models), total=len(names)):
 
-        df_fi = extract_features_score(model=model, dfs=dfs)
-
+        model = model.fit(dfs)
         prediction = model.transform(dfs_test)
+
+        df_fi = extract_features_score(model=model.stages[-1], dfs=prediction)
         metrics = cl_eval.binary_classificator_evaluator(
             dfs_prediction=prediction,
             col_target=target_col,
@@ -169,8 +167,6 @@ def baseline_binary_classfiers(
 
                     df_fi.to_csv(f'{artifact_stage_path}feature_score.csv', index=False, sep='|')
                     mlflow.log_artifact(f'{artifact_stage_path}feature_score.csv')
-
-
 
                 mlflow.spark.log_model(model, "model")
 
