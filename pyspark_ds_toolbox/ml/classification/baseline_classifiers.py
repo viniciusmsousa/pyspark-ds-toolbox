@@ -115,8 +115,9 @@ def baseline_binary_classfiers(
     for name, model in tqdm(zip(names, models), total=len(names)):
 
         model = model.fit(dfs)
-        df_fi = extract_features_score(model=model.stages[-1], dfs=dfs)
         prediction = model.transform(dfs_test)
+
+        df_fi = extract_features_score(model=model.stages[-1], dfs=prediction)
         metrics = cl_eval.binary_classificator_evaluator(
             dfs_prediction=prediction,
             col_target=target_col,

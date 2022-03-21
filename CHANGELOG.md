@@ -2,10 +2,10 @@
 
 ## 0.3.4
 
-### Changed
+### Breaking Changes
 
-* `pyspark_ds_toolbox.ml.data_prep.features_vector.get_features_vector` return a list of pyspark indexers, encoders and assemblers.
-* `pyspark_ds_toolbox.ml.classification.baseline_classifiers.py` return pyspark models like a pipeline.
+* `pyspark_ds_toolbox.ml.data_prep.features_vector.get_features_vector`: Now returns a list with pyspark indexers, encoders and assemblers, to used with pipelines.
+* `pyspark_ds_toolbox.ml.classification.baseline_classifiers.py`: Models now are returned as pipelines.
 
 ## 0.3.3
 

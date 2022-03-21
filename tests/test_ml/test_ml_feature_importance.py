@@ -41,36 +41,33 @@ def test_native_spark_extract_features_score(df_causal_inference):
   # Testing the functionalities
   df_causal_inference = df_causal_inference\
         .withColumn('etnia', F.expr('case when black=1 then "black" when hisp=1 then "hisp" when marr=1 then "marr" else "other" end'))\
-        .drop('black', 'hisp', 'marr', 'features')
+        .drop('black', 'hisp', 'marr', 'features', 'num', 'cat')
   
   num_features = ['age', 'educ', 'nodegree', 're74', 're75', 're78', 'age2', 'age3', 'educ2', 'educ_re74', 'u74', 'u75']
   cat_features = ['etnia']
-  stages = get_features_vector(
-                                num_features=num_features,
-                                cat_features=cat_features
-      )
+  stages = get_features_vector(num_features=num_features, cat_features=cat_features)
    
   # Testing Gini Score
   dt = Pipeline(stages = stages+[spark_cl.DecisionTreeClassifier(labelCol='treat', featuresCol='features')]).fit(df_causal_inference)
   df_fi = sparktb_fi.extract_features_score(model=dt.stages[-1], dfs=dt.transform(df_causal_inference), features_col='features')
   assert type(df_fi) == pd.core.frame.DataFrame
-  assert df_fi.shape == (13, 3)
+  assert df_fi.shape == (15, 3)
   assert list(df_fi.columns) == ['feat_index', 'feature', 'delta_gini']
 
   # Testing Odds Ratio
   lr = Pipeline(stages = stages+[spark_cl.LogisticRegression(labelCol='treat', featuresCol='features')]).fit(df_causal_inference)
-  df_fi = sparktb_fi.extract_features_score(model=lr.stages[-1], dfs=df_causal_inference, features_col='features')
+  df_fi = sparktb_fi.extract_features_score(model=lr.stages[-1], dfs=lr.transform(df_causal_inference), features_col='features')
   assert type(df_fi) == pd.core.frame.DataFrame
-  assert df_fi.shape == (13, 3)
+  assert df_fi.shape == (15, 3)
   assert list(df_fi.columns) == ['feat_index', 'feature', 'odds_ratio']
 
   # Testing Coefficients
   linearr = Pipeline(stages = stages+[LinearRegression(labelCol='re78', featuresCol='features')]).fit(df_causal_inference)
-  df_fi = sparktb_fi.extract_features_score(model=linearr.stages[-1], dfs=df_causal_inference, features_col='features')
+  df_fi = sparktb_fi.extract_features_score(model=linearr.stages[-1], dfs=linearr.transform(df_causal_inference), features_col='features')
   assert type(df_fi) == pd.core.frame.DataFrame
-  assert df_fi.shape == (13, 3)
+  assert df_fi.shape == (15, 3)
   assert list(df_fi.columns) == ['feat_index', 'feature', 'coefficients']
 
   # Testing Raise Value errors
   with pytest.raises(ValueError):
-      sparktb_fi.extract_features_score(model=dt, dfs=df_causal_inference, features_col='aaaaaaa')
+      sparktb_fi.extract_features_score(model=dt.stages[-1], dfs=df_causal_inference, features_col='aaaaaaa')

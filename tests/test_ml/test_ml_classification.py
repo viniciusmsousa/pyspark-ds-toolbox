@@ -50,7 +50,7 @@ def test_binary_classifier_decile_analysis_error(spark):
 def test_baseline_classifiers(df_causal_inference):
     df_causal_inference = df_causal_inference\
         .withColumn('etnia', F.expr('case when black=1 then "black" when hisp=1 then "hisp" when marr=1 then "marr" else "other" end'))\
-        .drop('black', 'hisp', 'marr', 'features')
+        .drop('black', 'hisp', 'marr', 'features', 'num', 'cat')
 
     num_features = ['age', 'educ', 'nodegree', 're74', 're75', 're78', 'age2', 'age3', 'educ2', 'educ_re74', 'u74', 'u75']
     cat_features = ['etnia']
