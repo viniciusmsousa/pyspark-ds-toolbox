@@ -213,7 +213,7 @@ def feature_selection_with_iv(
             - dfs_iv: Spark DataFrame with IV for each feature. Given by the cols: feature, iv.
             - stages_features_vector: List with spark transformers that computes the features vector based on the floor_iv and categorical_as_woe params.
     """
-
+    # 1) Checks conditions
     if (num_features is None) and (cat_features is None):
         raise TypeError('num_features or cat_features must be a List[str]. Both are none.')
     
@@ -223,6 +223,7 @@ def feature_selection_with_iv(
     if (type(categorical_as_woe) is bool) and (cat_features is None):
         raise Warning('cat_features is None and categorical_as_woe is bool. categorical_as_woe param will have no effect.')
 
+    # 2) If dfs has numerical features we need to bucket it!
     if num_features is not None:
         count_dfs = dfs.count()
         nBuckets = count_dfs/(count_dfs*bucket_fraction)
@@ -231,6 +232,8 @@ def feature_selection_with_iv(
         qt = QuantileDiscretizer(inputCols=num_features, outputCols=bucket_num_features, numBuckets=nBuckets)
         dfs = qt.fit(dfs).transform(dfs)
     
+    # 3) Computing the WOE and IV
+    ## 3a) Getting the column names to compute the WOE and IV
     if (num_features is not None) and (cat_features is not None):
         feats = bucket_num_features + cat_features
     elif num_features is None:
@@ -238,7 +241,7 @@ def feature_selection_with_iv(
     else:
         feats = bucket_num_features
 
-
+    ## 3b) Computing the WOE and IV
     sc = SparkSession.builder.appName('spark_session_getter').getOrCreate()
     schema_woe = T.StructType([
         T.StructField("feature", T.StringType(), False),
@@ -261,21 +264,39 @@ def feature_selection_with_iv(
         dfs_woe = dfs_woe.union(df_woe_feature)
         dfs_iv = dfs_iv.union(sc.createDataFrame(pd.DataFrame({'feature':[f],'iv':[iv]})))
 
-    
+    ## 3c) Selection features that have a IV greater then the floor_iv
     cols_to_keep = dfs_iv.filter(f'iv >= {floor_iv}').toPandas()['feature'].to_list()
 
-    if (cat_features is not None) and (categorical_as_woe==True):
+    # 4) Creating the list with the transformation stages
+    if (num_features is not None) and (cat_features is not None):
         cat_features_selected = list(filter(None, [None if s.endswith('_bucket') else s for s in cols_to_keep]))
-        selected_features = [s[:-7] if s.endswith('_bucket') else s+'_woe' for s in cols_to_keep]
 
-        stages_features_vector = [WeightOfEvidenceComputer(inputCols=cat_features_selected, col_target=col_target)] \
-            + get_features_vector(num_features=selected_features)
+        if categorical_as_woe:
+            num_selected_features = [s[:-7] if s.endswith('_bucket') else s+'_woe' for s in cols_to_keep]
+            # Creating WOEComputer Stage
+            WOE = WeightOfEvidenceComputer(inputCols=cat_features_selected, col_target=col_target)
+            # Creating list of Stages
+            stages_features_vector = [WOE] + get_features_vector(num_features=selected_features)
+        else:
+            num_selected_features = list(filter(None, [s[:-7] if s.endswith('_bucket') else None for s in cols_to_keep]))
+            stages_features_vector = get_features_vector(num_features=num_selected_features, cat_features=cat_features_selected)
+            
+    elif num_features is None:
+        cat_features_selected = list(filter(None, [None if s.endswith('_bucket') else s for s in cols_to_keep]))
+        if categorical_as_woe:
+            num_selected_features = list(filter(None, [None if s.endswith('_bucket') else s+'_woe' for s in cols_to_keep]))
+            
+            # Creating WOEComputer Stage
+            WOE = WeightOfEvidenceComputer(inputCols=cat_features_selected, col_target=col_target)
+            # Creating list of Stages
+            stages_features_vector = [WOE] + get_features_vector(num_features=selected_features)
+        else:
+            stages_features_vector = get_features_vector(cat_features=cat_features_selected)
     else:
-        num_selectec_features = list(filter(None, [s[:-7] if s.endswith('_bucket') else None for s in cols_to_keep]))
-        cat_selectec_features = list(filter(None, [None if s.endswith('_bucket') else s for s in cols_to_keep]))
-        
-        stages_features_vector = get_features_vector(num_features=num_selectec_features, cat_features=cat_selectec_features)
+        num_selected_features = list(filter(None, [s[:-7] if s.endswith('_bucket') else None for s in cols_to_keep]))
+        stages_features_vector = get_features_vector(num_features=num_selected_features)
 
+    # 5) Return object
     out_dict = {
         'dfs_woe': dfs_woe,
         'dfs_iv': dfs_iv.orderBy(F.col('iv').desc()),
