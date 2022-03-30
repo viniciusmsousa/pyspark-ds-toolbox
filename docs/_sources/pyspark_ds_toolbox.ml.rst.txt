@@ -10,6 +10,7 @@ Subpackages
    pyspark_ds_toolbox.ml.classification
    pyspark_ds_toolbox.ml.data_prep
    pyspark_ds_toolbox.ml.feature_importance
+   pyspark_ds_toolbox.ml.feature_selection
 
 Module contents
 ---------------

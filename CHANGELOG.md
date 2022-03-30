@@ -1,5 +1,14 @@
 # Change Log
 
+## 0.4.0
+
+### Added
+
+* Added the `pyspark_ds_toolbox.ml.feature_selection.information_value` module and all its functionalities
+    * `feature_selection_with_iv()`
+    * `compute_woe_iv()`
+    * `WeightOfEvidenceComputer()`
+
 ## 0.3.4
 
 ### Breaking Changes

@@ -82,7 +82,8 @@
 <a class="reference external" href="https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions"><img alt="Package Tests" src="https://github.com/viniciusmsousa/pyspark-ds-toolbox/actions/workflows/package-tests.yml/badge.svg" /></a>
 <a class="reference external" href="https://pepy.tech/project/pyspark-ds-toolbox"><img alt="Downloads" src="https://pepy.tech/badge/pyspark-ds-toolbox" /></a></p>
 <!-- badges: end -->
-<p>The objective of the package is to provide a set of tools that helps the daily work of data science with spark. The documentation can be found <a class="reference external" href="https://viniciusmsousa.github.io/pyspark-ds-toolbox/index.html">here</a>. Feel free to contribute :)</p>
+<p>The objective of the package is to provide a set of tools that helps the daily work of data science with spark. The documentation can be found <a class="reference external" href="https://viniciusmsousa.github.io/pyspark-ds-toolbox/index.html">here</a> and notebooks with usage examples <a class="reference external" href="https://github.com/viniciusmsousa/pyspark-ds-toolbox/tree/main/examples">here</a>.</p>
+<p>Feel free to contribute :)</p>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
 <p>Directly from PyPi:</p>
@@ -96,7 +97,7 @@
 </div>
 <div class="section" id="organization">
 <h2>Organization<a class="headerlink" href="#organization" title="Permalink to this headline"></a></h2>
-<p>The package is currently organized in a structure based on the nature of the task, such as data wrangling, model/prediction evaluation, and so on.</p>
+<p>The package organized in a structure based on the nature of the task, such as data wrangling, model/prediction evaluation, and so on.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pyspark_ds_toolbox         # Main Package
 ├─ causal_inference           # Sub-package dedicated to Causal Inferece
 │  ├─ diff_in_diff.py   
@@ -108,9 +109,11 @@
 │  ├─ classification             # Sub-package decidated to classification tasks
 │  │  ├─ eval.py
 │  │  └─ baseline_classifiers.py 
-│  └─ feature_importance         # Sub-package with feature importance tools
-│     ├─ native_spark.py
-│     └─ shap_values.py    
+│  ├─ feature_importance         # Sub-package with feature importance tools
+│  │  ├─ native_spark.py
+│  │  └─ shap_values.py 
+│  └─ feature_selection         # Sub-package with feature selection tools
+│     └─ information_value.py    
 ├─ wrangling                  # Sub-package decidated to data wrangling tasks
 │  ├─ reshape.py               
 │  └─ data_quality.py         
