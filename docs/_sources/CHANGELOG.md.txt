@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.4.1
+
+### Fixed
+* `pyspark_ds_toolbox.ml.feature_selection.information_value.feature_selection_with_iv()`: behavior with `num_features` and `cat_features` arguments.
+
 ## 0.4.0
 
 ### Added
