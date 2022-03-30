@@ -289,7 +289,7 @@ def feature_selection_with_iv(
             # Creating WOEComputer Stage
             WOE = WeightOfEvidenceComputer(inputCols=cat_features_selected, col_target=col_target)
             # Creating list of Stages
-            stages_features_vector = [WOE] + get_features_vector(num_features=selected_features)
+            stages_features_vector = [WOE] + get_features_vector(num_features=num_selected_features)
         else:
             stages_features_vector = get_features_vector(cat_features=cat_features_selected)
     else:
