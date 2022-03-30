@@ -138,3 +138,13 @@ def ks_iris(spark):
     iris_ks = iris_sdf.to_pandas_on_spark()
 
     return iris_ks
+
+# ml.feature_selection.information_value
+@fixture
+def df_causal_inference_iv(df_causal_inference):
+    df = df_causal_inference\
+            .withColumn('etnia', F.expr('case when black=1 then "black" when hisp=1 then "hisp" when marr=1 then "marr" else "other" end'))\
+            .withColumn('treat', F.col('treat').cast('int'))\
+            .withColumn('dumb_cat', F.expr('case when index > 10 then "a" else "b" end'))\
+            .select('index', 'age', 'educ', 'etnia','dumb_cat', 'treat')
+    return df

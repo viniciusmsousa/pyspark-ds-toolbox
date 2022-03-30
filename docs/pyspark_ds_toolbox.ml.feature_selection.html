@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyspark_ds_toolbox.ml.feature_selection package &mdash; pyspark-ds-toolbox 0.3.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pyspark_ds_toolbox.stats package" href="pyspark_ds_toolbox.stats.html" />
+    <link rel="prev" title="pyspark_ds_toolbox.ml.feature_importance package" href="pyspark_ds_toolbox.ml.feature_importance.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pyspark-ds-toolbox
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyspark_ds_toolbox</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyspark_ds_toolbox.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.causal_inference.html">pyspark_ds_toolbox.causal_inference package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="pyspark_ds_toolbox.ml.html">pyspark_ds_toolbox.ml package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.stats.html">pyspark_ds_toolbox.stats package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyspark_ds_toolbox.wrangling.html">pyspark_ds_toolbox.wrangling package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyspark_ds_toolbox.html#module-pyspark_ds_toolbox">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyspark-ds-toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">pyspark_ds_toolbox</a> &raquo;</li>
+          <li><a href="pyspark_ds_toolbox.html">pyspark_ds_toolbox package</a> &raquo;</li>
+          <li><a href="pyspark_ds_toolbox.ml.html">pyspark_ds_toolbox.ml package</a> &raquo;</li>
+      <li>pyspark_ds_toolbox.ml.feature_selection package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyspark_ds_toolbox.ml.feature_selection.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="pyspark-ds-toolbox-ml-feature-selection-package">
+<h1>pyspark_ds_toolbox.ml.feature_selection package<a class="headerlink" href="#pyspark-ds-toolbox-ml-feature-selection-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.ml.feature_selection.information_value">
+<span id="pyspark-ds-toolbox-ml-feature-selection-information-value-module"></span><h2>pyspark_ds_toolbox.ml.feature_selection.information_value module<a class="headerlink" href="#module-pyspark_ds_toolbox.ml.feature_selection.information_value" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.feature_selection.information_value.</span></span><span class="sig-name descname"><span class="pre">WeightOfEvidenceComputer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputCol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputCols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.base.Transformer</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasInputCol</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasOutputCol</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasInputCols</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasOutputCols</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.util.DefaultParamsReadable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.util.DefaultParamsWritable</span></code></p>
+<p>A transform to add the weight of evidence value for categorical variables.</p>
+<p>This is a class to add the columns with the Weight of Evidence for categorical features.
+See <a class="reference external" href="http://www.m-hikari.com/ams/ams-2014/ams-65-68-2014/zengAMS65-68-2014.pdf">http://www.m-hikari.com/ams/ams-2014/ams-65-68-2014/zengAMS65-68-2014.pdf</a> for a technical description.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.add_woe">
+<span class="sig-name descname"><span class="pre">add_woe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.add_woe" title="Permalink to this definition"></a></dt>
+<dd><p>Function that add teh WOE to the dataset passed to the tranform method of the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfs</strong> (<em>DataFrame</em>) – A spark DataFrame with feature and target columns.</p></li>
+<li><p><strong>feature</strong> (<em>str</em>) – Column name of a categorical feature, must be of type string.</p></li>
+<li><p><strong>col_target</strong> (<em>str</em>) – Column name of a target variable, must be of type integer with values 0 and 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The dfs argument with a column f’{feature}_woe’.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.checkParams">
+<span class="sig-name descname"><span class="pre">checkParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.checkParams" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.col_target">
+<span class="sig-name descname"><span class="pre">col_target</span></span><em class="property"> <span class="pre">=</span> <span class="pre">Param(parent='undefined',</span> <span class="pre">name='col_target',</span> <span class="pre">doc='Column</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">target.</span> <span class="pre">Must</span> <span class="pre">be</span> <span class="pre">a</span> <span class="pre">integer</span> <span class="pre">os</span> <span class="pre">values</span> <span class="pre">0</span> <span class="pre">or</span> <span class="pre">1.')</span></em><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.col_target" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.getTarget">
+<span class="sig-name descname"><span class="pre">getTarget</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.getTarget" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.setInputCol">
+<span class="sig-name descname"><span class="pre">setInputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_inputCol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.setInputCol" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_inputCols</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.setInputCols" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputCol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputCols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.setParams" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.setTarget">
+<span class="sig-name descname"><span class="pre">setTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.WeightOfEvidenceComputer.setTarget" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.compute_woe_iv">
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.feature_selection.information_value.</span></span><span class="sig-name descname"><span class="pre">compute_woe_iv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_feature</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pyspark.sql.dataframe.DataFrame</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.compute_woe_iv" title="Permalink to this definition"></a></dt>
+<dd><p>Function that given a DataFrame, a categorical feature and a binary target column computes the Information Value.</p>
+<p>See <a class="reference external" href="http://www.m-hikari.com/ams/ams-2014/ams-65-68-2014/zengAMS65-68-2014.pdf">http://www.m-hikari.com/ams/ams-2014/ams-65-68-2014/zengAMS65-68-2014.pdf</a> for a technical description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfs</strong> (<em>DataFrame</em>) – A spark DataFrame with col_feature and col_target;</p></li>
+<li><p><strong>col_feature</strong> (<em>str</em>) – Column name of a categorical feature.</p></li>
+<li><p><strong>col_target</strong> (<em>str</em>) – Column name of a binary target column. Must be of integer type and have only value 0 and 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – if dfs.schema[col_target].dataType != T.IntegerType</p></li>
+<li><p><strong>ValueError</strong> – unique_target_values != [0, 1]</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A two element tuple with the follwing objects:</dt><dd><ul class="simple">
+<li><p>Spark DataFrame with ‘feature’, ‘feature_value’, ‘woe’, ‘iv’ column;</p></li>
+<li><p>float with the col_feature information value.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[DataFrame, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyspark_ds_toolbox.ml.feature_selection.information_value.feature_selection_with_iv">
+<span class="sig-prename descclassname"><span class="pre">pyspark_ds_toolbox.ml.feature_selection.information_value.</span></span><span class="sig-name descname"><span class="pre">feature_selection_with_iv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dfs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyspark.sql.dataframe.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_target</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floor_iv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket_fraction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_as_woe</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#pyspark_ds_toolbox.ml.feature_selection.information_value.feature_selection_with_iv" title="Permalink to this definition"></a></dt>
+<dd><p>Function that executes a feature selection based on the information value methodology.</p>
+<p>This function computes the information value for the features passed and based on the floor_iv select the features
+that should ne used in the modeling part. It return analytical dataframes (with the Weight of Evidence and Information
+Value).</p>
+<p>But the main advantage is that it also returns a list os stages to be passed to a pyspark.ml.Pipeline that will encode
+and assemble the select variables.</p>
+<p>See <a class="reference external" href="http://www.m-hikari.com/ams/ams-2014/ams-65-68-2014/zengAMS65-68-2014.pdf">http://www.m-hikari.com/ams/ams-2014/ams-65-68-2014/zengAMS65-68-2014.pdf</a> for a technical description
+and <a class="reference external" href="https://www.listendata.com/2015/03/weight-of-evidence-woe-and-information.html">https://www.listendata.com/2015/03/weight-of-evidence-woe-and-information.html</a> for a introduction on the subject.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dfs</strong> (<em>DataFrame</em>) – A spark DataFrame.</p></li>
+<li><p><strong>col_target</strong> (<em>str</em>) – Column name of a binary target column. Must be of integer type and have only value 0 and 1.</p></li>
+<li><p><strong>num_features</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>None</em><em>]</em>) – List of columns names of numeric features. This column will be transformed with QuantileDiscretizer.</p></li>
+<li><p><strong>cat_features</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>None</em><em>]</em>) – List of columns names of categorical features;</p></li>
+<li><p><strong>floor_iv</strong> (<em>float</em><em>, </em><em>optional</em>) – Threshold for a feature to be selected, greater or equal this value. Defaults to 0.3.</p></li>
+<li><p><strong>bucket_fraction</strong> (<em>float</em><em>, </em><em>optional</em>) – Fraction of the dataset to be used to create the buckets Must be between 0.05 and 0.5. Defaults to 0.1.</p></li>
+<li><p><strong>categorical_as_woe</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True categorical variables will as Weight of Evidence. If False one hot encoding. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – if (num_features is None) and (cat_features is None)</p></li>
+<li><p><strong>ValueError</strong> – if (bucket_fraction &lt; 0.05) or (bucket_fraction &gt; 0.5)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A dict with the following structure</dt><dd><ul class="simple">
+<li><p>dfs_woe: Spark DataFrame with WOE and IV for each feature value. Given by the cols: feature, feature_value, woe, iv.</p></li>
+<li><p>dfs_iv: Spark DataFrame with IV for each feature. Given by the cols: feature, iv.</p></li>
+<li><p>stages_features_vector: List with spark transformers that computes the features vector based on the floor_iv and categorical_as_woe params.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyspark_ds_toolbox.ml.feature_selection">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyspark_ds_toolbox.ml.feature_selection" title="Permalink to this headline"></a></h2>
+<p>Feature Selection tools.</p>
+<p>Subpackage dedicated to Feature Selection tools.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyspark_ds_toolbox.ml.feature_importance.html" class="btn btn-neutral float-left" title="pyspark_ds_toolbox.ml.feature_importance package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyspark_ds_toolbox.stats.html" class="btn btn-neutral float-right" title="pyspark_ds_toolbox.stats package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Vinicius M de Sousa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

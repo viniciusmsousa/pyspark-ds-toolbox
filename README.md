@@ -45,9 +45,11 @@ pyspark_ds_toolbox         # Main Package
 │  ├─ classification             # Sub-package decidated to classification tasks
 │  │  ├─ eval.py
 │  │  └─ baseline_classifiers.py 
-│  └─ feature_importance         # Sub-package with feature importance tools
-│     ├─ native_spark.py
-│     └─ shap_values.py    
+│  ├─ feature_importance         # Sub-package with feature importance tools
+│  │  ├─ native_spark.py
+│  │  └─ shap_values.py 
+│  └─ feature_selection         # Sub-package with feature selection tools
+│     └─ information_value.py    
 ├─ wrangling                  # Sub-package decidated to data wrangling tasks
 │  ├─ reshape.py               
 │  └─ data_quality.py         

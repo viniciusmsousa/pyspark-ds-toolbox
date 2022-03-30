@@ -12,7 +12,9 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 
-The objective of the package is to provide a set of tools that helps the daily work of data science with spark. The documentation can be found [here](https://viniciusmsousa.github.io/pyspark-ds-toolbox/index.html). Feel free to contribute :)
+The objective of the package is to provide a set of tools that helps the daily work of data science with spark. The documentation can be found [here](https://viniciusmsousa.github.io/pyspark-ds-toolbox/index.html) and notebooks with usage examples [here](https://github.com/viniciusmsousa/pyspark-ds-toolbox/tree/main/examples).
+
+Feel free to contribute :)
 
 
 ## Installation
@@ -29,7 +31,7 @@ pip install git+https://github.com/viniciusmsousa/pyspark-ds-toolbox.git
 
 ## Organization
 
-The package is currently organized in a structure based on the nature of the task, such as data wrangling, model/prediction evaluation, and so on.
+The package organized in a structure based on the nature of the task, such as data wrangling, model/prediction evaluation, and so on.
 
 ```
 pyspark_ds_toolbox         # Main Package
@@ -43,13 +45,14 @@ pyspark_ds_toolbox         # Main Package
 │  ├─ classification             # Sub-package decidated to classification tasks
 │  │  ├─ eval.py
 │  │  └─ baseline_classifiers.py 
-│  └─ feature_importance         # Sub-package with feature importance tools
-│     ├─ native_spark.py
-│     └─ shap_values.py    
+│  ├─ feature_importance         # Sub-package with feature importance tools
+│  │  ├─ native_spark.py
+│  │  └─ shap_values.py 
+│  └─ feature_selection         # Sub-package with feature selection tools
+│     └─ information_value.py    
 ├─ wrangling                  # Sub-package decidated to data wrangling tasks
 │  ├─ reshape.py               
 │  └─ data_quality.py         
 └─ stats                      # Sub-package dedicated to basic statistic functionalities
    └─ association.py    
 ```
-
