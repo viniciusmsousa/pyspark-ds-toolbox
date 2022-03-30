@@ -276,7 +276,7 @@ def feature_selection_with_iv(
             # Creating WOEComputer Stage
             WOE = WeightOfEvidenceComputer(inputCols=cat_features_selected, col_target=col_target)
             # Creating list of Stages
-            stages_features_vector = [WOE] + get_features_vector(num_features=selected_features)
+            stages_features_vector = [WOE] + get_features_vector(num_features=num_selected_features)
         else:
             num_selected_features = list(filter(None, [s[:-7] if s.endswith('_bucket') else None for s in cols_to_keep]))
             stages_features_vector = get_features_vector(num_features=num_selected_features, cat_features=cat_features_selected)
