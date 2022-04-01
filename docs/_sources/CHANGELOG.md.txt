@@ -5,6 +5,9 @@
 ### Fixed
 * `pyspark_ds_toolbox.ml.feature_selection.information_value.feature_selection_with_iv()`: `bucket_fraction` argument behavior.
 
+### Changed
+* `pyspark_ds_toolbox.ml.feature_selection.information_value.feature_selection_with_iv()`: Return `dict[dfs_iv]` from a spark dataframe to `dict[df_iv]` to a pandas df.
+
 ## 0.4.1
 
 ### Fixed

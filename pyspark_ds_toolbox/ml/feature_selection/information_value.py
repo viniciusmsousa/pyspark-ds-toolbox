@@ -299,7 +299,7 @@ def feature_selection_with_iv(
     # 5) Return object
     out_dict = {
         'dfs_woe': dfs_woe,
-        'dfs_iv': dfs_iv.orderBy(F.col('iv').desc()),
+        'df_iv': dfs_iv.orderBy(F.col('iv').desc()).toPandas(),
         'stages_features_vector': stages_features_vector
     }
 

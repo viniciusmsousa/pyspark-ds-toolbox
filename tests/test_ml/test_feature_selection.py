@@ -1,5 +1,6 @@
 import pytest
-from pyspark.sql DataFrame
+import pandas as pd
+from pyspark.sql import DataFrame
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType
 
 from pyspark_ds_toolbox.ml.feature_selection.information_value import compute_woe_iv, WeightOfEvidenceComputer, feature_selection_with_iv
@@ -45,9 +46,9 @@ def test_feature_selection_with_iv(df_causal_inference_iv):
         categorical_as_woe=False
     )
     assert type(out) == dict
-    assert list(out.keys()) == ['dfs_woe', 'dfs_iv', 'stages_features_vector']
+    assert list(out.keys()) == ['dfs_woe', 'df_iv', 'stages_features_vector']
     assert type(out['dfs_woe']) == DataFrame
-    assert type(out['dfs_iv']) == DataFrame
+    assert type(out['df_iv']) == pd.DataFrame
     assert type(out['stages_features_vector']) == list
     assert len(out['stages_features_vector']) == 5
 
@@ -61,9 +62,9 @@ def test_feature_selection_with_iv(df_causal_inference_iv):
         categorical_as_woe=True
     )
     assert type(out) == dict
-    assert list(out.keys()) == ['dfs_woe', 'dfs_iv', 'stages_features_vector']
+    assert list(out.keys()) == ['dfs_woe', 'df_iv', 'stages_features_vector']
     assert type(out['dfs_woe']) == DataFrame
-    assert type(out['dfs_iv']) == DataFrame
+    assert type(out['df_iv']) == pd.DataFrame
     assert type(out['stages_features_vector']) == list
     assert len(out['stages_features_vector']) == 3
 
