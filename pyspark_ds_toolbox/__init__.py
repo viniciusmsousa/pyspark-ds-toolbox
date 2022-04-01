@@ -3,7 +3,7 @@ __doc__  = """pyspark_ds_toobox
 A Pyspark companion for data science tasks.
 """
 
-__version__ = '0.3.3'
+__version__ = '0.4.2'
 
 from pyspark_ds_toolbox import wrangling
 from pyspark_ds_toolbox import ml

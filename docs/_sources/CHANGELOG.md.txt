@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.4.2
+
+### Fixed
+* `pyspark_ds_toolbox.ml.feature_selection.information_value.feature_selection_with_iv()`: `bucket_fraction` argument behavior.
+
 ## 0.4.1
 
 ### Fixed

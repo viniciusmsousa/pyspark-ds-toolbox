@@ -226,7 +226,7 @@ def feature_selection_with_iv(
     # 2) If dfs has numerical features we need to bucket it!
     if num_features is not None:
         count_dfs = dfs.count()
-        nBuckets = count_dfs/(count_dfs*bucket_fraction)
+        nBuckets = int(round(count_dfs/(count_dfs*bucket_fraction), 0))
 
         bucket_num_features = [i + '_bucket' for i in num_features]
         qt = QuantileDiscretizer(inputCols=num_features, outputCols=bucket_num_features, numBuckets=nBuckets)
